@@ -4,7 +4,7 @@
  * Any functionality that the system should automate or perform in reaction to users minimal interaction should go here.
  * This represents the [app/php/config/functions.php] in an OOP format to enable code reuse
  */
-class System
+class system
 {
     /**
      * This method takes in a token provided by other methods.
@@ -28,9 +28,9 @@ class System
      * @param string $str_val 
      * @return string $val
      */
-    function encodeToHTML($str_val)
+    function encodeToHTML($strVal)
     {
-        $val = htmlentities($str_val);
+        $val = htmlentities($strVal);
         return $val;
     }
 
@@ -40,9 +40,9 @@ class System
      * @param string $str_val 
      * @return string $val
      */
-    function decodeHTML($str_val)
+    function decodeHTML($strVal)
     {
-        $val = html_entity_decode($str_val);
+        $val = html_entity_decode($strVal);
         return $val;
     }
 }
