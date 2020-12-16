@@ -1,0 +1,221 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body .body_background {
+  width: 100%;
+  height: 100%;
+  background-image: url("/res/images/login_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body .body_background .over_Shadow {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.344);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .body_background .login_entry {
+  width: 540px;
+  height: 550px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 6px 1px #2e2e2e;
+          box-shadow: 0 0 6px 1px #2e2e2e;
+}
+
+body .body_background .login_entry h1 {
+  width: 100%;
+  height: 70px;
+  background-color: #489BE5;
+  text-align: center;
+  font-size: 210%;
+  line-height: 70px;
+  font-weight: 700;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+body .body_background .login_entry form {
+  width: 500px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .body_background .login_entry form .form_input_text {
+  width: 410px;
+  height: 56px;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 1px solid #a0a0a0;
+  border-radius: 5px;
+}
+
+body .body_background .login_entry form .form_input_text input[type="text"],
+body .body_background .login_entry form .form_input_text input[type="email"] {
+  width: 350px;
+}
+
+body .body_background .login_entry form .form_input_text input {
+  height: 52px;
+  padding-left: 10px;
+  border: none;
+  font-style: italic;
+}
+
+body .body_background .login_entry form .form_input_text input:focus {
+  outline: none;
+}
+
+body .body_background .login_entry form .form_input_text input:focus body .body_background .login_entry form .form_input_text {
+  height: 300px;
+}
+
+body .body_background .login_entry form .form_input_text img {
+  width: 44px;
+}
+
+body .body_background .login_entry form .form_input_password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_background .login_entry form .form_input_password input[type="password"] {
+  width: 300px;
+}
+
+body .body_background .login_entry form .button_element {
+  width: 450px;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .body_background .login_entry form .button_element button {
+  width: 100px;
+  height: 40px;
+  background-color: #489BE5;
+  border: none;
+  color: white;
+  font-weight: 700;
+  border-radius: 3px;
+}
+
+body .body_background .login_entry a {
+  width: 73%;
+}
+
+body .body_background .system_heading {
+  width: 400px;
+  background-color: rgba(128, 128, 128, 0.618);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+body .body_background .system_heading h2 {
+  width: 100%;
+  font-size: 250%;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body .navigation_panel,
+html .navigation_panel {
+  width: 100%;
+  height: 60px;
+  background-color: red;
+}
+
+body .body_panel,
+html .body_panel {
+  height: calc(100% - 60px);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .body_panel .side_panel,
+html .body_panel .side_panel {
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0px 3px 6px 3px #dadada;
+          box-shadow: 0px 3px 6px 3px #dadada;
+}
+
+body .body_panel .contentArea_panel,
+html .body_panel .contentArea_panel {
+  width: calc(100% - 258px);
+  height: 100%;
+}
+/*# sourceMappingURL=main.css.map */

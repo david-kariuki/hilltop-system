@@ -11,6 +11,7 @@ const live_page = '/libs/js/live.js';
 const postHook = '/libs/js/hooks/post.js';
 
 //views
+const login_page = '/libs/js/views/loginView.js'
 
 require([
     main_page,
@@ -18,6 +19,7 @@ require([
     // hooks,
     postHook,
     // views
+    login_page
 
 
 ], function() {
