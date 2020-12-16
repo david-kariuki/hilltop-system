@@ -1,3 +1,23 @@
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #b8b8b82f;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #383838;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
 body,
 html {
   width: 100%;
@@ -28,8 +48,8 @@ body .body_background .over_Shadow {
 }
 
 body .body_background .login_entry {
-  width: 540px;
-  height: 550px;
+  width: 440px;
+  height: 400px;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -61,8 +81,8 @@ body .body_background .login_entry h1 {
 }
 
 body .body_background .login_entry form {
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,8 +98,8 @@ body .body_background .login_entry form {
 }
 
 body .body_background .login_entry form .form_input_text {
-  width: 410px;
-  height: 56px;
+  width: 310px;
+  height: 40px;
   padding-left: 5px;
   padding-right: 5px;
   display: -webkit-box;
@@ -88,8 +108,9 @@ body .body_background .login_entry form .form_input_text {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   border: 1px solid #a0a0a0;
   border-radius: 5px;
 }
@@ -100,7 +121,7 @@ body .body_background .login_entry form .form_input_text input[type="email"] {
 }
 
 body .body_background .login_entry form .form_input_text input {
-  height: 52px;
+  height: 28px;
   padding-left: 10px;
   border: none;
   font-style: italic;
@@ -115,7 +136,8 @@ body .body_background .login_entry form .form_input_text input:focus body .body_
 }
 
 body .body_background .login_entry form .form_input_text img {
-  width: 44px;
+  width: 30px;
+  margin-right: 5px;
 }
 
 body .body_background .login_entry form .form_input_password {
@@ -125,13 +147,10 @@ body .body_background .login_entry form .form_input_password {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 body .body_background .login_entry form .form_input_password input[type="password"] {
-  width: 300px;
+  width: 350px;
 }
 
 body .body_background .login_entry form .button_element {
@@ -180,19 +199,575 @@ body,
 html {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 body .navigation_panel,
 html .navigation_panel {
   width: 100%;
-  height: 60px;
-  background-color: red;
+  height: 56px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid #a3a3a3;
+}
+
+body .navigation_panel .logo,
+html .navigation_panel .logo {
+  width: 200px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .navigation_panel .logo img,
+html .navigation_panel .logo img {
+  height: 100%;
+  margin-left: 20px;
+}
+
+body .navigation_panel .timer,
+html .navigation_panel .timer {
+  width: 150px;
+  height: 100%;
+}
+
+body .navigation_panel .timer ul,
+html .navigation_panel .timer ul {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+}
+
+body .navigation_panel .timer ul li,
+html .navigation_panel .timer ul li {
+  display: inline-block;
+  font-weight: 500;
+}
+
+body .navigation_panel .timer ul .dates,
+html .navigation_panel .timer ul .dates {
+  font-size: 80%;
+}
+
+body .navigation_panel .timer ul .time,
+html .navigation_panel .timer ul .time {
+  font-weight: 600;
+  font-size: 120%;
+}
+
+body .navigation_panel .search_bar,
+html .navigation_panel .search_bar {
+  width: calc(100% - 150px - 150px - 200px);
+  height: 100%;
+  position: relative;
+}
+
+body .navigation_panel .search_bar .search_input,
+html .navigation_panel .search_bar .search_input {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .navigation_panel .search_bar .search_input input,
+html .navigation_panel .search_bar .search_input input {
+  width: 500px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+
+body .navigation_panel .search_bar .search_display,
+html .navigation_panel .search_bar .search_display {
+  z-index: 90;
+  position: absolute;
+  width: 100%;
+  background-color: green;
+}
+
+body .navigation_panel .nav_bar_navigation,
+html .navigation_panel .nav_bar_navigation {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  overflow: visible;
+}
+
+body .navigation_panel .nav_bar_navigation .icons_elem,
+html .navigation_panel .nav_bar_navigation .icons_elem {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+}
+
+body .navigation_panel .nav_bar_navigation .icons_elem .icon_holder,
+html .navigation_panel .nav_bar_navigation .icons_elem .icon_holder {
+  width: 40px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  padding: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .navigation_panel .nav_bar_navigation .icons_elem .icon_holder img,
+html .navigation_panel .nav_bar_navigation .icons_elem .icon_holder img {
+  width: 80%;
+}
+
+body .navigation_panel .nav_bar_navigation .icons_elem .icon_holder p,
+html .navigation_panel .nav_bar_navigation .icons_elem .icon_holder p {
+  position: absolute;
+  background-color: #f34949;
+  width: 18px;
+  height: 18px;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  line-height: 18px;
+  margin-left: 2px;
+  text-align: center;
+}
+
+body .navigation_panel .nav_bar_navigation .icons_select_dropdown,
+html .navigation_panel .nav_bar_navigation .icons_select_dropdown {
+  z-index: 100;
+  position: absolute;
+  left: -100px;
+  width: 500px;
+  background-color: yellow;
 }
 
 body .body_panel,
 html .body_panel {
-  height: calc(100% - 60px);
+  height: calc(100% - 56px);
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  background-color: #f2f0ef;
+}
+
+body .body_panel .side_panel,
+html .body_panel .side_panel {
+  width: 200px;
+  height: 100%;
+  background-color: #242629;
+  -webkit-box-shadow: 0px 4px 6px 3px #dadada;
+          box-shadow: 0px 4px 6px 3px #dadada;
+  overflow: auto;
+  padding-left: 10px;
+}
+
+body .body_panel .side_panel .management_section,
+html .body_panel .side_panel .management_section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+body .body_panel .side_panel .management_section > p,
+html .body_panel .side_panel .management_section > p {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #E2E2E2;
+}
+
+body .body_panel .side_panel .management_section .navigation_tab,
+html .body_panel .side_panel .management_section .navigation_tab {
+  cursor: pointer;
+  width: 100%;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding: 5px 0px;
+}
+
+body .body_panel .side_panel .management_section .navigation_tab img,
+html .body_panel .side_panel .management_section .navigation_tab img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+body .body_panel .side_panel .management_section .navigation_tab p,
+html .body_panel .side_panel .management_section .navigation_tab p {
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  color: #E2E2E2;
+  font-weight: 600;
+  font-size: small;
+}
+
+body .body_panel .side_panel .management_section .navigation_tab:hover,
+html .body_panel .side_panel .management_section .navigation_tab:hover {
+  background-color: #489BE5;
+}
+
+body .body_panel .contentArea_panel,
+html .body_panel .contentArea_panel {
+  width: calc(100% - 205px);
+  height: 100%;
+  overflow: auto;
+}
+
+body .body_panel .contentArea_panel .view_title,
+html .body_panel .contentArea_panel .view_title {
+  width: 100%;
+  height: 40px;
+}
+
+body .body_panel .contentArea_panel .view_title h3,
+html .body_panel .contentArea_panel .view_title h3 {
+  margin: 0px;
+  padding: 0px;
+  line-height: 40px;
+  font-weight: 600;
+  font-size: 130%;
+  padding-left: 20px;
+}
+
+body .body_panel .contentArea_panel .statsDisplay,
+html .body_panel .contentArea_panel .statsDisplay {
+  width: calc(100% - 4px);
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-right: 1px solid #bdbdbd;
+  margin-bottom: 20px;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element,
+html .body_panel .contentArea_panel .statsDisplay .stat_element {
+  width: 24%;
+  height: 100%;
+  border-left: 1px solid #bdbdbd;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem {
+  width: 100%;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem img,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem img {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem h4,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem h4 {
+  font-size: 80%;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  color: #555555;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .value_element,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element {
+  width: 100%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .value_element span,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element span {
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .value_element p,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element p {
+  padding: 0;
+  margin: 0;
+  font-size: 130%;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555555;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem {
+  width: 100%;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem span,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem span {
+  color: #0acb5a;
+}
+
+body .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem p,
+html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem p {
+  margin: 0;
+  margin-left: 5px;
+  padding: 0;
+  color: #555;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1,
+html .body_panel .contentArea_panel .dashboard_panel_1 {
+  width: calc(100% - 4px);
+  background-color: white;
+  -webkit-box-shadow: 0 0 6px 3px #dfdfdf;
+          box-shadow: 0 0 6px 3px #dfdfdf;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab,
+html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab {
+  width: 100%;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #a7a7a7;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem,
+html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem {
+  width: 300px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem h3,
+html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem h3 {
+  font-size: 130%;
+  margin-bottom: 00px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem span,
+html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem span {
+  margin-left: 10px;
+  font-size: small;
+  font-weight: 600;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem,
+html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem {
+  width: 420px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 10px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem p,
+html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem p {
+  padding: 0;
+  margin: 0;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .graph_section,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .graph_section {
+  width: calc(100% - 400px);
+  height: 430px;
+  background-color: red;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section {
+  width: 400px;
+  height: 400px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab {
+  width: 100%;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab h3,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab h3 {
+  font-size: 130%;
+  line-height: 40px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #838383;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table {
+  width: calc(100% - 40px);
+  height: 350px;
+  margin: auto;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr {
+  cursor: pointer;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr:hover,
+html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr:hover {
+  background-color: #489BE5;
+  color: white;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_2,
+html .body_panel .contentArea_panel .dashboard_panel_2 {
+  width: calc(100% - 4px);
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section,
+html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section {
+  width: 350px;
+  height: 400px;
+  margin-left: 0px;
+  background-color: white;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element,
+html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element {
+  width: 90%;
+  height: 40px;
+  border-bottom: 1px solid #b1b1b1;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -204,18 +779,44 @@ html .body_panel {
           justify-content: space-between;
 }
 
-body .body_panel .side_panel,
-html .body_panel .side_panel {
-  width: 250px;
-  height: 100%;
-  background-color: white;
-  -webkit-box-shadow: 0px 3px 6px 3px #dadada;
-          box-shadow: 0px 3px 6px 3px #dadada;
+body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element p,
+html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element p {
+  font-size: large;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
 }
 
-body .body_panel .contentArea_panel,
-html .body_panel .contentArea_panel {
-  width: calc(100% - 258px);
+body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem,
+html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem {
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+  background-color: #919191;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_2 .To_Do_List,
+html .body_panel .contentArea_panel .dashboard_panel_2 .To_Do_List {
+  width: 300px;
+  height: 400px;
+  background-color: grey;
+  margin-left: 10px;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_2 .Recent_activity,
+html .body_panel .contentArea_panel .dashboard_panel_2 .Recent_activity {
+  width: 300px;
+  height: 400px;
+  background-color: grey;
+  margin-left: 10px;
+}
+
+body .body_panel .right_side_panel,
+html .body_panel .right_side_panel {
+  position: absolute;
+  left: 100%;
+  width: 400px;
   height: 100%;
+  background-color: rgba(0, 128, 0, 0.22);
 }
 /*# sourceMappingURL=main.css.map */
