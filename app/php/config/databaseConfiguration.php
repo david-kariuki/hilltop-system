@@ -12,7 +12,7 @@
 /**
  * Database Configuration
  */
-define("HOST",          "localhost");
+define("HOST","localhost");
 define("HOST_USERNAME", "");
 define("HOST_PASSWORD", "");
 define("DATABASE_NAME", "");

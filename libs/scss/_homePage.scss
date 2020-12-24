@@ -373,8 +373,19 @@ html {
                             height: 25px;
                             border-radius: 2px;
                             background-color: rgb(145, 145, 145);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            & .box_arrow {
+                                width: 10px;
+                                height: 10px;
+                                transform: rotate(45deg);
+                                border-right: 1px solid rgb(255, 255, 255);
+                                border-bottom: 1px solid rgb(255, 255, 255);
+                            }
                         }
                     }
+                    &
                 }
                 & .To_Do_List {
                     width: 300px;
