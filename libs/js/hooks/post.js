@@ -1,4 +1,4 @@
-function sendToHandler(action, handler, data, callback, id) {
+function mainViewHandler(action, handler, data, callback, id) {
     $.post("app/php/control/" + handler + ".php", {
             action: action,
             data: data,

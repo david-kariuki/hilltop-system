@@ -9,7 +9,7 @@
   
 define('PATH',
 array(
-  'Account' => array(
+  'Dashboard' => array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/dashboard/',
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/dashboard/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/dashboard/control.php',

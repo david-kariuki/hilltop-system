@@ -467,14 +467,19 @@ html .body_panel .contentArea_panel {
   overflow: auto;
 }
 
-body .body_panel .contentArea_panel .view_title,
-html .body_panel .contentArea_panel .view_title {
+body .body_panel .contentArea_panel .content_cover,
+html .body_panel .contentArea_panel .content_cover {
+  width: 100%;
+}
+
+body .body_panel .contentArea_panel .content_cover .view_title,
+html .body_panel .contentArea_panel .content_cover .view_title {
   width: 100%;
   height: 40px;
 }
 
-body .body_panel .contentArea_panel .view_title h3,
-html .body_panel .contentArea_panel .view_title h3 {
+body .body_panel .contentArea_panel .content_cover .view_title h3,
+html .body_panel .contentArea_panel .content_cover .view_title h3 {
   margin: 0px;
   padding: 0px;
   line-height: 40px;
@@ -483,8 +488,8 @@ html .body_panel .contentArea_panel .view_title h3 {
   padding-left: 20px;
 }
 
-body .body_panel .contentArea_panel .statsDisplay,
-html .body_panel .contentArea_panel .statsDisplay {
+body .body_panel .contentArea_panel .content_cover .statsDisplay,
+html .body_panel .contentArea_panel .content_cover .statsDisplay {
   width: calc(100% - 4px);
   height: 120px;
   display: -webkit-box;
@@ -500,15 +505,15 @@ html .body_panel .contentArea_panel .statsDisplay {
   margin-bottom: 20px;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element,
-html .body_panel .contentArea_panel .statsDisplay .stat_element {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element {
   width: 24%;
   height: 100%;
   border-left: 1px solid #bdbdbd;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .title_elem,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .title_elem {
   width: 100%;
   height: 30px;
   display: -webkit-box;
@@ -522,16 +527,16 @@ html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem {
           justify-content: center;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem img,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem img {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .title_elem img,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .title_elem img {
   width: 15px;
   height: 15px;
   margin-left: 5px;
   margin-right: 5px;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem h4,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem h4 {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .title_elem h4,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .title_elem h4 {
   font-size: 80%;
   padding: 0;
   margin: 0;
@@ -539,8 +544,8 @@ html .body_panel .contentArea_panel .statsDisplay .stat_element .title_elem h4 {
   color: #555555;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .value_element,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .value_element,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .value_element {
   width: 100%;
   height: 40px;
   display: -webkit-box;
@@ -559,14 +564,14 @@ html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element {
   margin-bottom: 20px;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .value_element span,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element span {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .value_element span,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .value_element span {
   font-weight: 400;
   margin-right: 5px;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .value_element p,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element p {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .value_element p,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .value_element p {
   padding: 0;
   margin: 0;
   font-size: 130%;
@@ -575,8 +580,8 @@ html .body_panel .contentArea_panel .statsDisplay .stat_element .value_element p
   color: #555555;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .insight_elem,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .insight_elem {
   width: 100%;
   height: 20px;
   display: -webkit-box;
@@ -590,21 +595,21 @@ html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem {
           justify-content: center;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem span,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem span {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .insight_elem span,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .insight_elem span {
   color: #0acb5a;
 }
 
-body .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem p,
-html .body_panel .contentArea_panel .statsDisplay .stat_element .insight_elem p {
+body .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .insight_elem p,
+html .body_panel .contentArea_panel .content_cover .statsDisplay .stat_element .insight_elem p {
   margin: 0;
   margin-left: 5px;
   padding: 0;
   color: #555;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1,
-html .body_panel .contentArea_panel .dashboard_panel_1 {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 {
   width: calc(100% - 4px);
   background-color: white;
   -webkit-box-shadow: 0 0 6px 3px #dfdfdf;
@@ -613,8 +618,8 @@ html .body_panel .contentArea_panel .dashboard_panel_1 {
   margin-bottom: 20px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab,
-html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab {
   width: 100%;
   height: 45px;
   display: -webkit-box;
@@ -629,8 +634,8 @@ html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab {
   border-bottom: 1px solid #a7a7a7;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem,
-html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .title_elem,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .title_elem {
   width: 300px;
   height: 100%;
   display: -webkit-box;
@@ -643,21 +648,21 @@ html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem {
   padding-bottom: 10px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem h3,
-html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem h3 {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .title_elem h3,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .title_elem h3 {
   font-size: 130%;
   margin-bottom: 00px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem span,
-html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .title_elem span {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .title_elem span,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .title_elem span {
   margin-left: 10px;
   font-size: small;
   font-weight: 600;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem,
-html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .date_elem,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .date_elem {
   width: 420px;
   height: 100%;
   display: -webkit-box;
@@ -672,14 +677,14 @@ html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem {
   padding-right: 10px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem p,
-html .body_panel .contentArea_panel .dashboard_panel_1 .header_tab .date_elem p {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .date_elem p,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .header_tab .date_elem p {
   padding: 0;
   margin: 0;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -692,29 +697,29 @@ html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data {
           justify-content: center;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .graph_section,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .graph_section {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .graph_section,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .graph_section {
   width: calc(100% - 400px);
   height: 430px;
   background-color: red;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section {
   width: 400px;
   height: 400px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab {
   width: 100%;
   height: 40px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab h3,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab h3 {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab h3,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section .heading_tab h3 {
   font-size: 130%;
   line-height: 40px;
   width: 100%;
@@ -724,26 +729,26 @@ html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .
   border-bottom: 1px solid #838383;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section table,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section table {
   width: calc(100% - 40px);
   height: 350px;
   margin: auto;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr {
   cursor: pointer;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr:hover,
-html .body_panel .contentArea_panel .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr:hover {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr:hover,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_1 .dashboard_content_data .product_stats_section table tbody tr:hover {
   background-color: #489BE5;
   color: white;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2,
-html .body_panel .contentArea_panel .dashboard_panel_2 {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 {
   width: calc(100% - 4px);
   margin-bottom: 20px;
   display: -webkit-box;
@@ -752,18 +757,19 @@ html .body_panel .contentArea_panel .dashboard_panel_2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 10px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section,
-html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section {
   width: 350px;
-  height: 400px;
+  height: 450px;
   margin-left: 0px;
   background-color: white;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element,
-html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element {
   width: 90%;
   height: 40px;
   border-bottom: 1px solid #b1b1b1;
@@ -777,18 +783,19 @@ html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element p,
-html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element p {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element p,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element p {
   font-size: large;
   font-weight: 600;
   margin: 0;
   padding: 0;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem,
-html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element .dropdown_elem,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element .dropdown_elem {
   width: 25px;
   height: 25px;
   border-radius: 2px;
@@ -804,8 +811,8 @@ html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_
           justify-content: center;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem .box_arrow,
-html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem .box_arrow {
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element .dropdown_elem .box_arrow,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .heading_element .dropdown_elem .box_arrow {
   width: 10px;
   height: 10px;
   -webkit-transform: rotate(45deg);
@@ -814,20 +821,173 @@ html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_
   border-bottom: 1px solid white;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .To_Do_List,
-html .body_panel .contentArea_panel .dashboard_panel_2 .To_Do_List {
-  width: 300px;
-  height: 400px;
-  background-color: grey;
-  margin-left: 10px;
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .panel_body,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .panel_body {
+  width: 90%;
+  height: 450px;
+  margin: auto;
+  overflow: auto;
 }
 
-body .body_panel .contentArea_panel .dashboard_panel_2 .Recent_activity,
-html .body_panel .contentArea_panel .dashboard_panel_2 .Recent_activity {
-  width: 300px;
-  height: 400px;
-  background-color: grey;
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .panel_body table tbody tr,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .orders_section .panel_body table tbody tr {
+  height: 2px;
+  cursor: pointer;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List {
+  width: 350px;
+  height: 450px;
   margin-left: 10px;
+  background-color: white;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element {
+  width: 90%;
+  height: 40px;
+  border-bottom: 1px solid #b1b1b1;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element p,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element p {
+  font-size: large;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element .dropdown_elem,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element .dropdown_elem {
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+  background-color: #919191;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element .dropdown_elem .box_arrow,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .To_Do_List .heading_element .dropdown_elem .box_arrow {
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity {
+  width: 350px;
+  height: 450px;
+  margin-left: 10px;
+  background-color: white;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element {
+  width: 90%;
+  height: 40px;
+  border-bottom: 1px solid #b1b1b1;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element p,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element p {
+  font-size: large;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element .dropdown_elem,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element .dropdown_elem {
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+  background-color: #919191;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element .dropdown_elem .box_arrow,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .heading_element .dropdown_elem .box_arrow {
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body {
+  width: 90%;
+  height: 400px;
+  margin: auto;
+  overflow: auto;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul {
+  padding-left: 20px;
+  padding-right: 6px;
+  list-style: circle;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul li,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul li {
+  cursor: pointer;
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul li:hover,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul li:hover {
+  background-color: gainsboro;
+}
+
+body .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul li p,
+html .body_panel .contentArea_panel .content_cover .dashboard_panel_2 .Recent_activity .panel_body ul li p {
+  color: grey;
+  font-size: 80%;
+  margin: 0;
+  padding: 0;
 }
 
 body .body_panel .right_side_panel,

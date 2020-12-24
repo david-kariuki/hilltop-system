@@ -1,9 +1,6 @@
 //main module js file
 const main_page = '/libs/js/System.js';
 
-//jquery
-const JQuery = 'https://code.jquery.com/jquery-3.5.1.min.js'
-
 //reload the site on save
 const live_page = '/libs/js/live.js';
 
@@ -12,6 +9,7 @@ const postHook = '/libs/js/hooks/post.js';
 
 //views
 const login_page = '/libs/js/views/loginView.js'
+const home_page = '/libs/js/views/homeView.js'
 
 require([
     main_page,
@@ -19,7 +17,8 @@ require([
     // hooks,
     postHook,
     // views
-    login_page
+    login_page,
+    home_page
 
 
 ], function() {
