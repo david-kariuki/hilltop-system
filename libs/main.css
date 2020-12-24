@@ -793,6 +793,25 @@ html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_
   height: 25px;
   border-radius: 2px;
   background-color: #919191;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem .box_arrow,
+html .body_panel .contentArea_panel .dashboard_panel_2 .orders_section .heading_element .dropdown_elem .box_arrow {
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 body .body_panel .contentArea_panel .dashboard_panel_2 .To_Do_List,

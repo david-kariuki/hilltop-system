@@ -309,18 +309,27 @@
                     <div class="heading_element">
                         <p>Unfulfilled Order</p>
                         <div class="dropdown_elem">
-                            
+                            <div class="box_arrow">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="To_Do_List">
                     <div class="heading_element">
-                            
+                        <p>Unfulfilled Order</p>
+                        <div class="dropdown_elem">
+                            <div class="box_arrow">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="Recent_activity">
                     <div class="heading_element">
-                            
+                        <p>Unfulfilled Order</p>
+                        <div class="dropdown_elem">
+                            <div class="box_arrow">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
