@@ -14,4 +14,34 @@ array(
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/dashboard/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/dashboard/control.php',
   ),
+  'Catalogue' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/control.php',
+  ),
+  'Customers' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/customers/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/customers/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/customers/control.php',
+  ),
+  'Sales' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/control.php',
+  ),
+  'Transactions' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/transactions/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/transactions/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/transactions/control.php',
+  ),
+  'Vendors' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/vendors/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/vendors/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/vendors/control.php',
+  ),
+  'Moderators' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sale/Moderators/control.php',
+  ),
 ));

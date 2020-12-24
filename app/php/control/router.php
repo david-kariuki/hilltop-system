@@ -13,8 +13,6 @@ if($_REQUEST['action'] ==  'renderMainView'){
         if ($key == $_REQUEST['data']) {
             require_once(PATH[$view]['view']);
             break;
-        }else{
-            echo "No data received";
         }
     }
     exit();

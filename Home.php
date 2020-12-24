@@ -97,9 +97,9 @@
                     <img src="res/images/icons/catalogue.png" alt="">
                     <p>Catalogue</p>
                 </div>
-                <div class="navigation_tab" onclick="renderMainContentView('customers')">
+                <div class="navigation_tab" onclick="renderMainContentView('Customers')">
                     <img src="res/images/icons/customers.png" alt="">
-                    <p>customers</p>
+                    <p>Customers</p>
                 </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Sales')">
                     <img src="res/images/icons/orders.png" alt="">
@@ -142,9 +142,7 @@
             </div>
         </div>
         <div class="contentArea_panel">
-            <div class="content_cover">
-                
-            <div>
+            
         </div>
         <div class="right_side_panel">
             <p>hi</p>

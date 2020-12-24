@@ -1,11 +1,11 @@
 <div class="content_cover">
                 <div class="view_title">
-                    <h3>Catalogue</h3>
+                    <h3>Sales</h3>
                 </div>
                 <div class="view_nav_bar">
                     <ul>
                         <li>
-                            <button>New Item</button>
+                            <button>New Sale</button>
                         </li>
                         <li>
                             <button>Delete</button>
@@ -36,13 +36,11 @@
                             <tr>
                                 <th scope="col"> <div class="check_element"><input type="checkbox"></div> </th>
                                 <th scope="col">#</th>
-                                <th scope="col">Product ID</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Quantity on hand</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Category</th>
-                                
+                                <th scope="col">Sale ID</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Sale Value</th>
+                                <th scope="col">Sale Quantity</th>
+                                <th scope="col">Transaction Ref</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,13 +51,11 @@
                             <tr>
                                 <td><div class="check_element"><input type="checkbox"></div></td>
                                 <td><?php echo ($i + 1)?></td>
-                                <td>PL-0001</td>
-                                <td>Captain Morgan</td>
-                                <td>20</td>
-                                <td>950</td>
-                                <td>Active</td>
-                                <td>Category</td>
-                                
+                                <td>SL-0001</td>
+                                <td>Hill Top</td>
+                                <td>20,000.00</td>
+                                <td>3</td>
+                                <td>TR-0001</td> 
                             </tr>
                             <?php
                             }?>

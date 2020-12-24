@@ -1,11 +1,11 @@
 <div class="content_cover">
                 <div class="view_title">
-                    <h3>Catalogue</h3>
+                    <h3>Vendors</h3>
                 </div>
                 <div class="view_nav_bar">
                     <ul>
                         <li>
-                            <button>New Item</button>
+                            <button>New Vendor</button>
                         </li>
                         <li>
                             <button>Delete</button>
@@ -36,12 +36,12 @@
                             <tr>
                                 <th scope="col"> <div class="check_element"><input type="checkbox"></div> </th>
                                 <th scope="col">#</th>
-                                <th scope="col">Product ID</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Quantity on hand</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Vendor ID</th>
+                                <th scope="col">Vendor Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Category</th>
+                                <th scope="col">Balance</th>
                                 
                             </tr>
                         </thead>
@@ -53,12 +53,12 @@
                             <tr>
                                 <td><div class="check_element"><input type="checkbox"></div></td>
                                 <td><?php echo ($i + 1)?></td>
-                                <td>PL-0001</td>
-                                <td>Captain Morgan</td>
-                                <td>20</td>
-                                <td>950</td>
+                                <td>VE-0001</td>
+                                <td>Mizinga Limited</td>
+                                <td>info@mizinga.com</td>
+                                <td>+254 700 000 000</td>
                                 <td>Active</td>
-                                <td>Category</td>
+                                <td>0.00</td>
                                 
                             </tr>
                             <?php
