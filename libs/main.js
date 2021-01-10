@@ -10,6 +10,7 @@ const postHook = '/libs/js/hooks/post.js';
 //views
 const login_page = '/libs/js/views/loginView.js'
 const home_page = '/libs/js/views/homeView.js'
+const catalogue_form_page = '/libs/js/views/catalogueFormView.js'
 
 require([
     main_page,
@@ -18,7 +19,8 @@ require([
     postHook,
     // views
     login_page,
-    home_page
+    home_page,
+    catalogue_form_page
 
 
 ], function() {
@@ -27,4 +29,5 @@ require([
             openCatalogue();
         }
     });
+    $('[data-toggle="tooltip"]').tooltip();
 });

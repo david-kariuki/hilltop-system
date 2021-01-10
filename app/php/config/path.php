@@ -42,6 +42,11 @@ array(
   'Moderators' => array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/',
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/view.php',
-    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sale/Moderators/control.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/control.php',
+  ),
+  'PointOfSale' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/control.php',
   ),
 ));
