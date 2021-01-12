@@ -18,6 +18,7 @@ array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/',
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/control.php',
+    'catalogueForm' => $_SERVER['DOCUMENT_ROOT'] . '/Views/catalogue/catalogueForm.php',
   ),
   'Customers' => array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/customers/',
@@ -28,6 +29,7 @@ array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/',
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/control.php',
+    'salesForm' => $_SERVER['DOCUMENT_ROOT'] . '/Views/sales/salesForm.php',
   ),
   'Transactions' => array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/transactions/',
@@ -48,5 +50,10 @@ array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/',
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/control.php',
+  ),
+  'Account' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/accounts/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/accounts/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/account/control.php',
   ),
 ));

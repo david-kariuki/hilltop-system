@@ -50,8 +50,8 @@
 
                 for($i = 0; $i < 30; $i++){
                     ?>
-                <tr>
-                    <td><div class="check_element"><input type="checkbox"></div></td>
+                <tr onclick="open_selected_moderator('moderatorForm')">
+                    <td onclick="select_current_moderator();"><div class="check_element"><input type="checkbox"></div></td>
                     <td><?php echo ($i + 1)?></td>
                     <td>MD-0001</td>
                     <td>Peter Kimani</td>

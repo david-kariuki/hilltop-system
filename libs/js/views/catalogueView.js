@@ -48,3 +48,25 @@ function toggle_product_details_section() {
         element.addClass("high_lighted");
     }
 }
+
+function select_current_product() {
+    console.log("checked");
+    event.stopImmediatePropagation();
+}
+
+function open_selected_product(viewName, loadingData = null, callBack = null) {
+    var action = "openProduct";
+    var View = "catalogue";
+    var form = viewName;
+    var token = 1;
+    var data = viewName;
+    var id = null;
+
+    var renderedElement = $(".contentArea_panel");
+
+    formViewHandler(action, View, form, data, callback, id);
+
+    function callback(msg) {
+        renderedElement.html(msg);
+    }
+}

@@ -1,0 +1,81 @@
+.item_area_moderator {
+    height: 500px;
+    background-color: white;
+    border: 1px solid rgb(208, 208, 208);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & .users_details {
+        width: 800px;
+        height: 450px;
+        border-radius: 5px;
+        border: 1px solid $system-blue;
+        overflow: hidden;
+    }
+    & .user_configuration {
+        width: 300px;
+        height: 450px;
+        border-radius: 5px;
+        border: 1px solid $system-blue;
+        overflow: hidden;
+    }
+    & .render_container {
+        width: 100%;
+        height: 100%;
+        & h6 {
+            width: 100%;
+            height: 46px;
+            background-color: $system-blue;
+            color: white;
+            padding: 0;
+            margin: 0;
+            font-size: 130%;
+            font-weight: 500;
+            padding-left: 20px;
+            line-height: 46px;
+        }
+        & .input_group_linear {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            align-self: center;
+            justify-content: space-around;
+            flex-direction: row;
+            padding-top: 5px;
+            margin-top: 10px;
+            & .input_element {
+                width: 100%;
+                margin: 0px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-direction: column;
+                & p {
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    color: $system-blue;
+                    font-weight: 600;
+                }
+                & input {
+                    width: 100%;
+                    height: 35px;
+                    border: 1px solid grey;
+                    border-radius: 5px;
+                }
+                & select {
+                    width: 100%;
+                    height: 35px;
+                    border: 1px solid grey;
+                    border-radius: 5px;
+                }
+                & textarea {
+                    width: 100%;
+                    height: 100px;
+                    border-radius: 5px;
+                    resize: none;
+                }
+            }
+        }
+    }
+}

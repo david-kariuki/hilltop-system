@@ -11,3 +11,8 @@ function renderMainContentView(viewName, loadingData = null, callBack = null) {
         $(".contentArea_panel").html(msg);
     }
 }
+
+function close_system_elemental() {
+    var element = $(".system_elemental");
+    element.fadeOut();
+}

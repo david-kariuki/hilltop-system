@@ -1,11 +1,19 @@
-<div class="content_cover">
+<div class="content_cover sale_element">
     <div class="view_title">
         <h3>P.O.S</h3>
     </div>
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button onclick="create_new_sale()">New Sale</button>
+                <button>New Sale</button>
+                <button>Delete</button>
+                <button>Update</button>
+            </li>
+            <li>
+                <select name="" id="">
+                    <option value="QuickReports">Enable Edit</option>
+                    <option value="List">Disable Edit</option>
+                </select>
             </li>
         </ul>
         <div class="element_search">
@@ -72,6 +80,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
@@ -86,16 +95,12 @@
                     for($i = 0; $i < 9; $i++){
                         ?>
                     <tr>
-                        <td>
-                            <input type="text" onfocus="display_item_lister_select()" onfocusOut="hide_item_lister_select()">
-                            <div class="item_lister_select">
-
-                            </div>
-                        </td>
-                        <td style="width: 40px;"><input type="text"></td>
+                        <td><?php echo ($i + 1)?></td>
+                        <td>Captain Morgan</td>
+                        <td>20</td>
                         <td>950</td>
                         <td>950</td>
-                        <td class="cancel_button" onclick="remove_selected_item()"><p>X</p></td>
+                        <td class="cancel_button" onclick="alert('clicked')"><div>x</div></td>
                     </tr>
                     <?php
                     }?>
@@ -127,10 +132,10 @@
                 <p>Ksh 45,000</p>
             </div>
             <div class="action_button_elements">
-                <button class="btn_action_sale btn1">Confirm Sale</button>
-                <button class="btn_action_sale btn2" onclick="make_payment()">Make Payment</button>
-                <button class="btn_action_sale btn3" onclick="create_new_sale()" >Cancel Sale</button>
-                <button class="btn_action_sale btn4">Confirm as Quotation</button>
+                <button class="btn_action_sale btn_sale_actions">Confirm Sale</button>
+                <button class="btn_action_sale btn_sale_actions">Make Payment</button>
+                <button class="btn_action_sale btn_sale_actions">Cancel Sale</button>
+
             </div>
         </div>
         

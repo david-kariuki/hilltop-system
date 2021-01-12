@@ -1,29 +1,43 @@
-<?php
-?>
-<section class="Content">
-    <div class="content_view_header">
-        <h4>Account</h4>
-        <ul class="bread_crumbs">
+<div class="content_cover">
+    <div class="view_title">
+        <h3>Account</h3>
+    </div>
+    <div class="view_nav_bar" style="visibility: hidden;">
+        <ul>
             <li>
-                <ul>
-                    <li class="linker">Home</li>
-                    <li>/</li>
-                </ul>
+                <button>New Moderators</button>
+            </li>
+            <li>
+                <button>Delete</button>
+            </li>
+            <li>
+                <button>Update</button>
+            </li>
+            <li>
+            <select name="" id="">
+                    <option value="QuickReports">Quick Reports</option>
+                    <option value="List">List</option>
+                </select>
+            </li>
+            <li>
+                <select name="" id="">
+                    <option value="QuickReports">Quick Reports</option>
+                    <option value="List">List</option>
+                </select>
             </li>
         </ul>
-    </div>
-    <div class="content_view_options">
-        <button type="button" class="btn btn-outline-danger">Danger</button>
-        <button type="button" class="btn btn-outline-danger">Danger</button>
-        <button type="button" class="btn btn-outline-danger">Danger</button>
-        <button type="button" class="btn btn-outline-danger">Danger</button>
-        <div class="more_options_pannel">
-            more options...
+        <div class="element_search">
+            <input type="Search">
         </div>
     </div>
-    <div class="content_view_display_panel">
-        <div class="customer_details">
-
+    <div class="items_area item_area_account_password">
+        <div class="account_password_elemental">
+            <div class="password_entry_card">
+                <h5>User Verification</h5>
+                <p>Please Enter your Password to Proceed</p>
+                <input type="text">
+            </div>
+            <button onclick="open_selected_moderator('moderatorForm')">Submit</button>
         </div>
     </div>
-</section>
+</div>

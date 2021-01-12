@@ -50,8 +50,8 @@
 
                 for($i = 0; $i < 30; $i++){
                     ?>
-                <tr>
-                    <td><div class="check_element"><input type="checkbox"></div></td>
+                <tr onclick="open_selected_product('catalogueForm')">
+                    <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
                     <td><?php echo ($i + 1)?></td>
                     <td>PL-0001</td>
                     <td>Captain Morgan</td>

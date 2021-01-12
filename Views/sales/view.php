@@ -33,8 +33,8 @@
     <div class="items_area">
         <table>
             <thead>
-                <tr>
-                    <th scope="col"> <div class="check_element"><input type="checkbox"></div> </th>
+                <tr >
+                    <th  scope="col"> <div class="check_element"><input type="checkbox"></div> </th>
                     <th scope="col">#</th>
                     <th scope="col">Sale ID</th>
                     <th scope="col">Customer Name</th>
@@ -48,8 +48,8 @@
 
                 for($i = 0; $i < 30; $i++){
                     ?>
-                <tr>
-                    <td><div class="check_element"><input type="checkbox"></div></td>
+                <tr onclick="open_selected_sale('salesForm')">
+                    <td onclick="select_current_sale();" ><div class="check_element"><input type="checkbox"></div></td>
                     <td><?php echo ($i + 1)?></td>
                     <td>SL-0001</td>
                     <td>Hill Top</td>

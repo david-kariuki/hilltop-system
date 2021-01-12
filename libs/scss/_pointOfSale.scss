@@ -77,14 +77,47 @@
             background-color: white;
             border: none;
             margin-bottom: 20px !important;
-            & td>div {
+            & tr {
+                td {
+                    height: 30px;
+                    border: solid 1px rgb(165, 165, 165);
+                }
+                width: auto !important;
+                & td:first-child,
+                td:nth-child(2) {
+                    height: 30px;
+                    overflow: visible;
+                    position: relative;
+                    & input {
+                        width: 99%;
+                        display: block;
+                        height: 30px;
+                        outline: none;
+                        border-radius: 0;
+                        border: none;
+                        background-color: transparent;
+                        padding-left: 10px !important;
+                        &:focus {
+                            background-color: white;
+                            border: 1px solid $system-blue;
+                        }
+                    }
+                    & .item_lister_select {
+                        display: none;
+                        position: absolute;
+                        width: 550px;
+                        height: 50px;
+                        background-color: green;
+                        z-index: 20;
+                    }
+                }
+            }
+            & .cancel_button {
                 width: 20px;
                 height: 20px;
                 background-color: red;
                 border-radius: 50%;
                 color: white;
-            }
-            & .cancel_button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -225,4 +258,63 @@
             }
         }
     }
+}
+
+.elemental_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .transaction_element {
+        width: 500px;
+        height: 480px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 6px grey;
+        overflow: hidden;
+        & h5 {
+            width: 100%;
+            height: 46px;
+            background-color: $system-blue;
+            color: white;
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+            padding-left: 20px;
+        }
+        & .transaction_body {
+            width: 100%;
+            height: 350px;
+            padding-top: 20px;
+            & .input_group {
+                width: 80%;
+                height: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: auto;
+                margin-bottom: 10px;
+                & p {
+                    font-size: 90%;
+                    line-height: 46px;
+                    font-weight: 600;
+                }
+                & input {
+                    height: 36px;
+                    width: 250px;
+                }
+            }
+        }
+        & button {
+            display: block;
+            margin: auto;
+            width: 120px;
+            height: 38px;
+            border: none;
+            background-color: #00E379;
+            border-radius: 5px;
+            font-weight: 600;
+            color: white;
+        }
+    }
+    & .close_button {}
 }

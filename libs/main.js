@@ -10,7 +10,11 @@ const postHook = '/libs/js/hooks/post.js';
 //views
 const login_page = '/libs/js/views/loginView.js'
 const home_page = '/libs/js/views/homeView.js'
-const catalogue_form_page = '/libs/js/views/catalogueFormView.js'
+const catalogue_page = '/libs/js/views/catalogueView.js'
+const moderator_page = '/libs/js/views/moderatorView.js'
+const sales_page = '/libs/js/views/salesView.js'
+const transaction_page = '/libs/js/views/transactionView.js'
+const pointOfSale_page = '/libs/js/views/pointOfSaleView.js'
 
 require([
     main_page,
@@ -20,8 +24,11 @@ require([
     // views
     login_page,
     home_page,
-    catalogue_form_page
-
+    catalogue_page,
+    moderator_page,
+    sales_page,
+    transaction_page,
+    pointOfSale_page
 
 ], function() {
     $(document).ready(function() {

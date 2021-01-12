@@ -10,3 +10,16 @@ function mainViewHandler(action, handler, data, callback, id) {
             }
         });
 }
+
+function formViewHandler(action, View, form, data, callback, id, ) {
+    $.post("Views/" + View + "/" + form + ".php", {
+            action: action,
+            data: data,
+            id: id
+        })
+        .done(function(data) {
+            if (callback != undefined) {
+                callback(data);
+            }
+        });
+}

@@ -122,10 +122,9 @@
   color: white;
 }
 
-.contentArea_panel .content_cover .items_area table thead th :nth-child(1) {
+.contentArea_panel .content_cover .items_area table thead th :first-child {
   margin: 0;
   padding: 0;
-  max-width: 25px;
 }
 
 .contentArea_panel .content_cover .items_area table thead th {
@@ -151,7 +150,6 @@
 .contentArea_panel .content_cover .items_area table tbody tr :nth-child(1) {
   margin: 0;
   padding: 0;
-  max-width: 25px;
 }
 
 .contentArea_panel .content_cover .items_area table tbody tr {
@@ -1194,6 +1192,47 @@ html .body_panel .right_side_panel {
   background-color: rgba(0, 128, 0, 0.22);
 }
 
+body .system_elemental,
+html .system_elemental {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 33, 33, 0.645);
+  position: absolute;
+  top: 0;
+  display: none;
+}
+
+body .system_elemental .elemental_container,
+html .system_elemental .elemental_container {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: relative;
+  top: -28px;
+}
+
+body .system_elemental > button,
+html .system_elemental > button {
+  width: 28px;
+  height: 28px;
+  background-color: #e85050;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  position: relative;
+  left: calc(100% - 30px);
+  top: 2px;
+  z-index: 10;
+  cursor: pointer;
+  outline: none;
+}
+
+body .system_elemental > button:active,
+html .system_elemental > button:active {
+  background-color: #ba1818;
+}
+
 .product_title {
   width: calc(100% - 5px);
   height: 46px;
@@ -1604,15 +1643,56 @@ html .body_panel .right_side_panel {
   margin-bottom: 20px !important;
 }
 
-.sale_details_list > .items_area table td > div {
+.sale_details_list > .items_area table tr {
+  width: auto !important;
+}
+
+.sale_details_list > .items_area table tr td {
+  height: 30px;
+  border: solid 1px #a5a5a5;
+}
+
+.sale_details_list > .items_area table tr td:first-child,
+.sale_details_list > .items_area table tr td:nth-child(2) {
+  height: 30px;
+  overflow: visible;
+  position: relative;
+}
+
+.sale_details_list > .items_area table tr td:first-child input,
+.sale_details_list > .items_area table tr td:nth-child(2) input {
+  width: 99%;
+  display: block;
+  height: 30px;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  padding-left: 10px !important;
+}
+
+.sale_details_list > .items_area table tr td:first-child input:focus,
+.sale_details_list > .items_area table tr td:nth-child(2) input:focus {
+  background-color: white;
+  border: 1px solid #489BE5;
+}
+
+.sale_details_list > .items_area table tr td:first-child .item_lister_select,
+.sale_details_list > .items_area table tr td:nth-child(2) .item_lister_select {
+  display: none;
+  position: absolute;
+  width: 550px;
+  height: 50px;
+  background-color: green;
+  z-index: 20;
+}
+
+.sale_details_list > .items_area table .cancel_button {
   width: 20px;
   height: 20px;
   background-color: red;
   border-radius: 50%;
   color: white;
-}
-
-.sale_details_list > .items_area table .cancel_button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1810,5 +1890,373 @@ html .body_panel .right_side_panel {
 
 .sale_details_list > .sales_complete_tally .action_button_elements .btn4:hover {
   background-color: #1f82db;
+}
+
+.elemental_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.elemental_container .transaction_element {
+  width: 500px;
+  height: 480px;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px grey;
+          box-shadow: 0 0 6px grey;
+  overflow: hidden;
+}
+
+.elemental_container .transaction_element h5 {
+  width: 100%;
+  height: 46px;
+  background-color: #489BE5;
+  color: white;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.elemental_container .transaction_element .transaction_body {
+  width: 100%;
+  height: 350px;
+  padding-top: 20px;
+}
+
+.elemental_container .transaction_element .transaction_body .input_group {
+  width: 80%;
+  height: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.elemental_container .transaction_element .transaction_body .input_group p {
+  font-size: 90%;
+  line-height: 46px;
+  font-weight: 600;
+}
+
+.elemental_container .transaction_element .transaction_body .input_group input {
+  height: 36px;
+  width: 250px;
+}
+
+.elemental_container .transaction_element button {
+  display: block;
+  margin: auto;
+  width: 120px;
+  height: 38px;
+  border: none;
+  background-color: #00E379;
+  border-radius: 5px;
+  font-weight: 600;
+  color: white;
+}
+
+.item_area_moderator {
+  height: 500px;
+  background-color: white;
+  border: 1px solid #d0d0d0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.item_area_moderator .users_details {
+  width: 800px;
+  height: 450px;
+  border-radius: 5px;
+  border: 1px solid #489BE5;
+  overflow: hidden;
+}
+
+.item_area_moderator .user_configuration {
+  width: 300px;
+  height: 450px;
+  border-radius: 5px;
+  border: 1px solid #489BE5;
+  overflow: hidden;
+}
+
+.item_area_moderator .render_container {
+  width: 100%;
+  height: 100%;
+}
+
+.item_area_moderator .render_container h6 {
+  width: 100%;
+  height: 46px;
+  background-color: #489BE5;
+  color: white;
+  padding: 0;
+  margin: 0;
+  font-size: 130%;
+  font-weight: 500;
+  padding-left: 20px;
+  line-height: 46px;
+}
+
+.item_area_moderator .render_container .input_group_linear {
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 5px;
+  margin-top: 10px;
+}
+
+.item_area_moderator .render_container .input_group_linear .input_element {
+  width: 100%;
+  margin: 0px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.item_area_moderator .render_container .input_group_linear .input_element p {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  color: #489BE5;
+  font-weight: 600;
+}
+
+.item_area_moderator .render_container .input_group_linear .input_element input {
+  width: 100%;
+  height: 35px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.item_area_moderator .render_container .input_group_linear .input_element select {
+  width: 100%;
+  height: 35px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.item_area_moderator .render_container .input_group_linear .input_element textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.item_area_account_password {
+  height: 400px;
+  background-color: white;
+  border: 1px solid grey;
+}
+
+.item_area_account_password .account_password_elemental {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.item_area_account_password .account_password_elemental .password_entry_card {
+  width: 400px;
+  height: 200px;
+  -webkit-box-shadow: 0 0 6px #767676;
+          box-shadow: 0 0 6px #767676;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.item_area_account_password .account_password_elemental .password_entry_card h5 {
+  width: 100%;
+  background-color: #489BE5;
+  padding: 0px;
+  margin: 0px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.item_area_account_password .account_password_elemental .password_entry_card p {
+  padding: 20px 0px;
+  text-align: center;
+}
+
+.item_area_account_password .account_password_elemental .password_entry_card input {
+  width: 220px;
+  height: 40px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.item_area_account_password .account_password_elemental button {
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  background-color: #489BE5;
+  color: white;
+  padding: 5px 50px;
+  border-radius: 5px;
+}
+
+.item_area_account_password .account_password_elemental button:hover {
+  background-color: #1968ae;
+}
+
+.item_area_account_password .account_password_elemental button:active {
+  background-color: #0f406b;
+}
+
+.sale_element .btn_sale_actions {
+  background-color: #489BE5 !important;
+}
+
+.sale_element .btn_sale_actions:hover {
+  background-color: #1968ae !important;
+}
+
+.sale_element .btn_sale_actions:active {
+  background-color: #328fe2 !important;
+}
+
+.items_area_transactions {
+  height: 500px;
+  background-color: white;
+  border: 1px solid grey;
+}
+
+.items_area_transactions .elemental_transaction {
+  padding-left: 30px;
+  padding-top: 20px;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.items_area_transactions .elemental_transaction .left_panel {
+  width: 400px;
+}
+
+.items_area_transactions .elemental_transaction .right_panel {
+  margin-left: 20px;
+  width: calc(100% - 460px);
+}
+
+.items_area_transactions .elemental_transaction h6 {
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 110%;
+  font-weight: 700;
+  color: grey;
+}
+
+.items_area_transactions .elemental_transaction .input_group {
+  width: 100%;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.items_area_transactions .elemental_transaction .input_group .input_element {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.items_area_transactions .elemental_transaction .input_group .input_element p {
+  font-size: 90%;
+  color: #444444;
+}
+
+.items_area_transactions .elemental_transaction .input_group .input_element input {
+  width: 250px;
+  height: 32px;
+}
+
+.items_area_transactions .elemental_transaction .related_transaction_panel {
+  margin-left: 25px;
+  width: 95%;
+  height: 300px;
+  overflow: auto;
+}
+
+.items_area_transactions .elemental_transaction .related_transaction_panel table {
+  border: 1px solid black !important;
 }
 /*# sourceMappingURL=main.css.map */
