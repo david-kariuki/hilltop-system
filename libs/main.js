@@ -15,6 +15,8 @@ const moderator_page = '/libs/js/views/moderatorView.js'
 const sales_page = '/libs/js/views/salesView.js'
 const transaction_page = '/libs/js/views/transactionView.js'
 const pointOfSale_page = '/libs/js/views/pointOfSaleView.js'
+const Account_page = '/libs/js/views/accountView.js'
+
 
 require([
     main_page,
@@ -28,7 +30,8 @@ require([
     moderator_page,
     sales_page,
     transaction_page,
-    pointOfSale_page
+    pointOfSale_page,
+    Account_page
 
 ], function() {
     $(document).ready(function() {

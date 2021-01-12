@@ -16,7 +16,7 @@ class DatabaseConnection
     // Connection status value variable
     private $databaseConnection;
 
-    // Databse single connection instance
+    // Database single connection instance
     private static $connectionInstance;
 
 
@@ -41,7 +41,7 @@ class DatabaseConnection
             // Connection error
 
             trigger_error(
-                "Connection Error: " . $this->databaseConnection->connect_error(),
+                "Connection Error: " . $this->databaseConnection->connect_error,
                 E_USER_ERROR
             );
         }

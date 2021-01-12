@@ -1971,7 +1971,7 @@ html .system_elemental > button:active {
 }
 
 .item_area_moderator {
-  height: 500px;
+  height: 550px;
   background-color: white;
   border: 1px solid #d0d0d0;
   display: -webkit-box;
@@ -1986,7 +1986,7 @@ html .system_elemental > button:active {
 
 .item_area_moderator .users_details {
   width: 800px;
-  height: 450px;
+  height: 540px;
   border-radius: 5px;
   border: 1px solid #489BE5;
   overflow: hidden;
@@ -1994,7 +1994,7 @@ html .system_elemental > button:active {
 
 .item_area_moderator .user_configuration {
   width: 300px;
-  height: 450px;
+  height: 540px;
   border-radius: 5px;
   border: 1px solid #489BE5;
   overflow: hidden;

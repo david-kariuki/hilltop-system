@@ -5,7 +5,7 @@
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button>New Moderators</button>
+                <button onclick="open_selected_moderator('moderatorForm','createMode')">New Moderators</button>
             </li>
             <li>
                 <button>Delete</button>
@@ -50,7 +50,7 @@
 
                 for($i = 0; $i < 30; $i++){
                     ?>
-                <tr onclick="open_selected_moderator('moderatorForm')">
+                <tr onclick="open_selected_moderator('moderatorForm','updateMode')">
                     <td onclick="select_current_moderator();"><div class="check_element"><input type="checkbox"></div></td>
                     <td><?php echo ($i + 1)?></td>
                     <td>MD-0001</td>

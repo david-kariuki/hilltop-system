@@ -1,5 +1,5 @@
 .item_area_moderator {
-    height: 500px;
+    height: 550px;
     background-color: white;
     border: 1px solid rgb(208, 208, 208);
     display: flex;
@@ -7,14 +7,14 @@
     align-items: center;
     & .users_details {
         width: 800px;
-        height: 450px;
+        height: 540px;
         border-radius: 5px;
         border: 1px solid $system-blue;
         overflow: hidden;
     }
     & .user_configuration {
         width: 300px;
-        height: 450px;
+        height: 540px;
         border-radius: 5px;
         border: 1px solid $system-blue;
         overflow: hidden;

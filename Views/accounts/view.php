@@ -37,7 +37,7 @@
                 <p>Please Enter your Password to Proceed</p>
                 <input type="text">
             </div>
-            <button onclick="open_selected_moderator('moderatorForm')">Submit</button>
+            <button onclick="open_accountForm_view('accountForm')">Submit</button>
         </div>
     </div>
 </div>

@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$loadingData = $_REQUEST['loadingData'];
+
+?>
 <div class="content_cover">
     <div class="view_title">
         <h3>Moderator Account</h3>
@@ -10,9 +16,22 @@
             <li>
                 <button>Delete</button>
             </li>
-            <li>
-                <button>Update</button>
-            </li>
+            <?php
+                if($loadingData == "updateMode"){
+                    ?>
+                        <li>
+                            <button onclick="update_user()">Update</button>
+                        </li>
+                    <?php
+                } else {
+                    ?>
+                        <li>
+                            <button onclick="create_user()">Save</button>
+                        </li>
+                    <?php
+                }
+            ?>
+            
             <li>
             <select name="" id="">
                     <option value="QuickReports">Quick Reports</option>
@@ -33,41 +52,55 @@
     <div class="items_area item_area_moderator">
         <div class="users_details">
             <div class="render_container">
-                <h6>User Data</h6>
+                <h6>User Details</h6>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>First Name</p>
-                        <input type="text">
+                        <input type="text" name="firstName">
                     </div>
                     <div class="input_element">
                         <p>Last Name</p>
-                        <input type="text">
+                        <input type="text" name="lastName">
                     </div>
                     <div class="input_element">
                         <p>Other Name</p>
-                        <input type="text">
+                        <input type="text" name="otherName">
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
+                        <p>User Name</p>
+                        <input type="text" name="userName">
+                    </div>
+                    <div class="input_element">
                         <p>Email</p>
-                        <input type="text">
+                        <input type="email" name="emailAddress">
+                    </div>
+                </div>
+                <div class="input_group_linear">
+                    <div class="input_element">
+                        <p>Gender</p>
+                        <input type="text" name="gender">
+                    </div>
+                    <div class="input_element">
+                        <p>City</p>
+                        <input type="" name="city">
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>Password</p>
-                        <input type="text">
+                        <input type="password" name="Password">
                     </div>
                     <div class="input_element">
                         <p>Confirm Password</p>
-                        <input type="text">
+                        <input type="password" name="confirmPassword" >
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
-                        <p>Confirm Password</p>
-                        <textarea name="" id="" ></textarea>
+                        <p>Address</p>
+                        <textarea name="Address" id="" ></textarea>
                     </div>
                 </div>
 
@@ -77,26 +110,36 @@
         </div>
         <div class="user_configuration">
             <div class="render_container">
-                <h6>Userd Data</h6>
+                <h6>User Details</h6>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>User ID </p>
-                        <input type="text">
+                        <input type="text" name="userID" disabled>
+                    </div>
+                </div>
+                <div class="input_group_linear">
+                    <div class="input_element">
+                        <p>National ID </p>
+                        <input type="text" name="nationalID">
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>User Role </p>
-                        <select name="" id="">
-                            <option value="True">True</option>
+                        <select name="role" id="">
+                            <option value="superUser">Super User</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Moderator">Moderator</option>
+                            <option value="Manger">Manger</option>
                         </select>
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>Status </p>
-                        <select name="" id="">
-                            <option value="True">True</option>
+                        <select name="status" id="">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
                         </select>
                     </div>
                 </div>

@@ -17,6 +17,9 @@ require_once "config/path.php";
  * @example  $moderator = new AdminUser();
  * 
  */ 
+$Admin = new user();
+
+$Admin->showConnection();
 
 
 

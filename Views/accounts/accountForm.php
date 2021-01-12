@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['LOGGED_IN_ACCOUNT'] = 2;
+
+?>
 <div class="content_cover">
     <div class="view_title">
         <h3>Moderator Account</h3>
@@ -11,8 +16,22 @@
                 <button>Delete</button>
             </li>
             <li>
-                <button>Update</button>
+                <button onclick="update_user()">Update</button>
             </li>
+            <?php
+                if(isset($_SESSION['LOGGED_IN_ACCOUNT'])){
+                    ?>
+                        
+                    <?php
+                } else {
+                    ?>
+                        <li>
+                            <button onclick="create_user()">Create</button>
+                        </li>
+                    <?php
+                }
+            ?>
+            
             <li>
             <select name="" id="">
                     <option value="QuickReports">Quick Reports</option>
@@ -33,7 +52,7 @@
     <div class="items_area item_area_moderator">
         <div class="users_details">
             <div class="render_container">
-                <h6>User Data</h6>
+                <h6>User Details</h6>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>First Name</p>
@@ -60,6 +79,16 @@
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
+                        <p>Gender</p>
+                        <input type="text" name="gender">
+                    </div>
+                    <div class="input_element">
+                        <p>City</p>
+                        <input type="" name="city">
+                    </div>
+                </div>
+                <div class="input_group_linear">
+                    <div class="input_element">
                         <p>Password</p>
                         <input type="password" name="Password">
                     </div>
@@ -81,26 +110,36 @@
         </div>
         <div class="user_configuration">
             <div class="render_container">
-                <h6>User Data</h6>
+                <h6>User Details</h6>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>User ID </p>
-                        <input type="text">
+                        <input type="text" name="userID" disabled>
+                    </div>
+                </div>
+                <div class="input_group_linear">
+                    <div class="input_element">
+                        <p>National ID </p>
+                        <input type="text" name="nationalID">
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>User Role </p>
-                        <select name="" id="">
-                            <option value="True">True</option>
+                        <select name="role" id="">
+                            <option value="superUser">Super User</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Moderator">Moderator</option>
+                            <option value="Manger">Manger</option>
                         </select>
                     </div>
                 </div>
                 <div class="input_group_linear">
                     <div class="input_element">
                         <p>Status </p>
-                        <select name="" id="">
-                            <option value="True">True</option>
+                        <select name="status" id="">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
                         </select>
                     </div>
                 </div>
