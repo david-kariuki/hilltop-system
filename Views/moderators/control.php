@@ -32,11 +32,9 @@ if (isset($_SESSION['TOKEN'])) {
                         "response"=>"Invalid Email",
                         "data"=>false
                     );
-        
-                    $response = json_encode($response);
-        
-                    echo $response;
-        
+
+                    echo json_encode($response);
+
                     exit();
                 }
 
@@ -73,9 +71,10 @@ if (isset($_SESSION['TOKEN'])) {
                     $data["status"],
                 ];
 
+                // Combine field and value arrays
                 $combined  = array_combine($fields, $values);
 
-                print_r($combined);
+                print_r($combined); // Debug
 
             }else{
                 $response = array(
@@ -83,10 +82,10 @@ if (isset($_SESSION['TOKEN'])) {
                     "response"=>"No data to Process",
                     "data"=>false
                 );
-    
+
                 $response = json_encode($response);
 
-                
+
             }
             break;
         case "updateUser";
@@ -107,11 +106,11 @@ if (isset($_SESSION['TOKEN'])) {
                     "response"=>"Invalid Email",
                     "data"=>false
                 );
-    
+
                 $response = json_encode($response);
-    
+
                 echo $response;
-    
+
                 exit();
             }
 
@@ -152,7 +151,8 @@ if (isset($_SESSION['TOKEN'])) {
 
             // print_r($combined);
 
-            }else{
+            } else {
+
                 $response = array(
                     "status"=>"000100000",
                     "response"=>"No data to Process",

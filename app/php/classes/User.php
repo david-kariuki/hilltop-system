@@ -13,6 +13,7 @@
 // User class
 class User
 {
+    use System; // Call System class
 
     // Connection status value variable
     private $connectToDB;       // Create DatabaseConnection class object
@@ -67,7 +68,7 @@ class User
 
         // Prepare insert statement
         $stmt = $this->connectToDB->prepare(
-            "{}"
+            "INSER"
         );
         $stmt->bind_param(); // Bind parameters
 
