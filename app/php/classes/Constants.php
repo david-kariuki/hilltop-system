@@ -56,7 +56,7 @@ define("LOG_TYPE_UPDATE_PASSWORD",              "LogTypeUpdatePassword");
 
 
 /**
-* Class declaration for autoloaer visibility and
+* Class declaration for autoload visibility and
 * to get constants value when calling the constant in between quotes
 */
 class Constants
