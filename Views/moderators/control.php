@@ -85,10 +85,8 @@ if (isset($_SESSION['TOKEN'])) {
                 );
     
                 $response = json_encode($response);
-    
-                echo $response;
-    
-                exit();
+
+                
             }
             break;
         case "updateUser";

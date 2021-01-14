@@ -1,9 +1,6 @@
 //main module js file
 const main_page = '/libs/js/System.js';
 
-//jquery
-const JQuery = 'https://code.jquery.com/jquery-3.5.1.min.js'
-
 //reload the site on save
 const live_page = '/libs/js/live.js';
 
@@ -12,6 +9,14 @@ const postHook = '/libs/js/hooks/post.js';
 
 //views
 const login_page = '/libs/js/views/loginView.js'
+const home_page = '/libs/js/views/homeView.js'
+const catalogue_page = '/libs/js/views/catalogueView.js'
+const moderator_page = '/libs/js/views/moderatorView.js'
+const sales_page = '/libs/js/views/salesView.js'
+const transaction_page = '/libs/js/views/transactionView.js'
+const pointOfSale_page = '/libs/js/views/pointOfSaleView.js'
+const Account_page = '/libs/js/views/accountView.js'
+
 
 require([
     main_page,
@@ -19,8 +24,14 @@ require([
     // hooks,
     postHook,
     // views
-    login_page
-
+    login_page,
+    home_page,
+    catalogue_page,
+    moderator_page,
+    sales_page,
+    transaction_page,
+    pointOfSale_page,
+    Account_page
 
 ], function() {
     $(document).ready(function() {
@@ -28,4 +39,5 @@ require([
             openCatalogue();
         }
     });
+    $('[data-toggle="tooltip"]').tooltip();
 });

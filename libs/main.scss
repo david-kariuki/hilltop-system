@@ -1,6 +1,14 @@
 // configuration
 @import "scss/config";
 // components
+@import "scss/listViewComponent";
 // Views
 @import "scss/loginPage";
 @import "scss/homePage";
+@import "scss/catalogue";
+@import "scss/productForm";
+@import "scss/pointOfSale";
+@import "scss/moderators";
+@import "scss/account";
+@import "scss/sales";
+@import "scss/transaction";
