@@ -8,9 +8,6 @@
 * @copyright Copyright (c) 2020 - 2021 David Kariuki (dk) All Rights Reserved.
 */
 
-// Namespace declaration
-namespace duesclerk\configs;
-
 // Enable error reporting
 error_reporting(1);
 ini_set('display_errors', 1);
@@ -44,7 +41,6 @@ define("LENGTH_MIN_PASSWORD",                   8);
 define("LENGTH_MAX_EMAIL_ADDRESS",              320);
 define("LENGTH_TABLE_IDS_SHORT",                20);
 define("LENGTH_TABLE_IDS_LONG",                 40);
-define("LENGTH_VERIFICATION_CODE",              6);
 
 
 // Expressions (preg match)

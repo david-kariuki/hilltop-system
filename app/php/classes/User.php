@@ -51,21 +51,21 @@ class User
     public function addUserToDatabase($userDetails){
 
         // UUID
-        firstName
-        lastName
-        otherName
-        gender
-        nationalId
-        Email
-        userName
-        password
-        Address
-        city
-        role
-        status
-        dateCreated
-        lastModified
-        logID
+        // firstName
+        // lastName
+        // otherName
+        // gender
+        // nationalId
+        // Email
+        // userName
+        // password
+        // Address
+        // city
+        // role
+        // status
+        // dateCreated
+        // lastModified
+        // logID
 
         // Prepare insert statement
 
