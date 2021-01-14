@@ -173,230 +173,325 @@ html {
             width: calc(100% - 205px);
             height: 100%;
             overflow: auto;
-            & .view_title {
+            & .content_cover {
                 width: 100%;
-                height: 40px;
-                & h3 {
-                    margin: 0px;
-                    padding: 0px;
-                    line-height: 40px;
-                    font-weight: 600;
-                    font-size: 130%;
-                    padding-left: 20px;
-                }
-            }
-            & .statsDisplay {
-                width: calc(100% - 4px);
-                height: 120px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                border-right: 1px solid rgb(189, 189, 189);
-                margin-bottom: 20px;
-                & .stat_element {
-                    width: 24%;
-                    height: 100%;
-                    border-left: 1px solid rgb(189, 189, 189);
-                    & .title_elem {
-                        width: 100%;
-                        height: 30px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        & img {
-                            width: 15px;
-                            height: 15px;
-                            margin-left: 5px;
-                            margin-right: 5px;
-                        }
-                        & h4 {
-                            font-size: 80%;
-                            padding: 0;
-                            margin: 0;
-                            font-weight: 400;
-                            color: #555555;
-                        }
-                    }
-                    & .value_element {
-                        width: 100%;
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-direction: row;
-                        margin-bottom: 20px;
-                        & span {
-                            font-weight: 400;
-                            margin-right: 5px;
-                        }
-                        & p {
-                            padding: 0;
-                            margin: 0;
-                            font-size: 130%;
-                            margin-bottom: 5px;
-                            font-weight: 600;
-                            color: #555555;
-                        }
-                    }
-                    & .insight_elem {
-                        width: 100%;
-                        height: 20px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        & span {
-                            color: rgb(10, 203, 90);
-                        }
-                        & p {
-                            margin: 0;
-                            margin-left: 5px;
-                            padding: 0;
-                            color: #555;
-                        }
-                    }
-                }
-            }
-            & .dashboard_panel_1 {
-                width: calc(100% - 4px);
-                background-color: white;
-                box-shadow: 0 0 6px 3px rgb(223, 223, 223);
-                border-radius: 2px;
-                margin-bottom: 20px;
-                & .header_tab {
-                    width: 100%;
-                    height: 45px;
+                //view title(list component)
+                & .statsDisplay {
+                    width: calc(100% - 4px);
+                    height: 120px;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    border-bottom: 1px solid rgb(167, 167, 167);
-                    & .title_elem {
-                        width: 300px;
+                    border-right: 1px solid rgb(189, 189, 189);
+                    margin-bottom: 20px;
+                    & .stat_element {
+                        width: 24%;
                         height: 100%;
-                        display: flex;
-                        align-items: flex-end;
-                        padding-left: 10px;
-                        padding-bottom: 10px;
-                        & h3 {
-                            font-size: 130%;
-                            margin-bottom: 00px;
+                        border-left: 1px solid rgb(189, 189, 189);
+                        & .title_elem {
+                            width: 100%;
+                            height: 30px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            & img {
+                                width: 15px;
+                                height: 15px;
+                                margin-left: 5px;
+                                margin-right: 5px;
+                            }
+                            & h4 {
+                                font-size: 80%;
+                                padding: 0;
+                                margin: 0;
+                                font-weight: 400;
+                                color: #555555;
+                            }
                         }
-                        & span {
-                            margin-left: 10px;
-                            font-size: small;
-                            font-weight: 600;
+                        & .value_element {
+                            width: 100%;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: row;
+                            margin-bottom: 20px;
+                            & span {
+                                font-weight: 400;
+                                margin-right: 5px;
+                            }
+                            & p {
+                                padding: 0;
+                                margin: 0;
+                                font-size: 130%;
+                                margin-bottom: 5px;
+                                font-weight: 600;
+                                color: #555555;
+                            }
                         }
-                    }
-                    & .date_elem {
-                        width: 420px;
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        padding-right: 10px;
-                        & p {
-                            padding: 0;
-                            margin: 0;
+                        & .insight_elem {
+                            width: 100%;
+                            height: 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            & span {
+                                color: rgb(10, 203, 90);
+                            }
+                            & p {
+                                margin: 0;
+                                margin-left: 5px;
+                                padding: 0;
+                                color: #555;
+                            }
                         }
                     }
                 }
-                & .dashboard_content_data {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    & .graph_section {
-                        width: calc(100% - 400px);
-                        height: 430px;
-                        background-color: red;
-                    }
-                    & .product_stats_section {
-                        width: 400px;
-                        height: 400px;
-                        & .heading_tab {
-                            width: 100%;
-                            height: 40px;
-                            padding-left: 20px;
-                            padding-right: 20px;
+                & .dashboard_panel_1 {
+                    width: calc(100% - 4px);
+                    background-color: white;
+                    box-shadow: 0 0 6px 3px rgb(223, 223, 223);
+                    border-radius: 2px;
+                    margin-bottom: 20px;
+                    & .header_tab {
+                        width: 100%;
+                        height: 45px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border-bottom: 1px solid rgb(167, 167, 167);
+                        & .title_elem {
+                            width: 300px;
+                            height: 100%;
+                            display: flex;
+                            align-items: flex-end;
+                            padding-left: 10px;
+                            padding-bottom: 10px;
                             & h3 {
                                 font-size: 130%;
-                                line-height: 40px;
-                                width: 100%;
-                                height: 100%;
-                                margin: 0;
-                                padding: 0;
-                                border-bottom: 1px solid rgb(131, 131, 131);
+                                margin-bottom: 00px;
+                            }
+                            & span {
+                                margin-left: 10px;
+                                font-size: small;
+                                font-weight: 600;
                             }
                         }
-                        & table {
-                            width: calc(100% - 40px);
-                            height: 350px;
-                            margin: auto;
-                            & tbody {
-                                & tr {
-                                    cursor: pointer;
-                                    &:hover {
-                                        background-color: $system-blue;
-                                        color: white;
+                        & .date_elem {
+                            width: 420px;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding-right: 10px;
+                            & p {
+                                padding: 0;
+                                margin: 0;
+                            }
+                        }
+                    }
+                    & .dashboard_content_data {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & .graph_section {
+                            width: calc(100% - 400px);
+                            height: 430px;
+                            background-color: red;
+                        }
+                        & .product_stats_section {
+                            width: 400px;
+                            height: 400px;
+                            & .heading_tab {
+                                width: 100%;
+                                height: 40px;
+                                padding-left: 20px;
+                                padding-right: 20px;
+                                & h3 {
+                                    font-size: 130%;
+                                    line-height: 40px;
+                                    width: 100%;
+                                    height: 100%;
+                                    margin: 0;
+                                    padding: 0;
+                                    border-bottom: 1px solid rgb(131, 131, 131);
+                                }
+                            }
+                            & table {
+                                width: calc(100% - 40px);
+                                height: 350px;
+                                margin: auto;
+                                & tbody {
+                                    & tr {
+                                        cursor: pointer;
+                                        &:hover {
+                                            background-color: $system-blue;
+                                            color: white;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
-            & .dashboard_panel_2 {
-                width: calc(100% - 4px);
-                margin-bottom: 20px;
-                display: flex;
-                align-items: center;
-                & .orders_section {
-                    width: 350px;
-                    height: 400px;
-                    margin-left: 0px;
-                    background-color: white;
-                    & .heading_element {
-                        width: 90%;
-                        height: 40px;
-                        border-bottom: 1px solid rgb(177, 177, 177);
-                        margin: auto;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        & p {
-                            font-size: large;
-                            font-weight: 600;
-                            margin: 0;
-                            padding: 0;
-                        }
-                        & .dropdown_elem {
-                            width: 25px;
-                            height: 25px;
-                            border-radius: 2px;
-                            background-color: rgb(145, 145, 145);
+                & .dashboard_panel_2 {
+                    width: calc(100% - 4px);
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    & .orders_section {
+                        width: 350px;
+                        height: 450px;
+                        margin-left: 0px;
+                        background-color: white;
+                        & .heading_element {
+                            width: 90%;
+                            height: 40px;
+                            border-bottom: 1px solid rgb(177, 177, 177);
+                            margin: auto;
                             display: flex;
                             align-items: center;
-                            justify-content: center;
-                            & .box_arrow {
-                                width: 10px;
-                                height: 10px;
-                                transform: rotate(45deg);
-                                border-right: 1px solid rgb(255, 255, 255);
-                                border-bottom: 1px solid rgb(255, 255, 255);
+                            justify-content: space-between;
+                            margin-bottom: 20px;
+                            & p {
+                                font-size: large;
+                                font-weight: 600;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            & .dropdown_elem {
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 2px;
+                                background-color: rgb(145, 145, 145);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                & .box_arrow {
+                                    width: 10px;
+                                    height: 10px;
+                                    transform: rotate(45deg);
+                                    border-right: 1px solid rgb(255, 255, 255);
+                                    border-bottom: 1px solid rgb(255, 255, 255);
+                                }
+                            }
+                        }
+                        & .panel_body {
+                            width: 90%;
+                            height: 450px;
+                            margin: auto;
+                            overflow: auto;
+                            & table {
+                                & tbody {
+                                    & tr {
+                                        height: 2px;
+                                        cursor: pointer;
+                                    }
+                                }
                             }
                         }
                     }
-                }
-                & .To_Do_List {
-                    width: 300px;
-                    height: 400px;
-                    background-color: grey;
-                    margin-left: 10px;
-                }
-                & .Recent_activity {
-                    width: 300px;
-                    height: 400px;
-                    background-color: grey;
-                    margin-left: 10px;
+                    & .To_Do_List {
+                        width: 350px;
+                        height: 450px;
+                        margin-left: 10px;
+                        background-color: white;
+                        & .heading_element {
+                            width: 90%;
+                            height: 40px;
+                            border-bottom: 1px solid rgb(177, 177, 177);
+                            margin: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            & p {
+                                font-size: large;
+                                font-weight: 600;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            & .dropdown_elem {
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 2px;
+                                background-color: rgb(145, 145, 145);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                & .box_arrow {
+                                    width: 10px;
+                                    height: 10px;
+                                    transform: rotate(45deg);
+                                    border-right: 1px solid rgb(255, 255, 255);
+                                    border-bottom: 1px solid rgb(255, 255, 255);
+                                }
+                            }
+                        }
+                    }
+                    & .Recent_activity {
+                        width: 350px;
+                        height: 450px;
+                        margin-left: 10px;
+                        background-color: white;
+                        & .heading_element {
+                            width: 90%;
+                            height: 40px;
+                            border-bottom: 1px solid rgb(177, 177, 177);
+                            margin: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            & p {
+                                font-size: large;
+                                font-weight: 600;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            & .dropdown_elem {
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 2px;
+                                background-color: rgb(145, 145, 145);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                & .box_arrow {
+                                    width: 10px;
+                                    height: 10px;
+                                    transform: rotate(45deg);
+                                    border-right: 1px solid rgb(255, 255, 255);
+                                    border-bottom: 1px solid rgb(255, 255, 255);
+                                }
+                            }
+                        }
+                        & .panel_body {
+                            width: 90%;
+                            height: 400px;
+                            margin: auto;
+                            overflow: auto;
+                            & ul {
+                                padding-left: 20px;
+                                padding-right: 6px;
+                                list-style: circle;
+                                & li {
+                                    cursor: pointer;
+                                    margin: 0;
+                                    margin-bottom: 2px;
+                                    &:hover {
+                                        background-color: rgb(220, 220, 220);
+                                    }
+                                    & p {
+                                        color: grey;
+                                        font-size: 80%;
+                                        margin: 0;
+                                        padding: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -406,6 +501,39 @@ html {
             width: 400px;
             height: 100%;
             background-color: rgba(0, 128, 0, 0.22);
+        }
+    }
+    & .system_elemental {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(33, 33, 33, 0.645);
+        position: absolute;
+        top: 0;
+        display: none;
+        & .elemental_container {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            position: relative;
+            top: - 28px;
+        }
+        &>button {
+            width: 28px;
+            height: 28px;
+            background-color: rgb(232, 80, 80);
+            border: none;
+            color: white;
+            border-radius: 5px;
+            display: block;
+            position: relative;
+            left: calc(100% - 30px);
+            top: 2px;
+            z-index: 10;
+            cursor: pointer;
+            outline: none;
+            &:active {
+                background-color: darken(rgb(232, 80, 80), 20%);
+            }
         }
     }
 }

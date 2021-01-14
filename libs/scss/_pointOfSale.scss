@@ -1,0 +1,320 @@
+.sale_customer_panel {
+    width: calc(100% - 5px);
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: row;
+    & .customer_panel {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    & .sales_panel {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    &>div>div>h3 {
+        font-size: 125%;
+        padding: 5px 10px;
+        font-weight: 700;
+        color: $system-blue;
+    }
+    & .items_panel {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        & .section1,
+        & .section2 {
+            width: 50%;
+            & .input_area {
+                width: 100%;
+                margin-bottom: 5px;
+                padding-left: 20px;
+                padding-bottom: 10px;
+                & h4 {
+                    font-size: 90%;
+                    color: grey;
+                }
+                & textarea {
+                    height: 300px;
+                    border-radius: 5px;
+                    height: 100px;
+                    resize: none;
+                    color: rgb(87, 87, 87);
+                    outline: none;
+                    &:focus {
+                        border: solid 2px $system-blue;
+                    }
+                }
+                & input {
+                    width: 250px;
+                    height: 30px;
+                    border-radius: 5px;
+                    outline: none;
+                    border: grey 1px solid;
+                    color: rgb(87, 87, 87);
+                    &:focus {
+                        border: solid 2px $system-blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sale_details_list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &>.items_area {
+        width: 70% !important;
+        padding-right: 2px;
+        display: flex;
+        flex-direction: column;
+        & table {
+            background-color: white;
+            border: none;
+            margin-bottom: 20px !important;
+            & tr {
+                td {
+                    height: 30px;
+                    border: solid 1px rgb(165, 165, 165);
+                }
+                width: auto !important;
+                & td:first-child,
+                td:nth-child(2) {
+                    height: 30px;
+                    overflow: visible;
+                    position: relative;
+                    & input {
+                        width: 99%;
+                        display: block;
+                        height: 30px;
+                        outline: none;
+                        border-radius: 0;
+                        border: none;
+                        background-color: transparent;
+                        padding-left: 10px !important;
+                        &:focus {
+                            background-color: white;
+                            border: 1px solid $system-blue;
+                        }
+                    }
+                    & .item_lister_select {
+                        display: none;
+                        position: absolute;
+                        width: 550px;
+                        height: 50px;
+                        background-color: green;
+                        z-index: 20;
+                    }
+                }
+            }
+            & .cancel_button {
+                width: 20px;
+                height: 20px;
+                background-color: red;
+                border-radius: 50%;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 30px;
+            }
+        }
+        & .sale_note_element {
+            width: 100%;
+            & h5 {
+                font-weight: 500;
+                color: $system-blue;
+            }
+            & textarea {
+                width: 100%;
+                height: 100px;
+                border-radius: 5px;
+                border: solid grey 1px;
+                outline: none;
+                padding-left: 5px;
+                background-color: white;
+                &:focus {
+                    border: 2px solid $system-blue;
+                }
+            }
+        }
+    }
+    &>.sales_complete_tally {
+        padding-top: 21px;
+        background-color: white;
+        width: 28%;
+        & .tally_item {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            align-self: center;
+            justify-content: space-between;
+            padding-right: 20px;
+            padding-left: 20px;
+            & h6 {
+                font-size: 80%;
+                color: $system-blue;
+            }
+            & p {
+                padding: 0;
+                margin: 0;
+                color: grey;
+                font-size: 90%;
+            }
+        }
+        & .items_discount {
+            width: 100%;
+            height: 40px;
+            padding-left: 20px;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 20px;
+            margin-bottom: 10px;
+            & h6 {
+                font-size: 80%;
+                color: $system-blue;
+            }
+            & .discount_option {
+                width: 165px;
+                height: 30px;
+                display: flex;
+                justify-content: space-between;
+                & input {
+                    width: 80px;
+                    outline: none;
+                    border: 1px solid grey;
+                    border-radius: 5px;
+                    padding-left: 5px;
+                    &:focus {
+                        border: 2px solid $system-blue;
+                    }
+                }
+            }
+        }
+        & .total_sale_amount {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding-right: 20px;
+            padding-left: 20px;
+            & h6 {
+                font-size: 80%;
+                color: $system-blue;
+            }
+            & p {
+                padding: 0;
+                margin: 0;
+                color: rgb(94, 94, 94);
+                font-size: 120%;
+                font-weight: 500;
+            }
+        }
+        & .action_button_elements {
+            width: 100%;
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            & .btn_action_sale {
+                width: 250px;
+                height: 33px;
+                background-color: yellow;
+                margin-bottom: 10px;
+                border: none;
+                outline: none;
+                border-radius: 3px;
+                font-weight: 500;
+                color: white;
+            }
+            & .btn1 {
+                background-color: #00E379;
+                &:hover {
+                    background-color: darken(#00E379, 10%);
+                }
+            }
+            & .btn2 {
+                background-color: #00E379;
+                &:hover {
+                    background-color: darken(#00E379, 10%);
+                }
+            }
+            & .btn3 {
+                background-color: #E30000;
+                &:hover {
+                    background-color: darken(#E30000, 10%);
+                }
+            }
+            & .btn4 {
+                background-color: #489BE5;
+                &:hover {
+                    background-color: darken(#489BE5, 10%);
+                }
+            }
+        }
+    }
+}
+
+.elemental_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .transaction_element {
+        width: 500px;
+        height: 480px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 6px grey;
+        overflow: hidden;
+        & h5 {
+            width: 100%;
+            height: 46px;
+            background-color: $system-blue;
+            color: white;
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+            padding-left: 20px;
+        }
+        & .transaction_body {
+            width: 100%;
+            height: 350px;
+            padding-top: 20px;
+            & .input_group {
+                width: 80%;
+                height: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: auto;
+                margin-bottom: 10px;
+                & p {
+                    font-size: 90%;
+                    line-height: 46px;
+                    font-weight: 600;
+                }
+                & input {
+                    height: 36px;
+                    width: 250px;
+                }
+            }
+        }
+        & button {
+            display: block;
+            margin: auto;
+            width: 120px;
+            height: 38px;
+            border: none;
+            background-color: #00E379;
+            border-radius: 5px;
+            font-weight: 600;
+            color: white;
+        }
+    }
+    & .close_button {}
+}
