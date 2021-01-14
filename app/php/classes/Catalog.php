@@ -14,28 +14,59 @@
 class Catalog
 {
 
-    /**/
-    public function add a product(){
+    /**
+    * Class constructor
+    */
+    function __construct()
+    {
 
     }
 
-    /**/
-    public function read a product by reference(){
+    /**
+    * Class destructor
+    */
+    function __destruct()
+    {
+
+    }
+    
+    /**
+    * Function to
+    *
+    */
+    public function addProduct(){
 
     }
 
-    /**/
-    public function read all products(){
+    /**
+    * Function to
+    *
+    */
+    public function readproductByReference(){
 
     }
 
-    /**/
-    public function update a user by reference(){
+    /**
+    * Function to
+    *
+    */
+    public function readAllProducts(){
 
     }
 
-    /**/
-    public function delete a product(){
+    /**
+    * Function to
+    *
+    */
+    public function updateUserByReference(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function deleteProduct(){
 
     }
 }

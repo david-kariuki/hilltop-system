@@ -14,27 +14,58 @@
 class Storage
 {
 
-    /**/
-    public function addUserToDatabase(){
+    /**
+    * Class constructor
+    */
+    function __construct()
+    {
 
     }
 
-    /**/
+    /**
+    * Class destructor
+    */
+    function __destruct()
+    {
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function addUserToDatabase(){
+        
+    }
+
+    /**
+    * Function to
+    *
+    */
     public function readUserByReference(){
 
     }
 
-    /**/
+    /**
+    * Function to
+    *
+    */
     public function readAllUsers(){
 
     }
 
-    /**/
+    /**
+    * Function to
+    *
+    */
     public function updateUserByReference(){
 
     }
 
-    /**/
+    /**
+    * Function to
+    *
+    */
     public function deleteAUserByReference(){
 
     }

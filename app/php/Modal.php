@@ -7,7 +7,7 @@
  */
 
 require_once "templates.php";
-require_once "config/config.php";
+require_once "config/databaseConfiguration.php";
 require_once "classes/_classAutoLoader.php";
 require_once "config/functions.php";
 require_once "config/path.php";
@@ -18,7 +18,7 @@ require_once "config/path.php";
  *
  */
 
- 
+
 $fields = [
     "firstName",
     "lastName",
@@ -56,4 +56,3 @@ $admin = new User();
 $combined  = array_combine($fields, $values);
 
 $admin->addUserToDatabase($combined);
-

@@ -14,23 +14,59 @@
 class Transactions
 {
 
-    public function add transaction(){
+    /**
+    * Class constructor
+    */
+    function __construct()
+    {
 
     }
 
-    public function read a transaction by ref(){
+    /**
+    * Class destructor
+    */
+    function __destruct()
+    {
 
     }
 
-    public function read all transactions(){
+    /**
+    * Function to
+    *
+    */
+    public function addTransaction(){
 
     }
 
-    public function update transaction(){
+    /**
+    * Function to
+    *
+    */
+    public function readTransactionByReference(){
 
     }
 
-    public function delete a transaction(){
+    /**
+    * Function to
+    *
+    */
+    public function readAllTransactions(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function updateTransaction(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function deleteTransaction(){
 
     }
 }

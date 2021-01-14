@@ -14,28 +14,59 @@
 class Sales
 {
 
-    /**/
-    public function add a sale(){
+    /**
+    * Class constructor
+    */
+    function __construct()
+    {
 
     }
 
-    /**/
-    public function read a sale by reference(){
+    /**
+    * Class destructor
+    */
+    function __destruct()
+    {
 
     }
 
-    /**/
-    public function read all sales(){
+    /**
+    * Function to
+    *
+    */
+    public function addSale(){
 
     }
 
-    /**/
-    public function update a sale(){
+    /**
+    * Function to
+    *
+    */
+    public function readSaleByReference(){
 
     }
 
-    /**/
-    public function delete a sale(){
+    /**
+    * Function to
+    *
+    */
+    public function readAllSales(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function updateSale(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function deleteSale(){
 
     }
 }

@@ -14,23 +14,59 @@
 class SubSales
 {
 
-    public function add a sub sale(){
+    /**
+    * Class constructor
+    */
+    function __construct()
+    {
 
     }
 
-    public function read a sub sale(){
+    /**
+    * Class destructor
+    */
+    function __destruct()
+    {
 
     }
 
-    public function read all sub sales(){
+    /**
+    * Function to
+    *
+    */
+    public function addSubSale(){
 
     }
 
-    public function update a sub sale(){
+    /**
+    * Function to
+    *
+    */
+    public function readSubSale(){
 
     }
 
-    public function delete a sub sale(){
+    /**
+    * Function to
+    *
+    */
+    public function readAllSubSales(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function updateSubSale(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function deleteSubSale(){
 
     }
 }

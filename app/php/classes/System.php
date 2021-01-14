@@ -6,7 +6,7 @@
 */
 
 // System class
-class system
+class System
 {
     /**
     * This method takes in a token provided by other methods.
@@ -95,7 +95,7 @@ class system
 
     /**/
     public function logOutUser(){
-        
+
     }
 }
 

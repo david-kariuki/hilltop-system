@@ -14,28 +14,59 @@
 class Customer
 {
 
-    /**/
-    public function add customer(){
+    /**
+    * Class constructor
+    */
+    function __construct()
+    {
 
     }
 
-    /**/
-    public function read a customer by ref(){
+    /**
+    * Class destructor
+    */
+    function __destruct()
+    {
 
     }
 
-    /**/
-    public function read all customers(){
+    /**
+    * Function to
+    *
+    */
+    public function addCustomer(){
 
     }
 
-    /**/
-    public function update a customer(){
+    /**
+    * Function to
+    *
+    */
+    public function readCustomerByReference(){
 
     }
 
-    /**/
-    public function delete a customer(){
+    /**
+    * Function to
+    *
+    */
+    public function readAllCustomers(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function updateCustomer(){
+
+    }
+
+    /**
+    * Function to
+    *
+    */
+    public function deleteCustomer(){
 
     }
 }
