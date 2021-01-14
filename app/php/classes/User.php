@@ -14,28 +14,42 @@
 class User
 {
 
-    /**/
+    /**
+    * Function to add user to the database
+    *
+    */
     public function addUserToDatabase($userDetails){
         echo "Add user";
     }
 
-    /**/
+    /**
+    * Function to read user by reference
+    *
+    */
     public function readUserByReference(){
 
     }
 
-    /**/
+    /**
+    * Function to read all users
+    *
+    */
     public function readAllUsers(){
 
     }
 
-    /**/
+    /**
+    * Function to update user by reference
+    *
+    */
     public function updateUserByReference(){
 
     }
 
-    /**/
-    public function deleteAUserByReference(){
+    /**
+    * Function to delete user by reference
+    */
+    public function deleteUserByReference(){
 
     }
 }

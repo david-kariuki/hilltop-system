@@ -92,6 +92,11 @@ class system
     public function database_delete(){
 
     }
+
+    /**/
+    public function logOutUser(){
+        
+    }
 }
 
 
