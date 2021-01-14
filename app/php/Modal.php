@@ -17,6 +17,43 @@ require_once "config/path.php";
  * @example  $moderator = new AdminUser();
  *
  */
+
+ 
+$fields = [
+    "firstName",
+    "lastName",
+    "otherName",
+    "gender",
+    "nationalId",
+    "Email",
+    "userName",
+    "password",
+    "Address",
+    "city",
+    "role",
+    "status",
+];
+
+$values = [
+    "firstName",
+    "lastName",
+    "otherName",
+    "gender",
+    "nationalID",
+    "emailAddress",
+    "userName",
+    "password",
+    "Address",
+    "city",
+    "role",
+    "status",
+];
+
+$combined  = array_combine($fields, $values);
+
 $admin = new User();
 
-$admin->addUserToDatabase("");
+$combined  = array_combine($fields, $values);
+
+$admin->addUserToDatabase($combined);
+

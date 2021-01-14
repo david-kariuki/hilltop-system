@@ -1,4 +1,5 @@
 <?php
+require_once "../../app/php/Modal.php";
 //TODO:initiate session
 //TODO:confirm security token
 
@@ -152,7 +153,7 @@ if (isset($_SESSION['TOKEN'])) {
 
             $combined  = array_combine($fields, $values);
 
-            print_r($combined);
+            $admin->addUserToDatabase($combined);
 
             }else{
                 $response = array(

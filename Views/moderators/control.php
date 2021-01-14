@@ -150,7 +150,7 @@ if (isset($_SESSION['TOKEN'])) {
 
             $combined  = array_combine($fields, $values);
 
-            print_r($combined);
+            // print_r($combined);
 
             }else{
                 $response = array(
