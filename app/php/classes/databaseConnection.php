@@ -6,7 +6,7 @@
 * Only one connection is allowed through class instance
 *
 * @author David Kariuki (dk)
-* @copyright (c) 2020 David Kariuki (dk) All Rights Reserved.
+* @copyright (c) 2020 All Rights Reserved.
 */
 
 
@@ -26,7 +26,7 @@ class DatabaseConnection
     private function __construct()
     {
         // Call configuration file
-        require_once '../databaseConfiguration.php';
+        require_once '../config/databaseConfiguration.php';
 
         // Connecting to MYSQL database
         $this->databaseConnection = new mysqli(
