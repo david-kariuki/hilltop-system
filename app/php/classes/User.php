@@ -16,7 +16,6 @@ class User
 
     // Connection status value variable
     private $connectToDB;       // Create DatabaseConnection class object
-    private $constants;         // Create Constants class object
 
 
     /**
@@ -32,7 +31,6 @@ class User
 
         // Initialize connection object
         $this->connectToDB  = $connectionInstance->getDatabaseConnection();
-        $this->constants    = new Constants();      // Initialize constants object
     }
 
 
