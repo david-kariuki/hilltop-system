@@ -28,22 +28,22 @@ define("COMPANY_NAME",                          "DuesClerk");
 define(
     "TABLE_USERS",
     array(
-        "NAME"                  => "tbl_user"
-        "FIELD_USER_ID"         => "userId"
-        "FIELD_FIRST_NAME"      => "firstName"
-        "FIELD_LAST_NAME"       => "lastName"
-        "FIELD_OTHER_NAME"      => "otherName"
-        "FIELD_GENDER"          => "gender"
-        "FIELD_NATIONAL_ID"     => "nationalId"
-        "FIELD_EMAIL"           => "Email"
-        "FIELD_USERNAME"        => "userName"
-        "FIELD_PASSWORD"        => "password"
-        "FIELD_ADDRESS"         => "Address"
-        "FIELD_CITY"            => "city"
-        "FIELD_ROLE"            => "role"
-        "FIELD_STATUS"          => "status"
-        "FIELD_DATE_CREATED"    => "dateCreated"
-        "FIELD_LAST_MODIFIED"   => "lastModified"
+        "NAME"                  => "tbl_user",
+        "FIELD_USER_ID"         => "userId",
+        "FIELD_FIRST_NAME"      => "firstName",
+        "FIELD_LAST_NAME"       => "lastName",
+        "FIELD_OTHER_NAME"      => "otherName",
+        "FIELD_GENDER"          => "gender",
+        "FIELD_NATIONAL_ID"     => "nationalId",
+        "FIELD_EMAIL"           => "Email",
+        "FIELD_USERNAME"        => "userName",
+        "FIELD_PASSWORD"        => "password",
+        "FIELD_ADDRESS"         => "Address",
+        "FIELD_CITY"            => "city",
+        "FIELD_ROLE"            => "role",
+        "FIELD_STATUS"          => "status",
+        "FIELD_DATE_CREATED"    => "dateCreated",
+        "FIELD_LAST_MODIFIED"   => "lastModified",
         "FIELD_LOG_ID"          => "logID"
     )
 );
