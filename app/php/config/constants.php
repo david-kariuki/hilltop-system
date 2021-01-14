@@ -76,6 +76,4 @@ define("LOG_TYPE_UPDATE_PROFILE",               "LogTypeUpdateProfile");
 define("LOG_TYPE_UPDATE_PASSWORD",              "LogTypeUpdatePassword");
 
 
-
-
 // EOF: Constants.php

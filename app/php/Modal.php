@@ -10,6 +10,7 @@ require_once "templates.php";
 require_once "config/databaseConfiguration.php";
 require_once "classes/_classAutoLoader.php";
 require_once "config/functions.php";
+require_once "config/constants.php";
 require_once "config/path.php";
 
 //create a global User
