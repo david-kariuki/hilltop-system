@@ -35,7 +35,7 @@ define(
         "FIELD_OTHER_NAME"      => "otherName",
         "FIELD_GENDER"          => "gender",
         "FIELD_NATIONAL_ID"     => "nationalId",
-        "FIELD_EMAIL"           => "Email",
+        "FIELD_EMAIL"           => "email",
         "FIELD_USERNAME"        => "userName",
         "FIELD_PASSWORD"        => "password",
         "FIELD_ADDRESS"         => "Address",
@@ -47,12 +47,6 @@ define(
         "FIELD_LOG_ID"          => "logID"
     )
 );
-
-
-/**
-* Table users fields
-*/
-define("FIELD_USER_ID",                         "UserId");
 
 /**
 * Table field lengths
@@ -76,4 +70,4 @@ define("LOG_TYPE_UPDATE_PROFILE",               "LogTypeUpdateProfile");
 define("LOG_TYPE_UPDATE_PASSWORD",              "LogTypeUpdatePassword");
 
 
-// EOF: Constants.php
+// EOF: constants.php

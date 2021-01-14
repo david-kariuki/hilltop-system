@@ -46,34 +46,60 @@ class User
     /**
     * Function to add user to the database
     *
+    * @param
+    *
+    *
     */
-    public function addUserToDatabase($userDetails){
+    public function addUserToDatabase($userData, $table, $type = null)
+    {
 
-        // UUID
-        // firstName
-        // lastName
-        // otherName
-        // gender
-        // nationalId
-        // Email
-        // userName
-        // password
-        // Address
-        // city
-        // role
-        // status
-        // dateCreated
-        // lastModified
-        // logID
+        $response = [
+            false,
+        ];
 
-        // Prepare insert statement
-        $stmt = $this->connectToDB->prepare(
-            "INSER"
-        );
-        $stmt->bind_param(); // Bind parameters
+        $tempArray  = array();
 
+        // Check if fields is passed as array
+        if (is_array($fields)) {
 
+            $arrayCount = count($fields); // Get array count
 
+            // Check array count length
+            if ($arrayCount > 0) {
+
+                $fields[]; // Array to hold user data fields
+                $values[]; // Array to hold user data values
+
+                $fields = $userData[0]; // Get fields array from userData
+                $values = $userData[1]; // Get values array from $userData
+
+                $fieldsCombined = implode(",", $fields); // Join array elements with a comma
+
+                $placeholders = str_repeat(" ?,", $arrayCount); // Repeat placeholder for fields
+                $placeholders = rtrim($placeholders, ','); // Strip last comma
+
+                // Prepare INSERT statement
+                $stmt = $this->connectToDB->prepare(
+                    "INSERT INTO $table($fieldsCombined) VALUES($placeholders)"
+                );
+
+                $stmt->bind_param($type, ...$values); // Bind parameters
+                $stmt->execute(); // Execute statement
+                $result = $stmt->get_result(); // Get result
+                $stmt->close(); // Close statement
+
+                // Loop through result fetching associative array
+                while ($data = $result->fetch_assoc()) {
+
+                    array_push($tempArray, $data);  // Add data to the end of temp array
+                    $response[0] = true;            // Set response at index 0 to true
+                }
+
+                array_push($response, $tempArray); // Add temp array to response
+            }
+        }
+
+        return $response; // Return response array
     }
 
     /**
