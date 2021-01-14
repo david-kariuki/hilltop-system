@@ -17,6 +17,6 @@ require_once "config/path.php";
  * @example  $moderator = new AdminUser();
  *
  */
-$Admin = new User();
+$admin = new User();
 
 $admin->addUserToDatabase("");
