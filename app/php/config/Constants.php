@@ -28,7 +28,23 @@ define("COMPANY_NAME",                          "DuesClerk");
 define(
     "TABLE_USERS",
     array(
-
+        "NAME"                  => "tbl_user"
+        "FIELD_USER_ID"         => "userId"
+        "FIELD_FIRST_NAME"      => "firstName"
+        "FIELD_LAST_NAME"       => "lastName"
+        "FIELD_OTHER_NAME"      => "otherName"
+        "FIELD_GENDER"          => "gender"
+        "FIELD_NATIONAL_ID"     => "nationalId"
+        "FIELD_EMAIL"           => "Email"
+        "FIELD_USERNAME"        => "userName"
+        "FIELD_PASSWORD"        => "password"
+        "FIELD_ADDRESS"         => "Address"
+        "FIELD_CITY"            => "city"
+        "FIELD_ROLE"            => "role"
+        "FIELD_STATUS"          => "status"
+        "FIELD_DATE_CREATED"    => "dateCreated"
+        "FIELD_LAST_MODIFIED"   => "lastModified"
+        "FIELD_LOG_ID"          => "logID"
     )
 );
 
@@ -60,53 +76,6 @@ define("LOG_TYPE_UPDATE_PROFILE",               "LogTypeUpdateProfile");
 define("LOG_TYPE_UPDATE_PASSWORD",              "LogTypeUpdatePassword");
 
 
-/**
-* Class declaration for autoloaer visibility and
-* to get constants value when calling the constant in between quotes
-*/
-class Constants
-{
 
-    /**
-    * Class constructor
-    */
-    function __construct()
-    {
-
-    }
-
-
-    /**
-    * Class destructor
-    */
-    function __destruct()
-    {
-
-    }
-
-
-    /**
-    * Function to return constant value within SQL statements
-    *
-    * @param constant - Constants value
-    */
-    public function valueOfConst($constant)
-    {
-
-        if (!empty($constant)) {
-            // Constant not empty
-
-            return $constant; // Return constant
-
-        } else {
-            // Constant empty
-
-            // Throw exception
-            throw new Exception(
-                'Method '.__METHOD__.' failed : The required constant is null or undefined'
-            );
-        }
-    }
-}
 
 // EOF: Constants.php

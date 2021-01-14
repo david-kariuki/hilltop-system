@@ -68,6 +68,11 @@ class User
         // logID
 
         // Prepare insert statement
+        $stmt = $this->connectToDB->prepare(
+            "{}"
+        );
+        $stmt->bind_param(); // Bind parameters
+
 
 
     }
