@@ -15,7 +15,7 @@ class User
 {
 
     /**/
-    public function addUserToDatabase($userDetails, ){
+    public function addUserToDatabase($userDetails){
         echo "Add user";
     }
 
