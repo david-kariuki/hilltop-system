@@ -133,6 +133,9 @@ class User
 
     }
 
+    /**
+    * Sample get by ref
+    */
     public function get_by_ref($fields, $table, $reference = null, $type = null ,$limit = null){
 
         $response = [
