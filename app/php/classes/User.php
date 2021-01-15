@@ -48,6 +48,7 @@ class User
     *
     * @param
     *
+    * TODO - Check if method runs
     *
     */
     public function addUserToDatabase($userData, $table, $type = null)
@@ -59,10 +60,10 @@ class User
 
         $tempArray  = array();
 
-        // Check if fields is passed as array
-        if (is_array($fields)) {
+        // Check if user data is passed as array
+        if (is_array($userData)) {
 
-            $arrayCount = count($fields); // Get array count
+            $arrayCount = count($userData); // Get array count
 
             // Check array count length
             if ($arrayCount > 0) {
@@ -79,23 +80,25 @@ class User
                 $placeholders = rtrim($placeholders, ','); // Strip last comma
 
                 // Prepare INSERT statement
-                $stmt = $this->connectToDB->prepare(
-                    "INSERT INTO $table($fieldsCombined) VALUES($placeholders)"
-                );
+                if ($stmt = $this->connectToDB->prepare("INSERT INTO $table($fieldsCombined) VALUES($placeholders)")) {
 
-                $stmt->bind_param($type, ...$values); // Bind parameters
-                $stmt->execute(); // Execute statement
-                $result = $stmt->get_result(); // Get result
-                $stmt->close(); // Close statement
+                    $stmt->bind_param($type, ...$values); // Bind parameters
+                    $stmt->execute(); // Execute statement
+                    $result = $stmt->get_result(); // Get result
+                    $stmt->close(); // Close statement
 
-                // Loop through result fetching associative array
-                while ($data = $result->fetch_assoc()) {
+                    // Loop through result fetching associative array
+                    while ($data = $result->fetch_assoc()) {
 
-                    array_push($tempArray, $data);  // Add data to the end of temp array
-                    $response[0] = true;            // Set response at index 0 to true
+                        array_push($tempArray, $data);  // Add data to the end of temp array
+                        $response[0] = true;            // Set response at index 0 to true
+                    }
+
+                    array_push($response, $tempArray); // Add temp array to response
+
+                } else {
+                    // Handle exception
                 }
-
-                array_push($response, $tempArray); // Add temp array to response
             }
         }
 
