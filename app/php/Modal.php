@@ -33,6 +33,7 @@ $fields = [
     "city",
     "role",
     "status",
+    "logID"
 ];
 
 $values = [
@@ -41,13 +42,14 @@ $values = [
     "otherName",
     "gender",
     "nationalID",
-    "emailAddress",
-    "userName",
+    "email1",
+    "user1",
     "password",
     "Address",
     "city",
     "role",
     "status",
+    "1"
 ];
 
 $combined  = array_combine($fields, $values);
@@ -56,4 +58,17 @@ $admin = new User();
 
 $combined  = array_combine($fields, $values);
 
-$admin->addUserToDatabase($combined);
+$table = "tbl_users";
+$fields = array(
+    "firstName",
+);
+$order_by = "firstName";
+$order_set = "ASC";
+$offset = 0;
+$reference = [
+    array("UUID", $id),
+];
+
+$admin->database_read_by_ref($table,$fields,null,null,0,null);
+
+

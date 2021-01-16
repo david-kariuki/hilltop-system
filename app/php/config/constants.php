@@ -29,7 +29,7 @@ define(
     "TABLE_USERS",
     array(
         "NAME"                  => "tbl_user",
-        "FIELD_USER_ID"         => "userId",
+        "FIELD_USER_ID"         => "UUID",
         "FIELD_FIRST_NAME"      => "firstName",
         "FIELD_LAST_NAME"       => "lastName",
         "FIELD_OTHER_NAME"      => "otherName",

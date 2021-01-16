@@ -1,5 +1,4 @@
 <?php
-
 /**
 * User class
 * This class contains all the methods required by a user
@@ -51,7 +50,7 @@ class User
     * TODO - Check if method runs
     *
     */
-    public function addUserToDatabase($userData, $table, $type = null)
+    public function addUserToDatabase($userData, $table, $type = null,$unique_ID_generator)
     {
 
         $response = [
@@ -67,38 +66,106 @@ class User
 
             // Check array count length
             if ($arrayCount > 0) {
+                $ID = $this->unique_ID_generator();
 
-                $fields[]; // Array to hold user data fields
-                $values[]; // Array to hold user data values
+                $fields = array(); // Array to hold user data fields
+                $values = array("MD_".$ID); // Array to hold user data values
 
-                $fields = $userData[0]; // Get fields array from userData
-                $values = $userData[1]; // Get values array from $userData
+                $fields = array(
+                    TABLE_USERS['FIELD_USER_ID'],
+                    TABLE_USERS['FIELD_EMAIL'],
+                    TABLE_USERS['FIELD_USERNAME'],
+                    TABLE_USERS['FIELD_ROLE'],
+                );
 
-                $fieldsCombined = implode(",", $fields); // Join array elements with a comma
+                $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+                $fieldsCombined = "`".$fieldsCombined."`";
+                $placeholders = "?,?,?,?";
+                $type = "isss";
+                $values = array(
+                    $ID,
+                    $userData['Email'],
+                    $userData["userName"],
+                    $userData["role"]
+                );
+                
 
-                $placeholders = str_repeat(" ?,", $arrayCount); // Repeat placeholder for fields
-                $placeholders = rtrim($placeholders, ','); // Strip last comma
+                $insert = $this->insert_to_database($table,$fieldsCombined,$placeholders,$type,$values);
 
-                // Prepare INSERT statement
-                if ($stmt = $this->connectToDB->prepare("INSERT INTO $table($fieldsCombined) VALUES($placeholders)")) {
+                if($insert["status"]){
+                    $fields = array(
+                        TABLE_USERS['FIELD_FIRST_NAME'],
+                        TABLE_USERS['FIELD_LAST_NAME'],
+                        TABLE_USERS['FIELD_OTHER_NAME'],
+                        TABLE_USERS['FIELD_GENDER'],
+                        TABLE_USERS['FIELD_NATIONAL_ID'],
+                        TABLE_USERS['FIELD_PASSWORD'],
+                        TABLE_USERS['FIELD_ADDRESS'],
+                        TABLE_USERS['FIELD_CITY'],
+                        TABLE_USERS['FIELD_STATUS'],
+                        TABLE_USERS['FIELD_LOG_ID']
+                    );
+                    $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+                    $fieldsCombined = "`".$fieldsCombined."`";
 
-                    $stmt->bind_param($type, ...$values); // Bind parameters
-                    $stmt->execute(); // Execute statement
-                    $result = $stmt->get_result(); // Get result
-                    $stmt->close(); // Close statement
+                    $placeholders = "?,?,?,?,?,?,?,?,?,?";
 
-                    // Loop through result fetching associative array
-                    while ($data = $result->fetch_assoc()) {
+                    $values = array(
+                        [$userData['firstName'],"si"],
+                        [$userData['lastName'],"si"],
+                        [$userData['otherName'],"si"],
+                        [$userData['gender'],"si"],
+                        [$userData['nationalId'],"si"],
+                        [$userData['password'],"si"],
+                        [$userData['Address'],"si"],
+                        [$userData['city'],"si"],
+                        [$userData['status'],"si"],
+                        [$userData['logID'],"si"],
+                    );
 
-                        array_push($tempArray, $data);  // Add data to the end of temp array
-                        $response[0] = true;            // Set response at index 0 to true
+                    $data_combined = array_combine($fields,$values);
+
+                    $update = $this->database_update($table,$data_combined,$ID);
+
+                    if($update["status"]){
+                        $order_by = "UUID";
+                        $offset = 1;
+                        $this->database_read($table,$order_by,$offset);
+
+                    }else {
+                        var_dump($update["response"]);
                     }
-
-                    array_push($response, $tempArray); // Add temp array to response
-
                 } else {
-                    // Handle exception
+                    var_dump($insert["response"]);
                 }
+
+                // foreach ($userData as $key => $value) {
+                //     array_push($fields,$key); // Get fields array from userData
+                //     array_push($values,$value); // Get values array from $userData
+                // }    
+
+                // $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+                // $fieldsCombined = "`".$fieldsCombined."`";
+
+                // $placeholders = str_repeat(" ?,", $arrayCount); // Repeat placeholder for fields
+                // $placeholders = rtrim($placeholders, ','); // Strip last comma
+
+                // var_dump($values);
+
+                
+
+                // $result = $this->connectToDB->insert_id(); // Get result
+                
+
+                // var_dump($result);
+
+                // Loop through result fetching associative array
+                // while ($data = $result->fetch_assoc()) {
+                //     array_push($tempArray, $data);  // Add data to the end of temp array
+                //     $response[0] = true;            // Set response at index 0 to true
+                // }
+
+                // array_push($response, $tempArray); // Add temp array to response
             }
         }
 
