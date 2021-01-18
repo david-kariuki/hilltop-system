@@ -50,7 +50,7 @@ class User
     * TODO - Check if method runs
     *
     */
-    public function addUserToDatabase($userData, $table, $type = null,$unique_ID_generator)
+    public function addUserToDatabase($userData, $table)
     {
 
         $response = [
@@ -128,44 +128,31 @@ class User
                     $update = $this->database_update($table,$data_combined,$ID);
 
                     if($update["status"]){
-                        $order_by = "UUID";
-                        $offset = 1;
-                        $this->database_read($table,$order_by,$offset);
+                        $fields = array(
+                            "*",
+                        );
+                        $order_by = "firstName";
+                        $order_set = "ASC";
+                        $offset = 0;
+                        $reference = array(
+                            "statement" => "UUID = ?",
+                            "type"=>"i",
+                            "values"=>[
+                                $ID
+                            ]
+                        );
+
+                        $response = $this->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                        return $response;
+
 
                     }else {
-                        var_dump($update["response"]);
+                        return $update;
                     }
                 } else {
-                    var_dump($insert["response"]);
+                    return  $insert;
                 }
-
-                // foreach ($userData as $key => $value) {
-                //     array_push($fields,$key); // Get fields array from userData
-                //     array_push($values,$value); // Get values array from $userData
-                // }    
-
-                // $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
-                // $fieldsCombined = "`".$fieldsCombined."`";
-
-                // $placeholders = str_repeat(" ?,", $arrayCount); // Repeat placeholder for fields
-                // $placeholders = rtrim($placeholders, ','); // Strip last comma
-
-                // var_dump($values);
-
-                
-
-                // $result = $this->connectToDB->insert_id(); // Get result
-                
-
-                // var_dump($result);
-
-                // Loop through result fetching associative array
-                // while ($data = $result->fetch_assoc()) {
-                //     array_push($tempArray, $data);  // Add data to the end of temp array
-                //     $response[0] = true;            // Set response at index 0 to true
-                // }
-
-                // array_push($response, $tempArray); // Add temp array to response
             }
         }
 
@@ -192,8 +179,72 @@ class User
     * Function to update user by reference
     *
     */
-    public function updateUserByReference(){
+    public function updateUserByReference($userData, $table,$ID){
+        if($userData){
+            $fields = array(
+                TABLE_USERS['FIELD_FIRST_NAME'],
+                TABLE_USERS['FIELD_LAST_NAME'],
+                TABLE_USERS['FIELD_OTHER_NAME'],
+                TABLE_USERS['FIELD_EMAIL'],
+                TABLE_USERS['FIELD_USERNAME'],
+                TABLE_USERS['FIELD_ROLE'],
+                TABLE_USERS['FIELD_GENDER'],
+                TABLE_USERS['FIELD_NATIONAL_ID'],
+                TABLE_USERS['FIELD_ADDRESS'],
+                TABLE_USERS['FIELD_CITY'],
+                TABLE_USERS['FIELD_STATUS'],
+                
+            );
+            $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+            $fieldsCombined = "`".$fieldsCombined."`";
 
+            $placeholders = "?,?,?,?,?,?,?,?,?,?,?";
+
+            $values = array(
+                [$userData['firstName'],"si"],
+                [$userData['lastName'],"si"],
+                [$userData['otherName'],"si"],
+                [$userData['Email'],"si"],
+                [$userData["userName"],"si"],
+                [$userData["role"],"si"],
+                [$userData['gender'],"si"],
+                [$userData['nationalId'],"si"],
+                [$userData['Address'],"si"],
+                [$userData['city'],"si"],
+                [$userData['status'],"si"],
+                
+            );
+
+            $data_combined = array_combine($fields,$values);
+
+            $update = $this->database_update($table,$data_combined,$ID);
+
+            if($update["status"]){
+                $fields = array(
+                    "*",
+                );
+                $order_by = "firstName";
+                $order_set = "ASC";
+                $offset = 0;
+                $reference = array(
+                    "statement" => "UUID = ?",
+                    "type"=>"i",
+                    "values"=>[
+                        $ID
+                    ]
+                );
+
+                $response = $this->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                return $response;
+
+
+            }else {
+                return $update;
+            }
+        } else{
+
+        }
     }
 
     /**
@@ -223,7 +274,7 @@ class User
             if ($arrayCount > 0) {
 
                 $fieldsCombined = implode(",", $fields); // Join array elements with a comma
-                $stmt; // Shared statement variable
+                $stmt = null; // Shared statement variable
 
                 // Check if reference is set
                 if (isset($reference)) {

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require_once "app/php/Modal.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

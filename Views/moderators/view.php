@@ -1,3 +1,7 @@
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+?>
 <div class="content_cover">
     <div class="view_title">
         <h3>Moderators</h3>
@@ -5,7 +9,7 @@
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button onclick="open_selected_moderator('moderatorForm','createMode')">New Moderators</button>
+                <button onclick="open_selected_moderator('moderatorForm','createMode',null)">New Moderators</button>
             </li>
             <li>
                 <button>Delete</button>
@@ -47,30 +51,64 @@
             </thead>
             <tbody>
                 <?php
+                    $fields = array(
+                        "*",
+                    );
+                    $table = TABLE_USERS["NAME"];
+                    $order_by = "firstName";
+                    $order_set = "ASC";
+                    $offset = 0;
+                    $reference = null;
 
-                for($i = 0; $i < 30; $i++){
+                    $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                    if($response["status"] === true && $response['responseCode'] == 0){
+                        $items = $response['response'];
+                        $count = 1;
+
+                        foreach ($items as $row) {
                     ?>
-                <tr onclick="open_selected_moderator('moderatorForm','updateMode')">
-                    <td onclick="select_current_moderator();"><div class="check_element"><input type="checkbox"></div></td>
-                    <td><?php echo ($i + 1)?></td>
-                    <td>MD-0001</td>
-                    <td>Peter Kimani</td>
-                    <td>kimmwaus@gmail.com</td>
-                    <td>+254 719 445 697</td>
-                    <td>Active</td>
-                    <td>Admin</td>
-                </tr>
-                <?php
-                }?>
+                            <tr onclick="open_selected_moderator('moderatorForm','updateMode',<?php echo $row['UUID'] ?>)">
+                                <td onclick="select_current_moderator();"><div class="check_element"><input type="checkbox"></div></td>
+                                <td><?php echo $count ?></td>
+                                <td><?php echo $row['UUID'] ?></td>
+                                <td><?php echo $row['firstName']." ".$row['lastName'] ?></td>
+                                <td><?php echo $row['Email'] ?></td>
+                                <td><?php echo $row['nationalId'] ?></td>
+                                <td><?php echo $row['status'] ?></td>
+                                <td><?php echo $row['role'] ?></td>
+                            </tr>
+                            
+                    <?php
+                            $count++;
+                        }
+                    }
+                    ?>
             </tbody>
         </table>
     </div>
     <div class="pagination">
         <ul>
-            <li id="previous_pagination"> <p>Prev</p> </li>
-            <li> <p>1</p> </li>
-            <li> <p>2</p> </li>
-            <li class="next_pagination"> <p>Next</p> </li>
+            <?php
+                $itemCount = count($response['response']);
+                $page = (floor($itemCount / 25))+1;
+
+                if($page > 1){
+                    ?>
+                        <li id="previous_pagination"> <p>Prev</p> </li>
+                        <?php
+                            for ($i= 1; $i < $page  ; $i++) { 
+                                ?>
+                                <li> <p><?php echo $i ?></p> </li>
+                                <?php
+                            }
+                        ?>
+                        <li class="next_pagination"> <p>Next</p> </li>
+                    <?php
+                }
+            ?>
+
         </ul>
     </div>
 </div>
+

@@ -3,13 +3,12 @@ function select_current_moderator() {
     event.stopImmediatePropagation();
 }
 
-function open_selected_moderator(viewName, loadingData = null, callBack = null) {
+function open_selected_moderator(viewName, loadingData = null, id) {
     var action = "openModerator";
     var View = "moderators";
     var form = viewName;
     var token = 1;
     var data = viewName;
-    var id = null;
 
     var renderedElement = $(".contentArea_panel");
 
@@ -20,7 +19,7 @@ function open_selected_moderator(viewName, loadingData = null, callBack = null) 
     }
 }
 
-function collect_user_Data() {
+function collect_user_Data(userAction = null) {
 
     var firstName = $("[name='firstName']").val();
     var lastName = $("[name='lastName']").val();
@@ -55,7 +54,7 @@ function collect_user_Data() {
     var i = 1;
 
     $.each(data, function(key, valueObj) {
-        if (isEmpty(valueObj)) {
+        if (isEmpty(valueObj) && !userAction == "update") {
             data = false;
             return
         }
@@ -65,7 +64,7 @@ function collect_user_Data() {
 }
 
 function create_user() {
-    var data = collect_user_Data();
+    var data = collect_user_Data("update");
 
     if (data) {
         var action = "createNewUser";
@@ -75,7 +74,14 @@ function create_user() {
         sendDataToHandler(action, view, data, callback, null);
 
         function callback(msg) {
-            console.log(msg);
+            var data = JSON.parse(msg);
+
+            if (data.status === true) {
+                console.log(data);
+                alert("User " + data.response[0].userName + " created successfully");
+            } else {
+                alert(data.response);
+            }
         }
 
     } else {
@@ -83,14 +89,13 @@ function create_user() {
     }
 }
 
-function update_user() {
+function update_user(id = null) {
     var data = collect_user_Data();
 
     if (data) {
         var action = "updateUser";
-        var view = "accounts";
+        var view = "moderators";
         var data = data;
-        var id = 1;
 
         sendDataToHandler(action, view, data, callback, id);
 

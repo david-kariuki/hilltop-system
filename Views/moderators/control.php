@@ -1,5 +1,5 @@
 <?php
-//TODO:initiate session
+include_once "../../app/php/Modal.php";
 //TODO:confirm security token
 
 session_start();
@@ -54,6 +54,7 @@ if (isset($_SESSION['TOKEN'])) {
                     "city",
                     "role",
                     "status",
+                    "logID",
                 ];
 
                 $values = [
@@ -69,12 +70,17 @@ if (isset($_SESSION['TOKEN'])) {
                     $data["city"],
                     $data["role"],
                     $data["status"],
+                    1
                 ];
 
                 // Combine field and value arrays
                 $combined  = array_combine($fields, $values);
 
-                print_r($combined); // Debug
+                $admin = new User();
+
+                $var = $admin->addUserToDatabase($combined,"tbl_users");
+
+                echo json_encode($var);
 
             }else{
                 $response = array(
@@ -125,7 +131,6 @@ if (isset($_SESSION['TOKEN'])) {
                 "nationalId",
                 "Email",
                 "userName",
-                "password",
                 "Address",
                 "city",
                 "role",
@@ -140,16 +145,20 @@ if (isset($_SESSION['TOKEN'])) {
                 $data["nationalID"],
                 $data["emailAddress"],
                 $data["userName"],
-                $data["password"],
                 $data["Address"],
                 $data["city"],
                 $data["role"],
                 $data["status"],
             ];
 
+            // Combine field and value arrays
             $combined  = array_combine($fields, $values);
 
-            // print_r($combined);
+            $admin = new User();
+
+            $var = $admin->updateUserByReference($combined, "tbl_users",$_REQUEST['id']);
+
+            echo json_encode($var);
 
             } else {
 

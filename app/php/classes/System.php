@@ -158,14 +158,18 @@ trait System
     }
 
     /**/
-    public function database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference,$strict_value){
+    public function database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference){
         //introduce variables
-        $Response = [
-            false,
-        ];
+        $result = array(
+            "status"=>false,
+            "responseCode"=>1,
+            "response"=>null
+        );
         $temp_array = array();
         $statement = "SELECT ";
         $fields_combined = null;
+        $values = null;
+        $type = null;
 
         //check if fields is ana array
         if(is_array($fields)){
@@ -183,21 +187,68 @@ trait System
             }
             $statement = $statement.$fields_combined." FROM ".$table;
 
+            if(isset($reference)){
+                $statement = $statement." WHERE ".$reference['statement'];
+                $values = $reference['values'];
+                $type = $reference['type'];
+            }
+
             if($order_by != null && $order_set != null){
                 $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT 25 OFFSET ".$offset;
             }else{
                 $statement = $statement." LIMIT 25 OFFSET ".$offset;
             }
 
-            if($reference != null && (is_array($reference))){
-                
+            
+
+            $stmt =$this->connectToDB->prepare($statement);
+
+            if (false == $stmt) {
+                $result['responseCode'] = 101;
+                $result['response'] = 'read prepare() failed: ' . htmlspecialchars($this->connectToDB->error);
+                return $result;
             }
+
+            if($reference != null){
+                $bind = $stmt->bind_param($type, ...$values); // Bind parameters
+
+                if(false == $bind){
+                    $result['responseCode'] = 102;
+                    $result['response'] = 'read bind_param() failed: ' . htmlspecialchars($stmt->error);
+                    return $result;
+                }
+            }
+            $execute = $stmt->execute(); // Execute statement
+
+            if(false == $execute){
+                $result['responseCode'] = 103;
+                $result['response'] = 'read execute() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+
+            $obj = $stmt->get_result();
+            $resultset = $obj->fetch_all(MYSQLI_ASSOC);
+            $num_row = count($resultset); 
+
+            if($num_row > 0){
+
+                foreach ($resultset as $row) {
+                    array_push($temp_array,$row);
+                }
+
+                $result['status'] = true;
+                $result['responseCode'] = 0;
+                $result['response'] = $temp_array;
+            } 
+
+            return $result;
 
         }else{
             /*
             if $fields is not an array then the user intends to get all fields 
             as the response
             */
+            return $result;
         }
     }
 
@@ -210,23 +261,22 @@ trait System
         );
         foreach($data_combined as $key => $value){
             $stmt = $this->connectToDB->prepare("UPDATE $table SET $key=? WHERE UUID = ?");
-
             if (false === $stmt) {
                 $result['responseCode'] = 101;
-                $result['response'] = 'prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
+                $result['response'] = 'update prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
                 return $result;
             }
 
             $rc = $stmt->bind_param($value[1], $value[0],$ID);
             if (false === $rc) {
                 $result['responseCode'] = 102;
-                $result['response'] = 'bind_param() failed: ' . htmlspecialchars($stmt->error);
+                $result['response'] = 'update bind_param() failed: ' . htmlspecialchars($stmt->error);
                 return $result;
             }
             $rc = $stmt->execute();
             if (false === $rc) {
                 $result['responseCode'] = 103;
-                $result['response'] = 'execute() failed: ' . htmlspecialchars($stmt->error);
+                $result['response'] = 'update execute() failed: ' . htmlspecialchars($stmt->error);
                 return $result;
             }
 

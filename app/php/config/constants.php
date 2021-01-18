@@ -28,7 +28,7 @@ define("COMPANY_NAME",                          "DuesClerk");
 define(
     "TABLE_USERS",
     array(
-        "NAME"                  => "tbl_user",
+        "NAME"                  => "tbl_users",
         "FIELD_USER_ID"         => "UUID",
         "FIELD_FIRST_NAME"      => "firstName",
         "FIELD_LAST_NAME"       => "lastName",
