@@ -7,6 +7,7 @@
  */
 
 require_once "templates.php";
+include_once "config/config.php";
 require_once "config/databaseConfiguration.php";
 require_once "classes/_classAutoLoader.php";
 require_once "config/functions.php";

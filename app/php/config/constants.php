@@ -18,7 +18,7 @@ error_reporting(E_ALL|E_NOTICE|E_STRICT);
 // Website and domain details
 define("PROTOCOL",                              "https://");
 define("SUB_DOMAIN",                            "www.");
-define("ROOT_DOMAIN",                           "duesclerk.com");
+define("ROOT_DOMAIN",                           "hilltop.local");
 define("ROOT_DOMAIN_WITH_SUB_DOMAIN",           SUB_DOMAIN . ROOT_DOMAIN);
 define("WEBSITE_URL",                           PROTOCOL . ROOT_DOMAIN_WITH_SUB_DOMAIN);
 define("COMPANY_NAME",                          "DuesClerk");

@@ -90,21 +90,25 @@ require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
     <div class="pagination">
         <ul>
             <?php
-                $itemCount = count($response['response']);
-                $page = (floor($itemCount / 25))+1;
+                if($response['status'] == true){
+                    $itemCount = count($response['response']);
+                    $page = (floor($itemCount / 25))+1;
 
-                if($page > 1){
-                    ?>
-                        <li id="previous_pagination"> <p>Prev</p> </li>
-                        <?php
-                            for ($i= 1; $i < $page  ; $i++) { 
-                                ?>
-                                <li> <p><?php echo $i ?></p> </li>
-                                <?php
-                            }
+                    if($page > 1){
                         ?>
-                        <li class="next_pagination"> <p>Next</p> </li>
-                    <?php
+                            <li id="previous_pagination"> <p>Prev</p> </li>
+                            <?php
+                                for ($i= 1; $i < $page  ; $i++) { 
+                                    ?>
+                                    <li> <p><?php echo $i ?></p> </li>
+                                    <?php
+                                }
+                            ?>
+                            <li class="next_pagination"> <p>Next</p> </li>
+                        <?php
+                    }
+                }else{
+                    echo "No records available please add a record to list.";
                 }
             ?>
 

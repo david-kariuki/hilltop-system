@@ -42,22 +42,22 @@
         <div class="over_Shadow">
             <div class="login_entry">
                 <h1>Sign In</h1>
-                <form action="/app/php/control/signIn.php">
+                <form action="/app/php/control/signIn.php" method="POST">
                     <div class="form_input_text">
                         <img src="res/images/icons/user.png" alt="">
-                        <input type="text" placeholder="Username" onfocus="render_outline()"  onfocusout="render_outline_hide()" required>
+                        <input type="text" name="userName" placeholder="Username" onfocus="render_outline()"  onfocusout="render_outline_hide()" required>
                     </div>
                     <div class="form_input_text">
                         <img src="res/images/icons/email.png" alt="" >
-                        <input type="Email" placeholder="Email" onfocus="render_outline()"  onfocusout="render_outline_hide()" required>
+                        <input type="Email" name="email" placeholder="Email" onfocus="render_outline()"  onfocusout="render_outline_hide()" required>
                     </div>
                     <div class="form_input_text form_input_password">
                         <img src="res/images/icons/password.png" alt="">
-                        <input type="password" placeholder="Password" onfocus="render_outline()" onfocusout="render_outline_hide()" required>
+                        <input type="password" name="password" placeholder="Password" onfocus="render_outline()" onfocusout="render_outline_hide()" required>
                         <img src="res/images/icons/view.png" alt="" onclick="password_toggle()">
                     </div>
                     <div class="button_element">
-                    <button type="submit">Submit</button>
+                    <button type="Submit" name="Submit">Submit</button>
                     <button type="Reset" >Reset</button>
                     </div>
                 </form>

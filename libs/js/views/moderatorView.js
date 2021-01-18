@@ -100,7 +100,13 @@ function update_user(id = null) {
         sendDataToHandler(action, view, data, callback, id);
 
         function callback(msg) {
-            console.log(msg);
+            var data = JSON.parse(msg);
+
+            if (data.status) {
+                alert('User Updated successfully');
+            } else {
+                alert('an error occurred while updating record');
+            }
         }
 
     } else {

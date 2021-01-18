@@ -16,3 +16,11 @@ function close_system_elemental() {
     var element = $(".system_elemental");
     element.fadeOut();
 }
+
+function render_dropdown_select(button) {
+    $(".icons_select_dropdown").toggle('slow');
+}
+
+function logUserOut() {
+    window.location.replace("http://" + window.location.hostname + "/logOut");
+}

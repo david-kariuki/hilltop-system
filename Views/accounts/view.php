@@ -5,12 +5,6 @@
     <div class="view_nav_bar" style="visibility: hidden;">
         <ul>
             <li>
-                <button>New Moderators</button>
-            </li>
-            <li>
-                <button>Delete</button>
-            </li>
-            <li>
                 <button>Update</button>
             </li>
             <li>
@@ -35,9 +29,9 @@
             <div class="password_entry_card">
                 <h5>User Verification</h5>
                 <p>Please Enter your Password to Proceed</p>
-                <input type="text">
+                <input type="password" name="passwordConfirm">
             </div>
-            <button onclick="open_accountForm_view('accountForm')">Submit</button>
+            <button onclick="open_accountForm_view('control','<?php echo $_SESSION['LOGGED_USER']?>')">Submit</button>
         </div>
     </div>
 </div>

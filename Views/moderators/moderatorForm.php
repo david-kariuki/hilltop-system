@@ -41,7 +41,7 @@ if(isset($_REQUEST['id'])){
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button>New Moderators</button>
+                <button onclick="open_selected_moderator('moderatorForm','createMode',null)">New Moderators</button>
             </li>
             <li>
                 <button>Delete</button>
@@ -160,11 +160,15 @@ if(isset($_REQUEST['id'])){
                     </div>
                 </div>
                 <div class="input_group_linear" <?php 
-                                                                if($mode = 'update'){
+                                                                if($loadingData == "updateMode"){
                                                                     ?>
                                                                         style="display: none;"
                                                                     <?php
-                                                                } 
+                                                                } else {
+                                                                    ?>
+                                                                        style="display: flex;"
+                                                                    <?php
+                                                                }
                                                                 ?>>
                     <div class="input_element">
                         <p>Password</p>

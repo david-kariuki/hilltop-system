@@ -282,10 +282,6 @@ trait System
 
             $stmt->close(); 
         }
-        $response = array(
-            'status'=>true,
-            'response' => "Update Successful"
-        );
 
         $result["status"] = true;
         $result["responseCode"] = 0;
@@ -303,7 +299,66 @@ trait System
     public function logOutUser(){
 
     }
+
+    /** */
+    public function curl_loader_text_return($url,$data){
+        $ch = curl_init();
+        $result = array(
+            'status'=>0,
+            'response'=> "error"
+        );
+
+        try {
+            $ch = curl_init();
+        
+            // Check if initialization had gone wrong*    
+            if ($ch === false) {
+                throw new Exception('failed to initialize');
+            }
+        
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+            $content = curl_exec($ch);
+
+            echo $content;
+        
+            // Check the return value of curl_exec(), too
+            if ($content === false) {
+                throw new Exception(curl_error($ch), curl_errno($ch));
+            }
+        
+            /* Process $content here */
+        
+            // Close curl handle
+            curl_close($ch);
+        } catch(Exception $e) {
+        
+            trigger_error(sprintf(
+                'Curl failed with error #%d: %s',
+                $e->getCode(), $e->getMessage()),
+                E_USER_ERROR);
+        }
+    }
+
+    public function curl_loader_json_return($url,$data){
+
+
+    }
 }
 
 
 // EOF : System.php
+
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // # Send request.
+        // $result = curl_exec($ch);
+        // curl_close($ch);
+        // # Print response.
+        // return json_encode($result);

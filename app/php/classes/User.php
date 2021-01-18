@@ -380,6 +380,58 @@ class User
 
         return $response; // Return response array
     }
+
+    public function update_password($userData, $table,$ID){
+        if($userData){
+            $fields = array(
+                TABLE_USERS['FIELD_PASSWORD'],
+            );
+            $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+            $fieldsCombined = "`".$fieldsCombined."`";
+
+            str_repeat("?,", count($fields));
+
+            $values = array(
+                [$userData['password'],"ss"],
+            );
+
+            $result = array(
+                "status"=>false,
+                "responseCode"=>1,
+                "response"=>"Undefined response"
+            );
+
+            $stmt = $this->connectToDB->prepare("UPDATE $table SET $fields[0]=? WHERE Email = ?");
+            if (false === $stmt) {
+                $result['responseCode'] = 101;
+                $result['response'] = 'update prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
+                return $result;
+            }
+
+            $rc = $stmt->bind_param($values[0][1], $values[0][0],$ID);
+            if (false === $rc) {
+                $result['responseCode'] = 102;
+                $result['response'] = 'update bind_param() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+            $rc = $stmt->execute();
+            if (false === $rc) {
+                $result['responseCode'] = 103;
+                $result['response'] = 'update execute() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+
+            $result["status"] = true;
+            $result["responseCode"] = 0;
+            $result["response"] = "Records Were added Successfully";
+
+            $stmt->close(); 
+
+            return $result;
+        } else{
+
+        }
+    }
 }
 
 // EOF : User.php

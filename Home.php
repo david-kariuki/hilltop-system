@@ -1,3 +1,11 @@
+<?php
+require_once "app/php/Modal.php";
+session_start();
+
+if(!isset($_SESSION['LOGGED_USER'])){
+    header("location:http://" . ROOT_DOMAIN ." ");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,18 +71,42 @@
         </div>
         <div class="nav_bar_navigation">
             <div class="icons_elem">
-                <div class="icon_holder">
+                <div class="icon_holder" onclick="render_dropdown_select('settings')">
                     <img src="res/images/icons/settings_dark.png" alt="">
                 </div>
-                <div class="icon_holder">
+                <div class="icon_holder" onclick="render_dropdown_select('notification')">
                     <p>10</p>
                     <img src="res/images/icons/navNotification.png" alt="">
                 </div>
-                <div class="icon_holder">
+                <div class="icon_holder" onclick="render_dropdown_select('userAccount')">
                     <img src="res/images/icons/user_dark.png" alt="">
                 </div>
             </div>
-            <div class="icons_select_dropdown"></div>
+            <div class="icons_select_dropdown">
+                <div class="holder_elemental">
+                    <div class="items_panel">
+                        <div class="user_image">
+                            <img src="res/images/icons/user_dark.png" alt="">
+                        </div>
+                        <div class="details_panel">
+                            <div class="val_elem">
+                                <p>User Name :</p>
+                                <p>Peter Kimani</p>
+                            </div>
+                            <div class="val_elem">
+                                <p>Email :</p>
+                                <p>Peter Kimani</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons_panel">
+                        <ul>
+                            <li> <button onclick="logUserOut()"> Log Out</button></li>
+                            <li> <button> Account</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
