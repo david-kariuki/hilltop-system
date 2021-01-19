@@ -2,6 +2,9 @@
 require_once "app/php/Modal.php";
 session_start();
 
+ECHO "HI";
+exit();
+
 if(!isset($_SESSION['LOGGED_USER'])){
     header("location:http://" . ROOT ." ");
 }
