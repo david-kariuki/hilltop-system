@@ -5,6 +5,8 @@ require_once "../Modal.php";
 */
 // header('Location:'.ROOT.'/Home.php');
 if (isset($_POST['Submit'])) {
+  echo "hi";
+  exit();
 
     $username = $_POST["userName"];
     $email = $_POST["email"];
