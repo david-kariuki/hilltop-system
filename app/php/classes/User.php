@@ -12,12 +12,8 @@
 // User class
 class User
 {
-<<<<<<< HEAD
     use Systemclass; // Call System class
     use Catalogue; // Call System class
-=======
-    use System; // Call System class
->>>>>>> parent of 3435bcf... update to catalogue
 
     // Connection status value variable
     private $connectToDB;       // Create DatabaseConnection class object
