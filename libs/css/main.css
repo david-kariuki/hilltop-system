@@ -479,7 +479,6 @@ body .navigation_panel .timer ul .time,
 html .navigation_panel .timer ul .time {
   font-weight: 600;
   font-size: 120%;
-  font-family: monospace;
 }
 
 body .navigation_panel .search_bar,

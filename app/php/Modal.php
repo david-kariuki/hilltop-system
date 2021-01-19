@@ -20,9 +20,39 @@ require_once "config/path.php";
  *
  */
 
+
+$fields = [
+    "firstName",
+    "lastName",
+    "otherName",
+    "gender",
+    "nationalId",
+    "Email",
+    "userName",
+    "password",
+    "Address",
+    "city",
+    "role",
+    "status",
+    "logID"
+];
+
+$values = [
+    "firstName",
+    "lastName",
+    "otherName",
+    "gender",
+    "nationalID",
+    "email1",
+    "user1",
+    "password",
+    "Address",
+    "city",
+    "role",
+    "status",
+    "1"
+];
+
 $admin = new User();
-
-
-
 
 

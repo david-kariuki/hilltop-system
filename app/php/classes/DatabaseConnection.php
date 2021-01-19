@@ -14,7 +14,7 @@ class DatabaseConnection
 {
 
     // Connection status value variable
-    protected $databaseConnection;
+    private $databaseConnection;
 
     // Database single connection instance
     private static $connectionInstance;

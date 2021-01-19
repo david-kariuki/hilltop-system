@@ -5,30 +5,6 @@ session_start();
 if(!isset($_SESSION['LOGGED_USER'])){
     header("location:http://" . ROOT_DOMAIN ." ");
 }
-$user;
-$table = "tbl_users";
-$fields = array(
-    "*",
-);
-$order_by = "firstName";
-$order_set = "ASC";
-$offset = 0;
-$reference = array(
-    "statement" => "Email = ?",
-    "type"=>"s",
-    "values"=>[
-        $_SESSION['LOGGED_USER']
-    ]
-);
-
-$response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
-
-if($response['status']){
-    $user = $response['response'][0];
-}else{
-    echo "Error";
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,18 +47,17 @@ if($response['status']){
         <div class="timer">
             <div class="clocker">
                 <ul>
-                    <li class="time" id="hour"></li>
+                    <li class="time" id="hour">01</li>
                     <li class="time">:</li>
-                    <li class="time" id="min"></li>
-                    <li class="time">:</li>
-                    <li class="time" id="sec"></li>
+                    <li class="time" id="min">20</li>
                     <li class="time" id=period>am</li>
                     <li class="time"> </li>
-                    <li class="dates" id="day"></li>
-                    
-                    <li class="dates" id="month"></li>
-                    
-                    <li class="dates" id="Year"></li>
+                    <li class="time"> </li>
+                    <li class="dates" id="day">20</li>
+                    <li class="dates">/</li>
+                    <li class="dates" id="month">30</li>
+                    <li class="dates">/</li>
+                    <li class="dates" id="Year">2020</li>
                 </ul>
             </div>
         </div>
@@ -116,18 +91,18 @@ if($response['status']){
                         <div class="details_panel">
                             <div class="val_elem">
                                 <p>User Name :</p>
-                                <p><?php echo $user['userName'] ?></p>
+                                <p>Peter Kimani</p>
                             </div>
                             <div class="val_elem">
                                 <p>Email :</p>
-                                <p><?php echo $user['Email'] ?></p>
+                                <p>Peter Kimani</p>
                             </div>
                         </div>
                     </div>
                     <div class="buttons_panel">
                         <ul>
                             <li> <button onclick="logUserOut()"> Log Out</button></li>
-                            <li> <button onclick="renderMainContentView('Account')"> Account</button></li>
+                            <li> <button> Account</button></li>
                         </ul>
                     </div>
                 </div>
