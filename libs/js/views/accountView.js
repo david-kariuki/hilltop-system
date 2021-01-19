@@ -68,3 +68,49 @@ function update_password(id = null) {
 
     }
 }
+
+function time_function() {
+
+}
+
+function showTime() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    var date = new Date();
+
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+
+    var day = date.getDate();
+    var mt = date.getMonth();
+    var y = date.getFullYear();
+
+    if (h == 0) {
+        h = 12;
+    }
+
+    if (h > 12) {
+        h = h - 12;
+        session = "PM";
+    }
+
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+
+    $("#hour").html(h)
+    $("#min").html(m)
+    $("#sec").html(s)
+    $("#period").html(session)
+
+    $("#day").html(day)
+    $("#month").html(monthNames[mt]);
+    $("#Year").html(y)
+}
+window.setInterval(function() {
+    showTime()
+}, 1000);

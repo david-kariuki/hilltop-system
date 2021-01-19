@@ -1,3 +1,36 @@
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+
+
+$user;
+$table = "tbl_products";
+$fields = array(
+    "*",
+);
+$order_by = "productName";
+$order_set = "ASC";
+$offset = 0;
+$reference = array(
+    "statement" => "Email = ?",
+    "type"=>"s",
+    "values"=>[
+        $_SESSION['LOGGED_USER']
+    ]
+);
+
+$response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
+
+if($response['status']){
+    $products = $response['response'];
+}else{
+    exit();
+}
+
+?>
+
+
+
 <div class="content_cover">
     <div class="view_title">
         <h3>Catalogue</h3>
@@ -5,13 +38,10 @@
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button>New Item</button>
+                <button onclick="open_new_product('catalogueForm')">New Item</button>
             </li>
             <li>
                 <button>Delete</button>
-            </li>
-            <li>
-                <button>Update</button>
             </li>
             <li>
             <select name="" id="">
@@ -38,31 +68,29 @@
                     <th scope="col">#</th>
                     <th scope="col">Product ID</th>
                     <th scope="col">Product Name</th>
-                    <th scope="col">Quantity on hand</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Category</th>
-                    
+                    <th scope="col">Product Type</th>
+                    <th scope="col">Visibility</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-
-                for($i = 0; $i < 30; $i++){
-                    ?>
-                <tr onclick="open_selected_product('catalogueForm')">
-                    <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
-                    <td><?php echo ($i + 1)?></td>
-                    <td>PL-0001</td>
-                    <td>Captain Morgan</td>
-                    <td>20</td>
-                    <td>950</td>
-                    <td>Active</td>
-                    <td>Category</td>
+                    $count = 1;
+                    foreach ($products as $key => $value) {
+                        
                     
-                </tr>
+                ?>
+                        <tr onclick="open_selected_product('catalogueForm',<?php echo $value['UUID'] ?>)">
+                            <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
+                            <td><?php echo $count?></td>
+                            <td><?php echo $value['UUID']?> </td>
+                            <td><?php echo $value['productName']?></td>
+                            <td><?php echo $value['productType']?></td>
+                            <td><?php echo $value['visibility']?></td>
+                        </tr>
                 <?php
-                }?>
+                        $count++;
+                    }
+                ?>
             </tbody>
         </table>
     </div>

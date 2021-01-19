@@ -253,14 +253,21 @@ trait System
     }
 
     /**/
-    public function database_update($table,$data_combined,$ID){
+    public function database_update($table,$data_combined,$ID,$otherRef = null){
+        $statement = null;
+
+        if($otherRef == null){
+            $statement = 'WHERE UUID = ?';
+        }else{
+            $statement = $otherRef;
+        }
         $result = array(
             "status"=>false,
             "responseCode"=>1,
             "response"=>"Undefined response"
         );
         foreach($data_combined as $key => $value){
-            $stmt = $this->connectToDB->prepare("UPDATE $table SET $key=? WHERE UUID = ?");
+            $stmt = $this->connectToDB->prepare("UPDATE $table SET $key=? $statement");
             if (false === $stmt) {
                 $result['responseCode'] = 101;
                 $result['response'] = 'update prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
@@ -285,7 +292,7 @@ trait System
 
         $result["status"] = true;
         $result["responseCode"] = 0;
-        $result["response"] = "Records Were added Successfully";
+        $result["response"] = "Records Were updated Successfully";
 
         return $result;
     }
