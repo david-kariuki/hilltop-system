@@ -40,8 +40,6 @@ trait Catalogue
             false,
         ];
 
-        $tempArray  = array();
-
         // Check if user data is passed as array
         if (is_array($data)) {
 
