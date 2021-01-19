@@ -42,7 +42,7 @@
         <div class="over_Shadow">
             <div class="login_entry">
                 <h1>Sign In</h1>
-                <form action="/app/php/control/signin.php" method="POST">
+                <form action="/app/php/control/signIn.php" method="POST">
                     <div class="form_input_text">
                         <img src="res/images/icons/user.png" alt="">
                         <input type="text" name="userName" placeholder="Username" onfocus="render_outline()"  onfocusout="render_outline_hide()" required>

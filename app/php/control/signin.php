@@ -5,6 +5,8 @@ require_once "../Modal.php";
 */
 // header('Location:'.ROOT.'/Home.php');
 if (isset($_POST['Submit'])) {
+  echo "hi";
+  exit();
 
     $username = $_POST["userName"];
     $email = $_POST["email"];
@@ -51,7 +53,7 @@ if (isset($_POST['Submit'])) {
                session_start();
                $_SESSION['LOGGED_USER'] = $email;
 
-               header("location:http://" . ROOT ."/home.php");
+               header("location:http://" . ROOT_DOMAIN ."/home.php");
                exit;
            } else {
             header("location:http://" . ROOT ."/index.php");
