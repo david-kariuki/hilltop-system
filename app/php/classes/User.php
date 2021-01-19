@@ -5,7 +5,7 @@
 *
 * @author David Kariuki (dk)
 * @author Peter Kimani (dk)
-* @copyright Copyright (c) 2021 All Rights Reserved.
+* @copyright Copyright (c) 2021 All Rights Reserved
 */
 
 
