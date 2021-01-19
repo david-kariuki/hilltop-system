@@ -6,7 +6,7 @@
 */
 
 // System class
-trait System
+trait Systemclass
 {
     /**
     * This method takes in a token provided by other methods.

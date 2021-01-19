@@ -12,7 +12,7 @@
 // User class
 class User
 {
-    use System; // Call System class
+    use Systemclass; // Call System class
     use Catalogue; // Call System class
 
     // Connection status value variable
