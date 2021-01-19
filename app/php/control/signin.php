@@ -51,7 +51,7 @@ if (isset($_POST['Submit'])) {
                $_SESSION['LOGGED_USER'] = $email;
 
                echo "here";
-              //  header("location:http://" . ROOT_DOMAIN ."/home.php");
+              //  header("location:http://" . ROOT ."/home.php");
                exit();
            } else {
             header("location:http://" . ROOT ."/index.php");
