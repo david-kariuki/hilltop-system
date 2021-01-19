@@ -358,14 +358,3 @@ trait System
 
 
 // EOF : System.php
-
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // # Send request.
-        // $result = curl_exec($ch);
-        // curl_close($ch);
-        // # Print response.
-        // return json_encode($result);
