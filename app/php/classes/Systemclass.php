@@ -6,7 +6,8 @@
 */
 
 // System class
-trait System{
+trait Systemclass
+{
     /**
     * This method takes in a token provided by other methods.
     * The token is verified against a system generated token to verify if the request comes from a valid user.
