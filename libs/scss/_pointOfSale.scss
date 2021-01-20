@@ -58,6 +58,17 @@
                         border: solid 2px $system-blue;
                     }
                 }
+                & select {
+                    width: 250px;
+                    height: 30px;
+                    border-radius: 5px;
+                    outline: none;
+                    border: grey 1px solid;
+                    color: rgb(87, 87, 87);
+                    &:focus {
+                        border: solid 2px $system-blue;
+                    }
+                }
             }
         }
     }
@@ -316,5 +327,5 @@
             color: white;
         }
     }
-    & .close_button {}
+    // & .close_button {}
 }

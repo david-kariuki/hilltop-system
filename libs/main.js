@@ -36,8 +36,11 @@ require([
 ], function() {
     $(document).ready(function() {
         function callBack() {
-            openCatalogue();
+            renderMainContentView('PointOfSale');
         }
+
+        callBack();
+
     });
     $('[data-toggle="tooltip"]').tooltip();
 });

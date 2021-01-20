@@ -1736,6 +1736,21 @@ html .system_elemental > button:active {
   border: solid 2px #489BE5;
 }
 
+.sale_customer_panel .items_panel .section1 .input_area select,
+.sale_customer_panel .items_panel .section2 .input_area select {
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: grey 1px solid;
+  color: #575757;
+}
+
+.sale_customer_panel .items_panel .section1 .input_area select:focus,
+.sale_customer_panel .items_panel .section2 .input_area select:focus {
+  border: solid 2px #489BE5;
+}
+
 .sale_details_list {
   width: 100%;
   display: -webkit-box;

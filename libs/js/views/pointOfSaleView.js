@@ -37,3 +37,49 @@ function hide_item_lister_select() {
 
     lister.fadeOut(250);
 }
+
+function confirm_sale() {
+    var sale = sale_collector();
+
+    console.log(sale);
+}
+
+function sale_collector() {
+    //sale
+    var saleType = $("[name='saleType']").val();
+    var quantity = $("#quantity").html();
+    var amount = $("#amount").html();
+    var totalAmount = amount;
+    var saleNote = $("[name='saleNote']").val();
+
+    var data = {
+        saleType: saleType,
+        quantity: quantity,
+        amount: amount,
+        totalAmount: totalAmount,
+        saleNote: saleNote
+    }
+
+    return data;
+}
+
+function get_product_record() {
+    var elem = event.currentTarget;
+    var name = $(elem).val()
+
+    if (isEmpty(name)) {
+        return;
+    } else {
+        var action = "getProduct";
+        var view = "PointOfSale";
+        var data = name;
+
+
+        sendDataToHandler(action, view, data, callback, null);
+
+        function callback(msg) {
+            console.log(msg);
+        }
+    }
+
+}
