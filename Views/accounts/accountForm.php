@@ -50,7 +50,7 @@ if(!isset($_SESSION['LOGGED_USER'])){
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button onclick="update_password(<?php echo `'`.$user['UUID'].`'` ?>)">Update password</button>
+                <button onclick="update_password(<?php echo $user['UUID'] ?>)">Update password</button>
             </li>
         </ul>
     </div>
