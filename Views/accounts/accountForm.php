@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
 session_start();
 
 $data = json_decode(file_get_contents('php://input'), true);
