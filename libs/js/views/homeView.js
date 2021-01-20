@@ -22,5 +22,5 @@ function render_dropdown_select(button) {
 }
 
 function logUserOut() {
-    window.location.replace("http://" + window.location.hostname + "/logOut");
+    window.location.replace("http://" + window.location.hostname + "/logOut.php");
 }
