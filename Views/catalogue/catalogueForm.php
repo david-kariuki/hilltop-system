@@ -125,7 +125,7 @@ if(isset($_REQUEST['data'])){
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Current Stock</p>
-                                    <input type="text" name="retail_currentStock" <?php
+                                    <input type="text" name="retail_currentStock" value="0" <?php
                                                                                         if($mode == "update"){
                                                                                             echo "value='".$retail['currentStock']."'";
                                                                                         }
@@ -133,7 +133,7 @@ if(isset($_REQUEST['data'])){
                                 </div>
                                 <div class="input_element">
                                 <p>Low Stock</p>
-                                    <input type="text" name="retail_lowStockThreshold" <?php
+                                    <input type="text" name="retail_lowStockThreshold" value="0" <?php
                                                                                         if($mode == "update"){
                                                                                             echo "value='".$retail['lowStockThreashold']."'";
                                                                                         }
@@ -165,7 +165,7 @@ if(isset($_REQUEST['data'])){
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Regular Price</p>
-                                    <input type="text" name="retail_regularPrice"<?php
+                                    <input type="text" name="retail_regularPrice" value="0"<?php
                                                                                         if($mode == "update"){
                                                                                             echo "value='".$retail['regularPrice']."'";
                                                                                         }
