@@ -50,7 +50,7 @@ if(isset($_REQUEST['id'])){
                 if($loadingData == "updateMode"){
                     ?>
                         <li>
-                            <button onclick="update_user(<?php echo '"'.$user['UUID'].'"' ?>)">Update</button>
+                            <button onclick="update_user(<?php echo $user['UUID'] ?>)">Update</button>
                         </li>
                     <?php
                 } else {
