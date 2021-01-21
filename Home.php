@@ -159,7 +159,7 @@ if($response['status']){
                     <p>Customers</p>
                 </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Sales')">
-                    <img src="res/images/icons/sales_small.png" alt="">
+                    <img src="res/images/icons/sales_icon.png" alt="">
                     <p>Sales</p>
                 </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Transactions')">
