@@ -3,7 +3,7 @@ require_once "app/php/Modal.php";
 session_start();
 
 if(!isset($_SESSION['LOGGED_USER'])){
-    header("location:http://" . ROOT_DOMAIN ." ");
+    header("location:http://" . ROOT ." ");
 }
 $user;
 $table = "tbl_users";

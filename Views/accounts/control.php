@@ -52,7 +52,7 @@ if (isset($_SESSION['TOKEN'])) {
                             "data"=>false
                         );
 
-                        $url = ROOT_DOMAIN."/Views/accounts/accountForm.php";
+                        $url = ROOT."/Views/accounts/accountForm.php";
                         $data = $user;
 
                         $response = array(
