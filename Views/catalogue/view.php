@@ -20,9 +20,15 @@ $reference = array(
 );
 
 $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
+$fields = "*";
+$response2 = $admin->database_read_all($table,$fields,$order_by);
+$product_count;
 
 if($response['status']){
+    $product_count = count($response2);
     $products = $response['response'];
+
+    var_dump($product_count);
 }else{
     exit();
 }
@@ -96,10 +102,31 @@ if($response['status']){
     </div>
     <div class="pagination">
         <ul>
-            <li id="previous_pagination"> <p>Prev</p> </li>
-            <li> <p>1</p> </li>
-            <li> <p>2</p> </li>
-            <li class="next_pagination"> <p>Next</p> </li>
+            <?php
+                $page_count = floor($product_count / SPLITTER);
+                $rem = $product_count % SPLITTER;
+
+                if($rem > 0){
+                    $page_count = $page_count + 1;
+                }
+
+                // var_dump($page_count,$rem);
+
+                if($page_count>1){
+                    ?>
+                    <li id="previous_pagination"> <p>Prev</p> </li>
+                        <?php
+                            for($i = 1;$i <= $page_count;$i++){
+                        ?>
+                                <li> <p><?php echo $i ?></p> </li>
+                        <?php
+                            }
+                        ?>
+                    <li class="next_pagination"> <p>Next</p> </li>
+                    <?php
+                }
+            ?>
+            
         </ul>
     </div>
 </div>

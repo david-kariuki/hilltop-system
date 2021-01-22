@@ -14,8 +14,103 @@ if (isset($_SESSION['TOKEN'])) {
     //confirm action intended
     switch($action){
         case "getProduct":
-            $user;
+
             $table = "tbl_products";
+            $fields = array(
+                "*",
+            );
+            $order_by = "productName";
+            $order_set = "ASC";
+            $offset = 0;
+            $reference = array(
+                "statement" => "LOWER(productName) LIKE ?",
+                "type"=>"s",
+                "values"=>[
+                    "%{$data[0]}%"
+                ]
+            );
+            
+            $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+            $report = array(
+                'status'=>false,
+                'responseCode'=>1,
+                'response'=>array()
+            );
+
+            if($response['status']){
+                
+
+                $items = $response['response'];
+
+                foreach ($items as $key => $value) {
+                    
+
+                    $table = "tbl_inventory";
+                    $fields = array(
+                        "*",
+                    );
+                    $order_by = "fk_productID";
+                    $order_set = "ASC";
+                    $offset = 0;
+                    $reference = array(
+                        "statement" => "fk_productID = ? AND fk_storageID = ?",
+                        "type"=>"ii",
+                        "values"=>[
+                            $value['UUID'],
+                            $data[1]
+                        ]
+                    );
+                    
+                    $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                    if($response['status']){
+                        $report['status'] = true;
+                        $report['responseCode'] = 0;
+
+                        $sub_item = $response['response'];
+
+                        foreach ($sub_item as $key1 => $value1) {
+                            $stmt = "<tr onclick='select_purchase_item(\"{$value['UUID']}\",\"{$value['productName']}\",\"{$value1['regularPrice']}\",)' id=\"{$value['UUID']}\"><td>".$value["productName"]."</td><td>".$value1["currentStock"]."</td><td>".$value1["regularPrice"]."</td></tr>";
+
+                            array_push($report['response'],$stmt);
+                        }
+                    }else{
+                        $response = array(
+                            'status'=>false,
+                            'responseCode'=>2,
+                            'response'=>'Item Not Found'
+                        );
+        
+                        echo json_encode($response);
+                    }
+                }
+
+                echo json_encode($report);
+
+            }else{
+                $response = array(
+                    'status'=>false,
+                    'responseCode'=>1,
+                    'response'=>'Item Not Found'
+                );
+
+                echo json_encode($response);
+            }
+            break;
+        case "addSale":
+            /*
+            sales_ID
+            fk_salesID
+            saleType
+            saleQuantity
+            amount
+            */
+            //generate user ID
+            $ID = $admin->unique_ID_generator();
+            //get User ID
+            $user;
+            $table = "tbl_users";
             $fields = array(
                 "*",
             );
@@ -31,6 +126,170 @@ if (isset($_SESSION['TOKEN'])) {
             );
 
             $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+            if($response['status']){
+                $user = $response['response'][0];
+                $user_ID = $user['UUID'];
+
+                $fields = array(
+                    'sale_ID',
+                    'fk_saleRep',
+                    'saleType',
+                    'saleQuantity',
+                    'amount'
+                );
+
+                $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+                $fieldsCombined = "`".$fieldsCombined."`";
+                $placeholders = "?,?,?,?,?";
+                $type = "iisdd";
+                $values = array(
+                    $ID,
+                    $user_ID,
+                    $data['saleDetails']['saleType'],
+                    $data['saleDetails']['saleQuantity'],
+                    $data['saleDetails']['saleAmount']
+                );
+
+                $insert = $admin->insert_to_database('tbl_sale',$fieldsCombined,$placeholders,$type,$values);
+
+                if($insert['status']){
+                    $products = $data['subSale'];
+
+
+                    foreach ($products as $value) {
+                        $subSaleID = $admin->unique_ID_generator();
+
+                        //find ID
+                        $table = "tbl_products";
+                        $fields = array(
+                            "*",
+                        );
+                        $order_by = "productName";
+                        $order_set = "ASC";
+                        $offset = 0;
+                        $reference = array(
+                            "statement" => "productName = ?",
+                            "type"=>"s",
+                            "values"=>[
+                                $value['productName']
+                            ]
+                        );
+            
+                        $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                        if($response['status']){
+                            $productID = $response['response'][0]['UUID'];
+
+                            $table = "tbl_inventory";
+                            $fields = array(
+                                "*",
+                            );
+                            $order_by = "fk_productID";
+                            $order_set = "ASC";
+                            $offset = 0;
+                            $reference = array(
+                                "statement" => "fk_productID = ? AND fk_storageID = ?",
+                                "type"=>"ii",
+                                "values"=>[
+                                    $productID,
+                                    $data['saleDetails']['saleType']
+                                ]
+                            );
+                
+                            $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                            if($response['status']){
+                                
+                                $inventoryID = $response['response'][0]['UUID'];
+
+                                $fields = array(
+                                    'UUID',
+                                    'fk_SaleID',
+                                    'fk_productID',
+                                    'quantity',
+                                    'fk_createdBy',
+                                );
+
+                                $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+                                $fieldsCombined = "`".$fieldsCombined."`";
+                                $placeholders = "?,?,?,?,?";
+                                $type = "iiiii";
+                                $values = array(
+                                    $subSaleID,
+                                    $ID,
+                                    $inventoryID,
+                                    $value['quantity'],
+                                    $user_ID,
+                                );
+
+                                $insert = $admin->insert_to_database('tbl_subsale',$fieldsCombined,$placeholders,$type,$values);
+
+                                if(!$insert['status']){
+                                    var_dump($response);
+                                }
+                            }
+                        }else{
+                            $response = array(
+                                "status"=>"000020000",
+                                "response"=>"Product not found.",
+                                "data"=>false
+                            );
+                
+                            $response = json_encode($response);
+                
+                            echo $response;
+                
+                            exit();
+                        }
+                    }
+
+                    $transactions = $data['transaction'];
+
+                    foreach ($transactions as $value) {
+                        $transactionID = $admin->unique_ID_generator();
+
+                        $fields = array(
+                            'UUID',
+                            'fk_saleReference',
+                            'transactionValue',
+                            'transactionMethode',
+                            'fk_createdBy',
+                            'fk_modifiedBy' 
+                        );
+
+                        $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+                        $fieldsCombined = "`".$fieldsCombined."`";
+                        $placeholders = "?,?,?,?,?,?";
+                        $type = "ssssss";
+                        $values = array(
+                            $transactionID,
+                            $ID,
+                            $value['amount'],
+                            $value['paymentMethod'],
+                            $user_ID,
+                            $user_ID,
+                        );
+
+                        $insert = $admin->insert_to_database('tbl_transaction',$fieldsCombined,$placeholders,$type,$values);
+
+                        var_dump($insert);
+                    }
+                }
+            }else{
+                $response = array(
+                    "status"=>"000010000",
+                    "response"=>"User Not Found",
+                    "data"=>false
+                );
+    
+                $response = json_encode($response);
+    
+                echo $response;
+    
+                exit();
+            }
+
             break;
         //all invalid actions
         default :

@@ -202,7 +202,12 @@ if($response['status']){
             
         </div>
         <div class="right_side_panel">
-            <p>hi</p>
+            <div class="btn_close"><p onclick="close_right_panel()">X</p></div>
+            <div class="transaction_sales">
+                <h5>Transactions</h5>
+                <ul>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="system_elemental">
@@ -213,27 +218,30 @@ if($response['status']){
                 <div class="transaction_body">
                     <div class="input_group">
                         <p>Total Amount</p>
-                        <input type="text">
+                        <input type="text" name="totalAmount" disabled>
                     </div>
                     <div class="input_group">
                         <p>Amount to Pay</p>
-                        <input type="text">
+                        <input type="text" name="amountToPay" disabled>
                     </div>
                     <div class="input_group">
                         <p>Payment Method </p>
-                        <input type="text">
+                        <select name="paymentMethod" id="">
+                            <option value="M-Pesa">M-Pesa</option>
+                            <option value="Cash">Cash</option>
+                        </select>
                     </div>
                     <div class="input_group">
                         <p>Amount Payed</p>
-                        <input type="text">
+                        <input type="text" name="amountPayed" onkeyup="updatePayment()">
                     </div>
                     <div class="input_group">
                         <p>Balance</p>
-                        <input type="text">
+                        <input type="text" name="balance">
                     </div>
                     
                 </div>
-                <button>Confirm</button>
+                <button onclick="confirm_payment()">Confirm</button>
             </div>
         </div>
         

@@ -24,3 +24,19 @@ function render_dropdown_select(button) {
 function logUserOut() {
     window.location.replace("http://" + window.location.hostname + "/logOut.php");
 }
+
+function close_right_panel() {
+    var right_panel = $(".right_side_panel");
+
+    right_panel.css({
+        "right": "-400px"
+    });
+}
+
+function open_right_panel() {
+    var right_panel = $(".right_side_panel");
+
+    right_panel.css({
+        "right": "0px"
+    });
+}

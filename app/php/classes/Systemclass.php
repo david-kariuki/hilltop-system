@@ -135,7 +135,7 @@ trait Systemclass
             "response"=>"Undefined response"
         );
         // Prepare INSERT statement
-        $stmt = $this->connectToDB->prepare("SELECT $fields FROM $table ORDER BY $order_by ASC LIMIT 25 OFFSET $offset");
+        $stmt = $this->connectToDB->prepare("SELECT $fields FROM $table ORDER BY $order_by ASC LIMIT 2 OFFSET $offset");
         if (false == $stmt) {
             $result['responseCode'] = 101;
             $result['response'] = 'prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
@@ -158,6 +158,42 @@ trait Systemclass
     }
 
     /**/
+    public function database_read_all($table,$fields,$order_by){
+        // SELECT * FROM tbl_products ORDER BY productName ASC LIMIT 25 OFFSET $offset"
+
+        $result = array(
+            "status"=>false,
+            "responseCode"=>1,
+            "response"=>"Undefined response"
+        );
+        // Prepare INSERT statement
+        $stmt = $this->connectToDB->prepare("SELECT $fields FROM $table ORDER BY $order_by ASC");
+        if (false == $stmt) {
+            $result['responseCode'] = 101;
+            $result['response'] = 'prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
+            return $result;
+        }
+
+        $execute = $stmt->execute(); // Execute statement
+
+        if(false == $execute){
+            $result['responseCode'] = 103;
+            $result['response'] = 'execute() failed: ' . htmlspecialchars($stmt->error);
+            return $result;
+        }
+
+        $obj = $stmt->get_result();
+
+        $response = array();
+        
+        while ($data = $obj->fetch_assoc()){
+            array_push($response,$data);
+        }
+
+        return $response;
+    }
+
+    /**/
     public function database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference){
         //introduce variables
         $result = array(
@@ -173,6 +209,7 @@ trait Systemclass
 
         //check if fields is ana array
         if(is_array($fields)){
+
             /*
             if $fields is an array then the user intends to get specific fields
             as the response
@@ -194,7 +231,7 @@ trait Systemclass
             }
 
             if($order_by != null && $order_set != null){
-                $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT 25 OFFSET ".$offset;
+                $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT 2 OFFSET ".$offset;
             }else{
                 $statement = $statement." LIMIT 25 OFFSET ".$offset;
             }
@@ -248,7 +285,7 @@ trait Systemclass
             if $fields is not an array then the user intends to get all fields 
             as the response
             */
-            return $result;
+            return $fields;
         }
     }
 
