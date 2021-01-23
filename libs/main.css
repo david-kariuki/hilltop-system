@@ -222,7 +222,7 @@
   border-right: none;
 }
 
-.contentArea_panel .content_cover .pagination ul li:nth-child(2) {
+.contentArea_panel .content_cover .pagination ul .active_page {
   color: white;
   background-color: #489BE5;
 }

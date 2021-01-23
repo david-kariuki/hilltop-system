@@ -62,6 +62,26 @@ if (isset($_SESSION['TOKEN'])) {
         
             }
             break;
+        case "renderPage":
+
+            $table = "tbl_products";
+            $fields = array(
+                "*",
+            );
+            $order_by = "productName";
+            $order_set = "ASC";
+            $offset = $data * SPLITTER;
+
+            $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
+
+            if($response['status']){
+                $products = $response['response'];
+
+                echo json_encode($response);
+            }else{
+                exit();
+            }
+            break;
         default :
             $response = array(
                 "status"=>"010000000",

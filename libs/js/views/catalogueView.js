@@ -213,3 +213,173 @@ function update_product(id) {
         alert("Some required fields were not filled");
     }
 }
+
+function previous_page_catalogue() {
+    var elem = $(event.currentTarget);
+    var change = previous_page(elem);
+
+    if (change) {
+        var parent = elem.parent().parent();
+        var current_page = parent.find('.active_page p').text();
+
+        var action = "renderPage";
+        var view = "catalogue";
+        var data = (current_page - 1);
+
+        sendDataToHandler(action, view, data, callback);
+
+        function callback(msg) {
+            var data = JSON.parse(msg);
+            var statement = '';
+            var count = 0;
+
+            if (data.status) {
+                var products = data.response;
+
+                $.each(products, function(key, value) {
+                    var id = value['UUID'];
+                    var productName = value['productName'];
+                    var productType = value['productType'];
+                    var visibility = value['visibility'];
+
+                    stmt = `
+                                    <tr onclick="open_selected_product('catalogueForm',` + id + `)">
+                                        <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
+                                        <td>` + (count + 1) + `</td>
+                                        <td>` + id + `</td>
+                                        <td>` + productName + `</td>
+                                        <td>` + productType + `</td>
+                                        <td>` + visibility + `</td>
+                                    </tr>
+                                `;
+                    statement = statement + stmt;
+                    count++;
+                });
+
+                $('.items_area table tbody').html(statement);
+            } else {
+                console.log("none");
+                return;
+            }
+
+        }
+    } else {
+        return;
+    }
+
+
+}
+
+function change_page_catalogue(page) {
+    var elem = $(event.currentTarget);
+    var change = change_page(page, elem);
+
+    if (change) {
+        var parent = elem.parent().parent();
+        var current_page = parent.find('.active_page p').text();
+
+        var action = "renderPage";
+        var view = "catalogue";
+        var data = (current_page - 1);
+
+        sendDataToHandler(action, view, data, callback);
+
+        function callback(msg) {
+            var data = JSON.parse(msg);
+            var statement = '';
+            var count = 0;
+
+            if (data.status) {
+                var products = data.response;
+
+                $.each(products, function(key, value) {
+                    var id = value['UUID'];
+                    var productName = value['productName'];
+                    var productType = value['productType'];
+                    var visibility = value['visibility'];
+
+                    stmt = `
+                                    <tr onclick="open_selected_product('catalogueForm',` + id + `)">
+                                        <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
+                                        <td>` + (count + 1) + `</td>
+                                        <td>` + id + `</td>
+                                        <td>` + productName + `</td>
+                                        <td>` + productType + `</td>
+                                        <td>` + visibility + `</td>
+                                    </tr>
+                                `;
+                    statement = statement + stmt;
+                    count++;
+                });
+
+                $('.items_area table tbody').html(statement);
+            } else {
+                console.log("none");
+                return;
+            }
+        }
+    } else {
+        return;
+    }
+
+
+}
+
+function next_page_catalogue() {
+    var elem = $(event.currentTarget);
+    var change = next_page(elem);
+
+    if (change) {
+        var parent = elem.parent().parent();
+        var current_page = parent.find('.active_page p').text();
+
+        var action = "renderPage";
+        var view = "catalogue";
+        var data = (current_page - 1);
+
+        console.log(data);
+
+        var count = 0;
+
+        sendDataToHandler(action, view, data, callback);
+
+        function callback(msg) {
+            var data = JSON.parse(msg);
+            var statement = '';
+
+            if (data.status) {
+                var products = data.response;
+
+                $.each(products, function(key, value) {
+                    var id = value['UUID'];
+                    var productName = value['productName'];
+                    var productType = value['productType'];
+                    var visibility = value['visibility'];
+
+                    stmt = `
+                                    <tr onclick="open_selected_product('catalogueForm',` + id + `)">
+                                        <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
+                                        <td>` + (count + 1) + `</td>
+                                        <td>` + id + `</td>
+                                        <td>` + productName + `</td>
+                                        <td>` + productType + `</td>
+                                        <td>` + visibility + `</td>
+                                    </tr>
+                                `;
+                    statement = statement + stmt;
+                    count++;
+                });
+
+                $('.items_area table tbody').html(statement);
+            } else {
+                console.log("none");
+                return;
+            }
+
+        }
+    } else {
+        return;
+    }
+
+
+}

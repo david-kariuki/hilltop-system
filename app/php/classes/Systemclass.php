@@ -231,9 +231,9 @@ trait Systemclass
             }
 
             if($order_by != null && $order_set != null){
-                $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT 2 OFFSET ".$offset;
+                $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT ".SPLITTER." OFFSET ".$offset;
             }else{
-                $statement = $statement." LIMIT 25 OFFSET ".$offset;
+                $statement = $statement." LIMIT ".SPLITTER." OFFSET ".$offset;
             }
 
             

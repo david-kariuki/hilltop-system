@@ -155,7 +155,7 @@
                 & .next_pagination {
                     border-right: none
                 }
-                & li:nth-child(2) {
+                & .active_page {
                     color: white;
                     background-color: $system-blue;
                 }

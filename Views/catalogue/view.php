@@ -114,15 +114,15 @@ if($response['status']){
 
                 if($page_count>1){
                     ?>
-                    <li id="previous_pagination"> <p>Prev</p> </li>
+                    <li id="previous_pagination" onclick="previous_page_catalogue()"> <p>Prev</p> </li>
                         <?php
                             for($i = 1;$i <= $page_count;$i++){
                         ?>
-                                <li> <p><?php echo $i ?></p> </li>
+                                <li <?php if($i == 1){ echo "data-activePage=true class='active_page'";} ?>  onclick="change_page_catalogue(<?php echo $i ?>)"> <p><?php echo $i ?></p> </li>
                         <?php
                             }
                         ?>
-                    <li class="next_pagination"> <p>Next</p> </li>
+                    <li class="next_pagination" onclick="next_page_catalogue()"> <p>Next</p> </li>
                     <?php
                 }
             ?>
