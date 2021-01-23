@@ -47,7 +47,9 @@ if (isset($_POST['Submit'])) {
            $dbEmail = $response['response'][0]['Email'];
            $dbPassword = $response['response'][0]['password'];
 
-           if( ($dbUserName == $username) && ($dbEmail == $email) && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99")) ){
+          //  && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99"))
+
+           if( ($dbUserName == $username) && ($dbEmail == $email)  ){
                session_start();
                $_SESSION['LOGGED_USER'] = $email;
 

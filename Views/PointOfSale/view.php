@@ -82,7 +82,7 @@ if($response['status']){
                 <div class="section2">
                 <div class="input_area">
                         <h4>Sale Representative</h4>
-                        <input type="text" disabled value="<?php echo $user?>">
+                        <input type="text" disabled value="<?php if(isset($user)){echo $user;}?>">
                     </div>
                     <div class="input_area">
                         <h4>Sale Type</h4>
