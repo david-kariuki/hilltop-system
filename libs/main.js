@@ -35,7 +35,9 @@ require([
 
 ], function() {
     $(document).ready(function() {
-        function callBack() {}
+        function callBack() {
+            renderMainContentView('Sales');
+        }
 
         callBack();
 

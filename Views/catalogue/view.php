@@ -22,15 +22,11 @@ $reference = array(
 $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
 $fields = "*";
 $response2 = $admin->database_read_all($table,$fields,$order_by);
-$product_count;
+$product_count = 0;
 
 if($response['status']){
     $product_count = count($response2);
     $products = $response['response'];
-
-    var_dump($product_count);
-}else{
-    exit();
 }
 
 ?>
@@ -81,20 +77,25 @@ if($response['status']){
             <tbody>
                 <?php
                     $count = 1;
-                    foreach ($products as $key => $value) {
+
+                    if($product_count > 0 ){
+                        foreach ($products as $key => $value) {
+                            
                         
-                    
-                ?>
-                        <tr onclick="open_selected_product('catalogueForm',<?php echo $value['UUID'] ?>)">
-                            <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
-                            <td><?php echo $count?></td>
-                            <td><?php echo $value['UUID']?> </td>
-                            <td><?php echo $value['productName']?></td>
-                            <td><?php echo $value['productType']?></td>
-                            <td><?php echo $value['visibility']?></td>
-                        </tr>
-                <?php
-                        $count++;
+                    ?>
+                            <tr onclick="open_selected_product('catalogueForm',<?php echo $value['UUID'] ?>)">
+                                <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
+                                <td><?php echo $count?></td>
+                                <td><?php echo $value['UUID']?> </td>
+                                <td><?php echo $value['productName']?></td>
+                                <td><?php echo $value['productType']?></td>
+                                <td><?php echo $value['visibility']?></td>
+                            </tr>
+                    <?php
+                            $count++;
+                        }
+                    }else{
+                        echo "No records Found";
                     }
                 ?>
             </tbody>

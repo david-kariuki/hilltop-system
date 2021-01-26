@@ -1,3 +1,31 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
+
+$table = "tbl_transaction";
+$fields = array(
+    "*",
+);
+$order_by = "dateCreated";
+$order_set = "DESC";
+$offset = 0;
+$reference = array(
+    "statement" => "Email = ?",
+    "type"=>"s",
+    "values"=>[
+        $_SESSION['LOGGED_USER']
+    ]
+);
+
+$response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
+
+if($response['status']){
+    $transactions = $response['response'];
+
+    var_dump($transactions);
+}else{
+}
+
+?>
 <div class="content_cover">
     <div class="view_title">
         <h3>Transactions</h3>

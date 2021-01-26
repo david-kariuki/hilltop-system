@@ -2,7 +2,8 @@ const sale = {
     saleDetails: {
         saleQuantity: 0,
         saleType: 1,
-        saleAmount: 0
+        saleAmount: 0,
+        saleNote: null
     },
     subSale: [],
     transaction: [],
@@ -16,6 +17,7 @@ function sale_collector() {
     sale.saleDetails.saleType = $("[name='saleType']").val();
     sale.saleDetails.saleQuantity = $("#quantity").html();
     sale.saleDetails.saleAmount = $("#amount").html();
+    sale.saleDetails.saleNote = $("[name='saleNote']").val();
 
     function get_paid_value() {
         var card = $(".transaction_sales");
@@ -40,11 +42,15 @@ function sale_collector() {
         $.each(items, function(key, value) {
             var product = {
                 productName: null,
-                quantity: 0
+                quantity: 0,
+                price: 0,
+                sub_total: 0
             }
 
             product.productName = $(value).find("[name='productName']").val();
             product.quantity = $(value).parent().find("[name='quantity']").val();
+            product.price = $(value).parent().find(".sub_price").text();
+            product.sub_total = $(value).parent().find(".sub_total").text();
 
             if (isEmpty(product.productName)) {
                 return;
@@ -61,8 +67,13 @@ function sale_collector() {
 }
 
 
-function create_new_sale() {
-    var prompter = confirm("Do you wish to discard changes to current sale?");
+function create_new_sale(data = false) {
+    if (!data) {
+        var prompter = confirm("Do you wish to discard changes to current sale?");
+    } else {
+        renderMainContentView('PointOfSale');
+        close_right_panel();
+    }
 
     if (prompter) {
         renderMainContentView('PointOfSale');
@@ -141,6 +152,8 @@ function confirm_sale() {
 
             function callback(msg) {
                 console.log(msg);
+                renderMainContentView('PointOfSale');
+                reset_sale();
             }
         } else {
             alert("No product entered");

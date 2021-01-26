@@ -13,8 +13,8 @@ if (isset($_SESSION['TOKEN'])) {
 
     //confirm action intended
     switch($action){
+        
         case "getProduct":
-
             $table = "tbl_products";
             $fields = array(
                 "*",
@@ -136,19 +136,21 @@ if (isset($_SESSION['TOKEN'])) {
                     'fk_saleRep',
                     'saleType',
                     'saleQuantity',
-                    'amount'
+                    'amount',
+                    'saleNote'
                 );
 
                 $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
                 $fieldsCombined = "`".$fieldsCombined."`";
-                $placeholders = "?,?,?,?,?";
-                $type = "iisdd";
+                $placeholders = "?,?,?,?,?,?";
+                $type = "iisdds";
                 $values = array(
                     $ID,
                     $user_ID,
                     $data['saleDetails']['saleType'],
                     $data['saleDetails']['saleQuantity'],
-                    $data['saleDetails']['saleAmount']
+                    $data['saleDetails']['saleAmount'],
+                    $data['saleDetails']['saleNote']
                 );
 
                 $insert = $admin->insert_to_database('tbl_sale',$fieldsCombined,$placeholders,$type,$values);
@@ -209,24 +211,68 @@ if (isset($_SESSION['TOKEN'])) {
                                     'fk_productID',
                                     'quantity',
                                     'fk_createdBy',
+                                    'Price',
+                                    'subTotal'
                                 );
 
                                 $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
                                 $fieldsCombined = "`".$fieldsCombined."`";
-                                $placeholders = "?,?,?,?,?";
-                                $type = "iiiii";
+                                $placeholders = "?,?,?,?,?,?,?";
+                                $type = "iiiiidd";
                                 $values = array(
                                     $subSaleID,
                                     $ID,
                                     $inventoryID,
                                     $value['quantity'],
                                     $user_ID,
+                                    $value['price'],
+                                    $value['sub_total']
                                 );
 
                                 $insert = $admin->insert_to_database('tbl_subsale',$fieldsCombined,$placeholders,$type,$values);
 
-                                if(!$insert['status']){
-                                    var_dump($response);
+                                if($insert['status']){
+                                    $productID = $response['response'][0]['UUID'];
+
+                                    $table = "tbl_inventory";
+                                    $fields = array(
+                                        "*",
+                                    );
+                                    $order_by = "fk_productID";
+                                    $order_set = "ASC";
+                                    $offset = 0;
+                                    $reference = array(
+                                        "statement" => "UUID = ?",
+                                        "type"=>"i",
+                                        "values"=>[
+                                            $inventoryID
+                                        ]
+                                    );
+                        
+                                    $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+                                    $stock = $response['response'][0]['currentStock'];
+                                    $newStock = (int)$stock - (int)$value['quantity'];
+                                    switch ((int)$data['saleDetails']['saleType']) {
+                                        case 1:
+                                            $update = $admin->updateSubProductStock($inventoryID,$newStock,1);
+
+                                            var_dump($update);
+                                            break;
+                                        case 2:
+                                            $update = $admin->updateSubProductStock($inventoryID,$newStock,2);
+
+                                            var_dump($update);
+                                            break;
+                                        case 3:
+                                            $update = $admin->updateSubProductStock($inventoryID,$newStock,3);
+
+                                            var_dump($update);
+                                            break;
+                                        default:
+                                            return;
+                                            break;
+                                    }
                                 }
                             }
                         }else{
@@ -245,6 +291,10 @@ if (isset($_SESSION['TOKEN'])) {
                     }
 
                     $transactions = $data['transaction'];
+
+                    if(!isset($transactions)){
+                        exit();
+                    }
 
                     foreach ($transactions as $value) {
                         $transactionID = $admin->unique_ID_generator();

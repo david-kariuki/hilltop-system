@@ -291,6 +291,7 @@ trait Systemclass
 
     /**/
     public function database_update($table,$data_combined,$ID,$otherRef = null){
+        
         $statement = null;
 
         if($otherRef == null){
@@ -311,6 +312,7 @@ trait Systemclass
                 return $result;
             }
 
+            
             $rc = $stmt->bind_param($value[1], $value[0],$ID);
             if (false === $rc) {
                 $result['responseCode'] = 102;

@@ -35,9 +35,6 @@ if($response['status']){
                 <button onclick="create_new_sale()">New Sale</button>
             </li>
         </ul>
-        <div class="element_search">
-            <input type="Search">
-        </div>
     </div>
     <div class="sale_customer_panel">
         <!-- <div class="customer_panel">
