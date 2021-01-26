@@ -337,8 +337,49 @@ trait Systemclass
     }
 
     /**/
-    public function database_delete(){
+    public function database_delete($table,$data_combined,$ID,$otherRef = null){
+        $statement = null;
 
+        if($otherRef == null){
+            $statement = 'WHERE UUID = ?';
+        }else{
+            $statement = $otherRef;
+        }
+        $result = array(
+            "status"=>false,
+            "responseCode"=>1,
+            "response"=>"Undefined response"
+        );
+        foreach($data_combined as $key => $value){
+            $stmt = $this->connectToDB->prepare("DELETE FROM $table $statement");
+            if (false === $stmt) {
+                $result['responseCode'] = 101;
+                $result['response'] = 'update prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
+                return $result;
+            }
+
+            
+            $rc = $stmt->bind_param($value[1], $value[0],$ID);
+            if (false === $rc) {
+                $result['responseCode'] = 102;
+                $result['response'] = 'update bind_param() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+            $rc = $stmt->execute();
+            if (false === $rc) {
+                $result['responseCode'] = 103;
+                $result['response'] = 'update execute() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+
+            $stmt->close(); 
+        }
+
+        $result["status"] = true;
+        $result["responseCode"] = 0;
+        $result["response"] = "Records Were updated Successfully";
+
+        return $result;
     }
 
     /**/

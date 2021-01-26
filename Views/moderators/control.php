@@ -97,68 +97,68 @@ if (isset($_SESSION['TOKEN'])) {
         case "updateUser";
             if(isset($data)){
 
-            // sanitize data
-            foreach ($data as $key => $value) {
-                if($key == "password" || $key == "confirmPassword"){
-                    continue;
+                // sanitize data
+                foreach ($data as $key => $value) {
+                    if($key == "password" || $key == "confirmPassword"){
+                        continue;
+                    }
+                    $data[$key] = htmlspecialchars($value, ENT_COMPAT);
                 }
-                $data[$key] = htmlspecialchars($value, ENT_COMPAT);
-            }
 
-            //validate email Address
-            if (!filter_var($data['emailAddress'], FILTER_VALIDATE_EMAIL)) {
-                $response = array(
-                    "status"=>"000200000",
-                    "response"=>"Invalid Email",
-                    "data"=>false
-                );
+                //validate email Address
+                if (!filter_var($data['emailAddress'], FILTER_VALIDATE_EMAIL)) {
+                    $response = array(
+                        "status"=>"000200000",
+                        "response"=>"Invalid Email",
+                        "data"=>false
+                    );
 
-                $response = json_encode($response);
+                    $response = json_encode($response);
 
-                echo $response;
+                    echo $response;
 
-                exit();
-            }
+                    exit();
+                }
 
-            // Encrypt Password
-            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                // Encrypt Password
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-            $fields = [
-                "firstName",
-                "lastName",
-                "otherName",
-                "gender",
-                "nationalId",
-                "Email",
-                "userName",
-                "Address",
-                "city",
-                "role",
-                "status",
-            ];
+                $fields = [
+                    "firstName",
+                    "lastName",
+                    "otherName",
+                    "gender",
+                    "nationalId",
+                    "Email",
+                    "userName",
+                    "Address",
+                    "city",
+                    "role",
+                    "status",
+                ];
 
-            $values = [
-                $data["firstName"],
-                $data["lastName"],
-                $data["otherName"],
-                $data["gender"],
-                $data["nationalID"],
-                $data["emailAddress"],
-                $data["userName"],
-                $data["Address"],
-                $data["city"],
-                $data["role"],
-                $data["status"],
-            ];
+                $values = [
+                    $data["firstName"],
+                    $data["lastName"],
+                    $data["otherName"],
+                    $data["gender"],
+                    $data["nationalID"],
+                    $data["emailAddress"],
+                    $data["userName"],
+                    $data["Address"],
+                    $data["city"],
+                    $data["role"],
+                    $data["status"],
+                ];
 
-            // Combine field and value arrays
-            $combined  = array_combine($fields, $values);
+                // Combine field and value arrays
+                $combined  = array_combine($fields, $values);
 
-            $admin = new User();
+                $admin = new User();
 
-            $var = $admin->updateUserByReference($combined, "tbl_users",$_REQUEST['id']);
+                $var = $admin->updateUserByReference($combined, "tbl_users",$_REQUEST['id']);
 
-            echo json_encode($var);
+                echo json_encode($var);
 
             } else {
 
@@ -175,7 +175,17 @@ if (isset($_SESSION['TOKEN'])) {
                 exit();
             }
             break;
+        case "deleteMultipleUsers":
+            $ids = $data;
 
+            foreach ($ids as $value) {
+                if($value == 101){
+                    continue;
+                }else{
+                    continue;
+                }
+            }
+            break;
         //all invalid actions
         default :
             $response = array(

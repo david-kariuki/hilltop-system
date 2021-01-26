@@ -89,3 +89,41 @@ function change_page(page, elem) {
     return true;
 
 }
+
+function check_all() {
+    event.preventDefault()
+    var elem = $(event.currentTarget);
+
+    var is_checkbox = elem.is(':checkbox');
+
+    if (!is_checkbox) {
+        return;
+    } else {
+        var is_checked = elem.is(':checked');
+
+        if (is_checked) {
+            //check all check boxes
+            var table = elem.parent().parent().parent().parent().parent();
+
+            if (table.is("table")) {
+                var checkboxes = table.find("tbody>tr>td>div>input");
+
+                $.each(checkboxes, function(key, value) {
+                    $(value).prop('checked', true);
+                });
+            }
+        } else {
+            //un check all check boxes
+            var table = elem.parent().parent().parent().parent().parent();
+
+            if (table.is("table")) {
+                var checkboxes = table.find("tbody>tr>td>div>input");
+
+                $.each(checkboxes, function(key, value) {
+                    $(value).prop('checked', false);
+                });
+            }
+        }
+
+    }
+}

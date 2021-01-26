@@ -310,7 +310,7 @@ class User
     * Function to delete user by reference
     */
     public function deleteUserByReference(){
-
+        
     }
 
     /**
