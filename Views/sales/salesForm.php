@@ -90,17 +90,17 @@ if(isset($_REQUEST['data'])){
                 <div class="section1">
                     <div class="input_area">
                         <h4>Customer</h4>
-                        <input type="text" value="<?php echo $sale['fk_customer'];  ?>">
+                        <input type="text" value="<?php echo $sale['fk_customer'];  ?>" disabled>
                     </div>
                     <div class="input_area">
                         <h4>Customer Tel</h4>
-                        <input type="text" value="<?php echo $sale['customerTel'];  ?>">
+                        <input type="text" value="<?php echo $sale['customerTel'];  ?>" disabled>
                     </div>
                 </div>
                 <div class="section2">
                     <div class="input_area">
                         <h4>Customer</h4>
-                        <textarea name="" id="" cols="30" rows="10"><?php echo $sale['deliverAddress'];  ?></textarea>
+                        <textarea disabled name="" id="" cols="30" rows="10"><?php echo $sale['deliverAddress'];  ?></textarea>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@ if(isset($_REQUEST['data'])){
             <div class="section1">
                     <div class="input_area">
                         <h4>Sale ID</h4>
-                        <input type="text" value="<?php echo $sale['sale_ID'];  ?>">
+                        <input name="saleID" type="text" value="<?php echo $sale['sale_ID'];  ?>">
                     </div>
                     <div class="input_area">
                         <h4>Date</h4>

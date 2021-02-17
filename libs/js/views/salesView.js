@@ -237,29 +237,36 @@ function get_transactions(id) {
         if (response.status) {
             transactions = response.response;
 
-            $.each(transactions, function(key, value) {
-                var method = value['transactionMethode'];
-                var amount = value['transactionValue'];
+            var saleID = $(".sales_panel input[name='saleID']").val();
 
-                stmt = `
-                                    <li>
-                                        <div class="card_section">
-                                            <div class="payment_method">
-                                                <p>Method :</p>
-                                                <p>` + method + `</p>
+            $.each(transactions, function(key, value) {
+
+
+                if (saleID == value.fk_saleReference) {
+                    var method = value['transactionMethode'];
+                    var amount = value['transactionValue'];
+
+                    stmt = `
+                                        <li>
+                                            <div class="card_section">
+                                                <div class="payment_method">
+                                                    <p>Method :</p>
+                                                    <p>` + method + `</p>
+                                                </div>
+                                                <div class="payment_method">
+                                                    <p>Amount :</p>
+                                                    <p class="transaction_amount">` + amount + `</p>
+                                                </div>
                                             </div>
-                                            <div class="payment_method">
-                                                <p>Amount :</p>
-                                                <p class="transaction_amount">` + amount + `</p>
+                                            <div class="transaction_closer">
+
                                             </div>
-                                        </div>
-                                        <div class="transaction_closer">
-                                            
-                                        </div>
-                                    </li>
-                                `;
-                statement = statement + stmt;
-                count++;
+                                        </li>
+                                    `;
+                    statement = statement + stmt;
+                    count++;
+                }
+
             });
             var elem = $(".transaction_sales ul");
             elem.html("");

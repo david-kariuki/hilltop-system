@@ -9,6 +9,8 @@ function renderMainContentView(viewName, loadingData = null, callBack = null) {
 
     function callback(msg) {
         $(".contentArea_panel").html(msg);
+        reset_sale();
+        clear_right_side_panel();
     }
 }
 
@@ -126,4 +128,9 @@ function check_all() {
         }
 
     }
+}
+
+function clear_right_side_panel() {
+    var elem = $(".transaction_sales ul");
+    elem.html(" ");
 }

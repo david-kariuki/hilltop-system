@@ -19,7 +19,16 @@ $reference = array(
 $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
 
 if($response['status']){
-    $user = $response['response'][0]['userName'];
+    $users = $response['response'];
+    $user = null;
+
+    foreach ($users as $key => $value) {
+        $this_user = $value['Email'];
+
+        if($this_user == $_SESSION['LOGGED_USER']){
+            $user = $value['userName'];
+        }
+    }
 }else{
     echo " Error retrieving data";
 }

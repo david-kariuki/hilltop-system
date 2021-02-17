@@ -15,13 +15,12 @@ $reference = array(
         $_SESSION['LOGGED_USER']
     ]
 );
+$transactions = null;
 
 $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
 
 if($response['status']){
     $transactions = $response['response'];
-
-    var_dump($transactions);
 }else{
 }
 
@@ -75,22 +74,30 @@ if($response['status']){
             </thead>
             <tbody>
                 <?php
-
-                for($i = 0; $i < 30; $i++){
+                $count = 1;
+                if($transactions == null){
                     ?>
-                <tr onclick="open_selected_transaction('transactionForm')">
-                    <td onclick="select_current_transaction();"><div class="check_element"><input type="checkbox"></div></td>
-                    <td><?php echo ($i + 1)?></td>
-                    <td>TR-0001</td>
-                    <td>Hill Top Limited</td>
-                    <td>SL-0001</td>
-                    <td>Sale</td>
-                    <td>20,000</td>
-                    <td>Wholesale</td>
+                    <p>No records</p>
+                    <?php
+                }else{
+                    foreach ($transactions as $key => $value) {
+                    ?>  
                     
-                </tr>
-                <?php
-                }?>
+                        <tr onclick="open_selected_transaction('transactionForm','<?php echo $value['UUID'] ?>')">
+                            <td onclick="select_current_transaction('<?php echo $value['UUID'] ?>');"><div class="check_element"><input type="checkbox"></div></td>
+                            <td><?php echo $count?></td>
+                            <td><?php echo $value['UUID'] ?></td>
+                            <td><?php echo $value['fk_customerReference'] ?></td>
+                            <td><?php echo $value['fk_saleReference'] ?></td>
+                            <td><?php echo $value['transactionMethode'] ?></td>
+                            <td><?php echo $value['transactionValue'] ?></td>
+                            <td><?php echo $value['category'] ?></td>
+                        </tr>
+                    <?php
+                    }
+                }
+                ?>
+
             </tbody>
         </table>
     </div>

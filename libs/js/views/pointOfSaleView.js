@@ -66,7 +66,6 @@ function sale_collector() {
     sale.balance = sale.saleDetails.saleAmount - sale.payedAmount;
 }
 
-
 function create_new_sale(data = false) {
     if (!data) {
         var prompter = confirm("Do you wish to discard changes to current sale?");
@@ -93,16 +92,13 @@ function remove_selected_item() {
 
 function make_payment() {
     var totalAmount, amountToPay, balance;
+    updatePayment();
 
     totalAmount = $("#amount").text();
-    amountToPay = $("#amount").text();
-
     $('[name="totalAmount"]').val(totalAmount);
-    $('[name="amountToPay"]').val(amountToPay);
 
-    paymentMethod = 0;
-    amountPayed = 0;
-    balance = 0;
+    update_balance();
+    $('[name="amountPayed"]').val(0);
 
     var element = $(".system_elemental");
     element.fadeIn();
@@ -151,7 +147,7 @@ function confirm_sale() {
             sendDataToHandler(action, view, data, callback, null);
 
             function callback(msg) {
-                console.log(msg);
+                alert("added successfully.")
                 renderMainContentView('PointOfSale');
                 reset_sale();
             }
@@ -216,7 +212,6 @@ function select_purchase_item(uuid, name, price) {
         return;
     }
 
-
     //get value
     var elem = $(event.currentTarget);
     var parent = elem.parent().parent().parent().parent().parent();
@@ -263,6 +258,7 @@ function select_purchase_item(uuid, name, price) {
 
     ancestor.append(tableElem);
     find_total_price();
+    update_balance();
 }
 
 function find_sub_total() {
@@ -323,7 +319,7 @@ function find_total_price() {
 function updatePayment() {
     var elem = $(event.currentTarget);
     var amountPayed = elem.val();
-    var totalAmount = $("[name='totalAmount']").val();
+    var totalAmount = $("[name='amountToPay']").val();
     var balance = totalAmount - amountPayed;
     $("[name=balance]").val(balance);
 }
@@ -362,6 +358,7 @@ function confirm_payment() {
     } else {
         alert("Payment canceled");
     }
+    update_balance();
 }
 
 function view_transactions(params) {
@@ -389,4 +386,28 @@ function remove_transaction() {
     var elem = $(event.currentTarget);
 
     elem.parent().remove();
+}
+
+function update_balance() {
+    var sale_amount = $('#amount').text();
+
+    sale.saleDetails.saleAmount = sale_amount;
+
+
+    var holder = $(".transaction_sales ul");
+
+    tally_elem = holder.find('.transaction_amount');
+    var payed = 0;
+
+    $.each(tally_elem, function(key, value) {
+        var amount = $(value).text();
+
+        payed = payed + parseInt(amount);
+    })
+
+    sale.balance = sale.saleDetails.saleAmount - payed;
+
+    $('.input_group input[name = "amountToPay"]').val(sale.balance);
+
+    $('input[name="balance"]').val(sale.balance);
 }

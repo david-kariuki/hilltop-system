@@ -1,3 +1,40 @@
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
+session_start();
+
+$loadingData = $_REQUEST['loadingData'];
+$mode = "update";
+$transaction = null;
+
+if(isset($_REQUEST['id'])){
+    $transaction_ID = $_REQUEST['id'];
+
+    $fields = array(
+        "*",
+    );
+    $table = 'tbl_transaction';
+    $order_by = "UUID";
+    $order_set = "ASC";
+    $offset = 0;
+    $reference = array(
+        "statement" => "UUID = ?",
+        "type"=>"i",
+        "values"=>[
+            $transaction_ID
+        ]
+    );
+
+    $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+    if($response['status']){
+        $transaction = $response['response'][0];
+        
+    }else{
+        return;
+    }
+}
+?>
 <div class="content_cover">
     <div class="view_title">
         <h3>Transactions</h3>
@@ -37,39 +74,32 @@
                 <div class="input_group">
                     <div class="input_element">
                         <p>Transaction ID</p>
-                        <input type="text">
+                        <input type="text" value="<?php echo $transaction['UUID'] ?>">
                     </div>
                     <div class="input_element">
                         <p>Customer</p>
-                        <input type="text">
+                        <input type="text" value="<?php echo $transaction['fk_customerReference'] ?>">
                     </div>
                     <div class="input_element">
-                        <p>Order ID</p>
-                        <input type="text">
+                        <p>Sale ID</p>
+                        <input type="text" value="<?php echo $transaction['fk_saleReference'] ?>">
                     </div>
                     <div class="input_element">
                         <p>Date Created</p>
-                        <input type="text">
+                        <input type="text" value="<?php echo $transaction['dateCreated'] ?>">
                     </div>
                 </div>
                 <h6>Payment Details</h6>
                 <div class="input_group">
                     <div class="input_element">
                         <p>Payment Method</p>
-                        <input type="text">
+                        <input type="text" value="<?php echo $transaction['transactionMethode'] ?>">
                     </div>
                     <div class="input_element">
                         <p>Amount Payed</p>
-                        <input type="text">
+                        <input type="text" value="<?php echo $transaction['transactionValue'] ?>">
                     </div>
-                    <div class="input_element">
-                        <p>Balance as Was</p>
-                        <input type="text">
-                    </div>
-                    <div class="input_element">
-                        <p>Date Created ID</p>
-                        <input type="text">
-                    </div>
+
                 </div>
             </div>
             <div class="right_panel">
@@ -91,22 +121,52 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
+                            <?php
+                            $fields = array(
+                                "*",
+                            );
+                            $table = 'tbl_transaction';
+                            $order_by = "UUID";
+                            $order_set = "ASC";
+                            $offset = 0;
+                            $reference = array(
+                                "statement" => "fk_saleReference = ?",
+                                "type"=>"i",
+                                "values"=>[
+                                    $transaction['fk_saleReference']
+                                ]
+                            );
+                        
+                            $response1 = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
 
-                                for($i = 0; $i < 30; $i++){
-                                    ?>
-                                <tr>
-                                    <td><?php echo ($i + 1)?></td>
-                                    <td>TR-0001</td>
-                                    <td>Hill Top Limited</td>
-                                    <td>SL-0001</td>
+                            if($response1['status'] && count($response1['response']) > 1){
+                                $count = 1;
+                                $other_transactions = $response1['response'];
+
+                                foreach ($other_transactions as $key => $value) {
                                     
-                                    <td>20,000</td>
-                                    
-                                    
-                                </tr>
+                                    if($value['UUID'] == $transaction_ID){
+                                        continue;
+                                    }else{
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $count?></td>
+                                            <td><?php echo $value['UUID'] ?></td>
+                                            <td><?php echo $value['fk_customerReference'] ?></td>
+                                            <td><?php echo $value['fk_saleReference'] ?></td>
+                                            <td><?php echo $value['transactionValue'] ?></td>
+                                        </tr>
+                                        <?php
+                                        $count++;
+                                    }
+                                }
+
+                            }else{
+                                ?>
+                                <p>No records found</p>
                                 <?php
-                                }?>
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -115,3 +175,8 @@
         </div>
     </div>
 </div>
+
+
+
+
+    

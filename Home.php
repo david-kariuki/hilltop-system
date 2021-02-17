@@ -233,7 +233,7 @@ if($response['status']){
                     </div>
                     <div class="input_group">
                         <p>Amount Payed</p>
-                        <input type="text" name="amountPayed" onkeyup="updatePayment()">
+                        <input type="text" name="amountPayed" onkeyup="updatePayment()" autocomplete="off">
                     </div>
                     <div class="input_group">
                         <p>Balance</p>
