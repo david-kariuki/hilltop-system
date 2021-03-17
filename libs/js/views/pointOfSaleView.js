@@ -365,7 +365,6 @@ function view_transactions(params) {
     open_right_panel();
 }
 
-
 function reset_sale() {
     sale.saleDetails.saleQuantity = null;
     sale.saleDetails.saleType = null;

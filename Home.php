@@ -150,6 +150,10 @@ if($response['status']){
                     <img src="res/images/icons/pos.png" alt="">
                     <p>P.O.S</p>
                 </div>
+                <div class="navigation_tab" onclick="renderMainContentView('Orders')">
+                    <img src="res/images/icons/transaction.png" alt="">
+                    <p>Orders</p>
+                </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Catalogue')">
                     <img src="res/images/icons/catalogue.png" alt="">
                     <p>Catalogue</p>

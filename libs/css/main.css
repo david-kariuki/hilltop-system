@@ -1486,6 +1486,53 @@ html .system_elemental > button:active {
   background-color: #ba1818;
 }
 
+.content_cover .catalogue_filters {
+  width: 98%;
+  margin: auto;
+  margin-bottom: 10px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+  -webkit-animation: all ease-in;
+          animation: all ease-in;
+}
+
+.content_cover .catalogue_filters ul {
+  -webkit-box-shadow: 0px 2px 4px grey;
+          box-shadow: 0px 2px 4px grey;
+  width: 100%;
+  height: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
+}
+
+.content_cover .catalogue_filters ul li {
+  margin-left: 10px;
+}
+
+.content_cover .catalogue_filters ul li select {
+  width: 180px;
+  height: 30px;
+  border-radius: 3px;
+  color: #4b4b4b;
+  border: solid 1px #636363;
+}
+
 .product_title {
   width: calc(100% - 5px);
   height: 46px;
@@ -2549,4 +2596,3 @@ html .system_elemental > button:active {
 .items_area_transactions .elemental_transaction .related_transaction_panel table {
   border: 1px solid black !important;
 }
-/*# sourceMappingURL=main.css.map */

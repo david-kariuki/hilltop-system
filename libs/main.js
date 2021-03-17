@@ -16,6 +16,7 @@ const sales_page = '/libs/js/views/salesView.js'
 const transaction_page = '/libs/js/views/transactionView.js'
 const pointOfSale_page = '/libs/js/views/pointOfSaleView.js'
 const Account_page = '/libs/js/views/accountView.js'
+const Orders_page = '/libs/js/views/orderView.js'
 
 
 require([
@@ -31,15 +32,18 @@ require([
     sales_page,
     transaction_page,
     pointOfSale_page,
-    Account_page
+    Account_page,
+    Orders_page
 
 ], function() {
     $(document).ready(function() {
         function callBack() {
-            renderMainContentView('Moderators');
+            // renderMainContentView('Orders');
+            renderMainContentView('Orders');
         }
 
         callBack();
+
 
     });
     $('[data-toggle="tooltip"]').tooltip();

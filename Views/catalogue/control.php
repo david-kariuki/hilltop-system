@@ -37,7 +37,7 @@ if (isset($_SESSION['TOKEN'])) {
         
             }
             break;
-        case "updateProduct";
+        case "updateProduct":
             if(isset($data)){
 
                 $product = $data['product'];
@@ -80,6 +80,103 @@ if (isset($_SESSION['TOKEN'])) {
                 echo json_encode($response);
             }else{
                 exit();
+            }
+            break;
+        case "filter_data":
+            $table = "tbl_products";
+            $fields = array(
+                "*",
+            );
+            $order_by = "productName";
+            $order_set = "ASC";
+            $offset = 0;
+            $reference = array(
+                "statement" => "visibility = ?",
+                "type"=>"s",
+                "values"=>[
+                    $data['visibility']
+                ]
+            );
+            
+            $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+            if($response['status']){
+                $response_return = array(
+                    "status"=>true,
+                    "response" => array()
+                );
+                $products = $response['response'];
+                $stmt = "";
+                $count = 1;
+
+                foreach ($products as $key => $product) {
+                    $temp_array = array(
+                        "count"=>$count,
+                        "productID" => $product['UUID'],
+                        "productName" => $product['productName'],
+                        "productType" => $product['productType'],
+                        "visibility" => $product['visibility']
+                    );
+
+                    array_push($response_return['response'],$temp_array);
+                    $count++;
+                }
+
+                echo json_encode($response_return);
+            }else{
+                echo json_encode($response);
+                return;
+            }
+            break;
+        case "remove_filter":
+            $table = "tbl_products";
+            $fields = array(
+                "*",
+            );
+            $order_by = "productName";
+            $order_set = "ASC";
+            $offset = 0;
+            $reference = array(
+                "statement" => "visibility = ?",
+                "type"=>"s",
+                "values"=>[
+                    $data['visibility']
+                ]
+            );
+            
+            $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,null);
+
+            if($response['status']){
+                $response_return = array(
+                    "status"=>true,
+                    "response" => array()
+                );
+                $products = $response['response'];
+                $stmt = "";
+                $count = 1;
+
+                foreach ($products as $key => $product) {
+                    $temp_array = array(
+                        "count"=>$count,
+                        "productID" => $product['UUID'],
+                        "productName" => $product['productName'],
+                        "productType" => $product['productType'],
+                        "visibility" => $product['visibility']
+                    );
+
+                    array_push($response_return['response'],$temp_array);
+                    $count++;
+                }
+
+                echo json_encode($response_return);
+            }else{
+                echo json_encode($response);
+                return;
+            }
+            break;
+        case "search_product":
+            if(isset($data)){
+                
             }
             break;
         default :

@@ -43,12 +43,16 @@ if($response['status']){
                 <button onclick="open_new_product('catalogueForm')">New Item</button>
             </li>
             <li>
-                <button>Delete</button>
+                <button onclick="add_products_to_store('catalogueForm')">Receive Products</button>
             </li>
+            <!-- <li>
+                <button>Delete</button>
+            </li> -->
             <li>
-            <select name="" id="">
-                    <option value="QuickReports">Quick Reports</option>
-                    <option value="List">List</option>
+                <select name="apply_filters" id="" onchange="toggle_catalogue_filter()">
+                    <option value="">Filter option</option>
+                    <option value="removeFilters">Remove Filters</option>
+                    <option value="applyFilters">Apply Filters</option>
                 </select>
             </li>
             <li>
@@ -59,8 +63,19 @@ if($response['status']){
             </li>
         </ul>
         <div class="element_search">
-            <input type="Search">
+            <input type="Search" onkeyup="search_product()">
         </div>
+    </div>
+    <div class="catalogue_filters">
+        <ul>
+            <li>
+                <select name="Visibility" onchange="run_filter(true)">
+                    <option value="">All (product Visibility)</option>
+                    <option value="Visible">Visible</option>
+                    <option value="Invisible">Invisible</option>
+                </select>
+            </li>
+        </ul>
     </div>
     <div class="items_area">
         <table>

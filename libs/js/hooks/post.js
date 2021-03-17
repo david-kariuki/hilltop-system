@@ -27,7 +27,6 @@ function mainViewHandler(action, handler, data, callback, id) {
  * @param {json string} data data to be processed 
  * @param {[function name]} callback function to be called on receiving response
  */
-
 function formViewHandler(action, View, form, data, loadingData, callback, id) {
     $.post("Views/" + View + "/" + form + ".php", {
             action: action,

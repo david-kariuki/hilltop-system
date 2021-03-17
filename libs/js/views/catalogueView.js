@@ -383,3 +383,92 @@ function next_page_catalogue() {
 
 
 }
+
+
+function toggle_catalogue_filter() {
+    var selector = $("select[name='apply_filters']");
+    var filter_set = selector.val();
+
+    var rendered_elem = $(".catalogue_filters");
+
+    if (filter_set == "applyFilters") {
+        rendered_elem.fadeIn("fast");
+    } else if (filter_set == "removeFilters") {
+        rendered_elem.fadeOut("fast");
+    } else {
+        rendered_elem.fadeOut("fast");
+    }
+}
+
+function run_filter(status) {
+    var action = "filter_data";
+    var view = 'catalogue';
+    var data = null;
+
+    if (status) {
+        var filter_visibility = $("select[name='Visibility']").val();
+
+        var data = {
+            visibility: filter_visibility
+        };
+
+        sendDataToHandler(action, view, data, callback, id = null)
+
+        function callback(msg) {
+            var data = JSON.parse(msg);
+            var stmt = "";
+
+            if (data.status) {
+                var products = data.response;
+
+                $.each(products, function(key, product) {
+
+                    var temp_stmt = `
+                            <tr onclick="open_selected_product('catalogueForm','` + products.productID + `')">
+                                <td onclick="select_current_product();"><div class="check_element"><input type="checkbox"></div></td>
+                                <td> ` + product.count + ` </td>
+                                <td> ` + product.productID + ` </td>
+                                <td> ` + product.productName + ` </td>
+                                <td> ` + product.productType + ` </td>
+                                <td> ` + product.visibility + ` </td>
+                            </tr>
+                    `
+
+                    stmt = stmt + temp_stmt;
+                });
+
+                var render_elem = $(".items_area table tbody").html(stmt);
+
+            } else {
+                alert("Error Filtering Items");
+            }
+        }
+    } else {
+        var action = "remove_filter";
+        var view = "catalogue";
+        var data = "all";
+
+        sendDataToHandler(action, view, data, callback, id = null);
+
+        function callback(msg) {
+            console.log(msg);
+        }
+    }
+}
+
+function search_product() {
+    var elem = $(event.currentTarget);
+    var product_name = elem.val();
+
+    if (!isEmpty(product_name)) {
+        var action = "search_product";
+        var view = 'catalogue';
+        var data = product_name;
+
+        sendDataToHandler(action, view, data, callback, id = null);
+
+        function callback(msg) {
+            console.log(msg);
+        }
+    }
+}

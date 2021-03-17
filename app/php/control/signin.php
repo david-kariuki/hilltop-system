@@ -14,11 +14,11 @@ if (isset($_POST['Submit'])) {
     
     if (empty($username) || empty($email) || empty($password)) {
       //some fields were empty
-      header("location:http://" . ROOT ."/index.php");
+      header("location:http://" . ROOT ."/index.php?logIn='Some Fields were empty'");
     } else {
 
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("location:http://" . ROOT ."/index.php");
+        header("location:http://" . ROOT ."/index.php?logIn='Invalid email Address'");
       } else {
         //test if the user exists
         //$user = new userAccount();
@@ -56,14 +56,14 @@ if (isset($_POST['Submit'])) {
                header("location:http://" . ROOT ."/Home.php");
                exit;
            } else {
-            header("location:http://" . ROOT ."/index.php");
+            header("location:http://" . ROOT ."/index.php?log_in='Incorrect credentials'");
            }
        }else{
-        header("location:http://" . ROOT ."/index.php");
+        header("location:http://" . ROOT ."/index.php?log_in='User Does Not exist'");
        }
       }
     }
   } else {
-    header("location:http://" . ROOT ."/index.php");
+    header("location:http://" . ROOT ."/index.php?log_in='Invalid request'");
     exit();
   }
