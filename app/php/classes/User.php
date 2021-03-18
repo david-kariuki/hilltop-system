@@ -158,21 +158,7 @@ class User
         return $response; // Return response array
     }
 
-    /**
-    * Function to read user by reference
-    *
-    */
-    public function readUserByReference(){
 
-    }
-
-    /**
-    * Function to read all users
-    *
-    */
-    public function readAllUsers(){
-
-    }
 
     /**
     * Function to update user by reference
@@ -446,14 +432,6 @@ class User
     */
     public function readAllUsers(){
 
-    }
-
-
-    /**
-    * Function to delete user by reference
-    */
-    public function deleteUserByReference(){
-        
     }
 
     /**
