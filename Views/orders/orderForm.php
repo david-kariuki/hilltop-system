@@ -1,6 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $data = $_REQUEST['loadingData'];
 $mode = null;
@@ -74,10 +76,13 @@ if($response['status']){
     if($response2['status']){
         // var_dump($response2);
         $sub_orders = $response2['response'];
+    }else{
+        // var_dump($response2);
     }
 }else{
-
+    // var_dump($response);
 }
+
 
 ?>
 <div class="content_cover">

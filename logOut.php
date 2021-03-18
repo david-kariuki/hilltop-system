@@ -1,6 +1,8 @@
 <?php
 require_once "app/php/Modal.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 session_destroy();
 header("location:http://" . ROOT ."/index.php");
 ?>

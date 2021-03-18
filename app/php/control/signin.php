@@ -49,7 +49,9 @@ if (isset($_POST['Submit'])) {
           //  && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99"))
 
            if( ($dbUserName == $username) && ($dbEmail == $email)  ){
-               session_start();
+               if (session_status() === PHP_SESSION_NONE) {
+                 session_start();
+                }
                $_SESSION['LOGGED_USER'] = $email;
 
                header("location:http://" . ROOT ."/Home.php");

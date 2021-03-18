@@ -40,10 +40,10 @@ if($response['status']){
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button>New Item</button>
+                <button onclick="open_selected_product('catalogueForm')">New Item</button>
             </li>
             <li>
-                <button onclick="add_products_to_store('catalogueForm')">Receive Products</button>
+                <button onclick="open_order_form()" >Receive Products</button> 
             </li>
             <!-- <li>
                 <button>Delete</button>
@@ -87,9 +87,6 @@ if($response['status']){
                     <th scope="col">Product Name</th>
                     <th scope="col">Quantity on hand</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Category</th>
-                    
                 </tr>
             </thead>
             <tbody>

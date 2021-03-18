@@ -32,13 +32,10 @@ if($response['status']){
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button>New Transaction</button>
+                <button onclick="renderMainContentView('PointOfSale')" >New Sale</button>
             </li>
             <li>
-                <button>Delete</button>
-            </li>
-            <li>
-                <button>Update</button>
+                <button onclick="renderMainContentView('Sales')">View Sales</button>
             </li>
             <li>
             <select name="" id="">
@@ -64,7 +61,6 @@ if($response['status']){
                     <th scope="col"> <div class="check_element"><input type="checkbox"></div> </th>
                     <th scope="col">#</th>
                     <th scope="col">Transaction ID</th>
-                    <th scope="col">Customer Ref</th>
                     <th scope="col">Sale Ref</th>
                     <th scope="col">Type</th>
                     <th scope="col">Transaction Value</th>
@@ -87,7 +83,6 @@ if($response['status']){
                             <td onclick="select_current_transaction('<?php echo $value['UUID'] ?>');"><div class="check_element"><input type="checkbox"></div></td>
                             <td><?php echo $count?></td>
                             <td><?php echo $value['UUID'] ?></td>
-                            <td><?php echo $value['fk_customerReference'] ?></td>
                             <td><?php echo $value['fk_saleReference'] ?></td>
                             <td><?php echo $value['transactionMethode'] ?></td>
                             <td><?php echo $value['transactionValue'] ?></td>
@@ -101,12 +96,12 @@ if($response['status']){
             </tbody>
         </table>
     </div>
-    <div class="pagination">
+    <!-- <div class="pagination">
         <ul>
             <li id="previous_pagination"> <p>Prev</p> </li>
             <li> <p>1</p> </li>
             <li> <p>2</p> </li>
             <li class="next_pagination"> <p>Next</p> </li>
         </ul>
-    </div>
+    </div> -->
 </div>

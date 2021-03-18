@@ -2,7 +2,9 @@
 include_once "../../app/php/Modal.php";
 //TODO:confirm security token
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $_SESSION['TOKEN'] = 123;
 
 if (isset($_SESSION['TOKEN'])) {
