@@ -1,0 +1,11 @@
+{
+    "name": "hilltop/backend",
+    "description": "this is the backend system that is used by hill top to run their day to day activities.",
+    "authors": [
+        {
+            "name": "Mwaurakimani",
+            "email": "kimmwaus@gmail.com"
+        }
+    ],
+    "require": {}
+}

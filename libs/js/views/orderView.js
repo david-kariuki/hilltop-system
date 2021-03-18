@@ -300,3 +300,8 @@ function clear_order() {
 
     order.subOrdersDetails = [];
 }
+
+function search_by_ID() {
+    var value = $(event.currentTarget).val();
+    console.log(value);
+}

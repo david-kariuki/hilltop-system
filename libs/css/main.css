@@ -2595,3 +2595,17 @@ html .system_elemental > button:active {
 .items_area_transactions .elemental_transaction .related_transaction_panel table {
   border: 1px solid black !important;
 }
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+  }
+  /* ... the rest of the rules ... */
+}
