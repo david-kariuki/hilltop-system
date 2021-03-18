@@ -5,6 +5,30 @@ session_start();
 if(!isset($_SESSION['LOGGED_USER'])){
     header("location:http://" . ROOT ." ");
 }
+$user;
+$table = "tbl_users";
+$fields = array(
+    "*",
+);
+$order_by = "firstName";
+$order_set = "ASC";
+$offset = 0;
+$reference = array(
+    "statement" => "Email = ?",
+    "type"=>"s",
+    "values"=>[
+        $_SESSION['LOGGED_USER']
+    ]
+);
+
+$response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+if($response['status']){
+    $user = $response['response'][0];
+}else{
+    echo "Error";
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,6 +149,10 @@ if(!isset($_SESSION['LOGGED_USER'])){
                     <img src="res/images/icons/pos.png" alt="">
                     <p>P.O.S</p>
                 </div>
+                <div class="navigation_tab" onclick="renderMainContentView('Orders')">
+                    <img src="res/images/icons/transaction.png" alt="">
+                    <p>Orders</p>
+                </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Catalogue')">
                     <img src="res/images/icons/catalogue.png" alt="">
                     <p>Catalogue</p>
@@ -134,7 +162,7 @@ if(!isset($_SESSION['LOGGED_USER'])){
                     <p>Customers</p>
                 </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Sales')">
-                    <img src="res/images/icons/orders.png" alt="">
+                    <img src="res/images/icons/sales_icon.png" alt="">
                     <p>Sales</p>
                 </div>
                 <div class="navigation_tab" onclick="renderMainContentView('Transactions')">
@@ -177,7 +205,12 @@ if(!isset($_SESSION['LOGGED_USER'])){
             
         </div>
         <div class="right_side_panel">
-            <p>hi</p>
+            <div class="btn_close"><p onclick="close_right_panel()">X</p></div>
+            <div class="transaction_sales">
+                <h5>Transactions</h5>
+                <ul>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="system_elemental">
@@ -188,27 +221,30 @@ if(!isset($_SESSION['LOGGED_USER'])){
                 <div class="transaction_body">
                     <div class="input_group">
                         <p>Total Amount</p>
-                        <input type="text">
+                        <input type="text" name="totalAmount" disabled>
                     </div>
                     <div class="input_group">
                         <p>Amount to Pay</p>
-                        <input type="text">
+                        <input type="text" name="amountToPay" disabled>
                     </div>
                     <div class="input_group">
                         <p>Payment Method </p>
-                        <input type="text">
+                        <select name="paymentMethod" id="">
+                            <option value="M-Pesa">M-Pesa</option>
+                            <option value="Cash">Cash</option>
+                        </select>
                     </div>
                     <div class="input_group">
                         <p>Amount Payed</p>
-                        <input type="text">
+                        <input type="text" name="amountPayed" onkeyup="updatePayment()" autocomplete="off">
                     </div>
                     <div class="input_group">
                         <p>Balance</p>
-                        <input type="text">
+                        <input type="text" name="balance">
                     </div>
                     
                 </div>
-                <button>Confirm</button>
+                <button onclick="confirm_payment()">Confirm</button>
             </div>
         </div>
         

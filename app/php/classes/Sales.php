@@ -35,7 +35,7 @@ class Sales
     *
     */
     public function addSale(){
-
+        
     }
 
     /**

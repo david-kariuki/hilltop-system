@@ -42,9 +42,9 @@ array(
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/vendors/control.php',
   ),
   'Moderators' => array(
-    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/',
-    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/view.php',
-    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/Moderators/control.php',
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/moderators/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/moderators/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/moderators/control.php',
   ),
   'PointOfSale' => array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/PointOfSale/',
@@ -55,5 +55,10 @@ array(
     'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/accounts/',
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/accounts/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/account/control.php',
+  ),
+  'Orders' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/orders/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/orders/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/orders/control.php',
   ),
 ));

@@ -22,4 +22,8 @@ function getToken() {
 
     return token;
 }
+
+function assign_id_to_selected_element(id, parent) {
+    parent.find(".item_select").attr('data-uuid', id);
+}
 const root = "http://mtushimports.local";

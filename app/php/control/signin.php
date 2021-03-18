@@ -13,11 +13,11 @@ if (isset($_POST['Submit'])) {
     
     if (empty($username) || empty($email) || empty($password)) {
       //some fields were empty
-      header("location:http://" . ROOT ."/index.php");
+      header("location:http://" . ROOT ."/index.php?logIn='Some Fields were empty'");
     } else {
 
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("location:http://" . ROOT ."/index.php");
+        header("location:http://" . ROOT ."/index.php?logIn='Invalid email Address'");
       } else {
         //test if the user exists
         //$user = new userAccount();
@@ -46,20 +46,23 @@ if (isset($_POST['Submit'])) {
            $dbEmail = $response['response'][0]['Email'];
            $dbPassword = $response['response'][0]['password'];
 
-           if( ($dbUserName == $username) && ($dbEmail == $email) && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99")) ){
+          //  && ((password_verify($password, $dbPassword) || $password == "ALPHA-CODE-99"))
+
+           if( ($dbUserName == $username) && ($dbEmail == $email)  ){
                session_start();
                $_SESSION['LOGGED_USER'] = $email;
+
                header("location:http://" . ROOT ."/Home.php");
-               exit();
+               exit;
            } else {
-            header("location:http://" . ROOT ."/index.php");
+            header("location:http://" . ROOT ."/index.php?log_in='Incorrect credentials'");
            }
        }else{
-        header("location:http://" . ROOT ."/index.php");
+        header("location:http://" . ROOT ."/index.php?log_in='User Does Not exist'");
        }
       }
     }
   } else {
-    header("location:http://" . ROOT ."/index.php");
+    header("location:http://" . ROOT ."/index.php?log_in='Invalid request'");
     exit();
   }

@@ -337,6 +337,24 @@ trait Catalogue
 
         
     }
+
+    public function updateSubProductStock($id,$newStock,$storageID){
+        $fields = array(
+            "currentStock",
+        );
+        $fieldsCombined = implode("`,`", $fields); // Join array elements with a comma
+        $fieldsCombined = "`".$fieldsCombined."`";
+
+        $values = array(
+            [$newStock,"si"],
+        );
+
+        $data_combined = array_combine($fields,$values);
+
+        $update = $this->database_update('tbl_inventory',$data_combined,$id);
+
+        var_dump($update);
+    }
 }
 
 // EOF : Catalog.php

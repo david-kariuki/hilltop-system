@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
 ?>
 <div class="content_cover">
     <div class="view_title">
@@ -12,7 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
                 <button onclick="open_selected_moderator('moderatorForm','createMode',null)">New Moderators</button>
             </li>
             <li>
-                <button>Delete</button>
+                <button onclick="delete_multiple_moderators()" >Delete</button>
             </li>
             <li>
                 <button>Update</button>
@@ -38,7 +38,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
         <table>
             <thead>
                 <tr>
-                    <th scope="col"> <div class="check_element"><input type="checkbox"></div> </th>
+                    <th scope="col"> <div class="check_element"><input type="checkbox" onchange="check_all()"></div> </th>
                     <th scope="col">#</th>
                     <th scope="col">Moderator ID</th>
                     <th scope="col">Moderator Name</th>
@@ -68,8 +68,8 @@ require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
 
                         foreach ($items as $row) {
                     ?>
-                            <tr onclick="open_selected_moderator('moderatorForm','updateMode',<?php echo $row['UUID'] ?>)">
-                                <td onclick="select_current_moderator();"><div class="check_element"><input type="checkbox"></div></td>
+                            <tr onclick="open_selected_moderator('moderatorForm','updateMode',<?php echo $row['UUID'] ?>)" data-uid=<?php echo $row['UUID'] ?>>
+                                <td onclick="select_current_moderator();"><div class="check_element"><input type="checkbox" onchange="check_item()"></div></td>
                                 <td><?php echo $count ?></td>
                                 <td><?php echo $row['UUID'] ?></td>
                                 <td><?php echo $row['firstName']." ".$row['lastName'] ?></td>

@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
 session_start();
 $_SESSION['TOKEN'] = 123;
 
@@ -52,7 +52,7 @@ if (isset($_SESSION['TOKEN'])) {
                             "data"=>false
                         );
 
-                        $url = ROOT_DOMAIN."/Views/accounts/accountForm.php";
+                        $url = ROOT."/Views/accounts/accountForm.php";
                         $data = $user;
 
                         $response = array(
@@ -167,7 +167,7 @@ if (isset($_SESSION['TOKEN'])) {
                             "data"=>false
                         );
 
-                        $url = ROOT_DOMAIN."/Views/accounts/accountForm.php";
+                        $url = ROOT."/Views/accounts/accountForm.php";
                         $data = json_encode($user);
 
                         $value = $admin->curl_loader_text_return($url,$data);

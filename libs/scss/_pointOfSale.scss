@@ -58,6 +58,17 @@
                         border: solid 2px $system-blue;
                     }
                 }
+                & select {
+                    width: 250px;
+                    height: 30px;
+                    border-radius: 5px;
+                    outline: none;
+                    border: grey 1px solid;
+                    color: rgb(87, 87, 87);
+                    &:focus {
+                        border: solid 2px $system-blue;
+                    }
+                }
             }
         }
     }
@@ -73,7 +84,7 @@
         padding-right: 2px;
         display: flex;
         flex-direction: column;
-        & table {
+        &>table {
             background-color: white;
             border: none;
             margin-bottom: 20px !important;
@@ -102,13 +113,27 @@
                             border: 1px solid $system-blue;
                         }
                     }
-                    & .item_lister_select {
+                    &>.item_lister_select {
                         display: none;
                         position: absolute;
                         width: 550px;
-                        height: 50px;
-                        background-color: green;
+                        background-color: white;
                         z-index: 20;
+                        border: 1px solid grey;
+                        box-shadow: 0px 2px 6px rgb(158, 158, 158);
+                        & .tbl_show {
+                            & thead {
+                                background-color: grey;
+                                & tr {
+                                    & th {
+                                        color: white;
+                                    }
+                                }
+                                & tr:hover {
+                                    background-color: grey;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -302,6 +327,10 @@
                     height: 36px;
                     width: 250px;
                 }
+                & select {
+                    height: 36px;
+                    width: 250px;
+                }
             }
         }
         & button {
@@ -316,5 +345,5 @@
             color: white;
         }
     }
-    & .close_button {}
+    // & .close_button {}
 }

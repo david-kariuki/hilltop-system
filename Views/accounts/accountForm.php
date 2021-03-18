@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
 session_start();
 
 $data = json_decode(file_get_contents('php://input'), true);
@@ -50,7 +50,7 @@ if(!isset($_SESSION['LOGGED_USER'])){
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button onclick="update_password(<?php echo `'`.$user['UUID'].`'` ?>)">Update password</button>
+                <button onclick="update_password(<?php echo $user['UUID'] ?>)">Update password</button>
             </li>
         </ul>
     </div>

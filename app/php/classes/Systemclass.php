@@ -135,7 +135,7 @@ trait Systemclass
             "response"=>"Undefined response"
         );
         // Prepare INSERT statement
-        $stmt = $this->connectToDB->prepare("SELECT $fields FROM $table ORDER BY $order_by ASC LIMIT 25 OFFSET $offset");
+        $stmt = $this->connectToDB->prepare("SELECT $fields FROM $table ORDER BY $order_by ASC LIMIT 2 OFFSET $offset");
         if (false == $stmt) {
             $result['responseCode'] = 101;
             $result['response'] = 'prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
@@ -158,6 +158,42 @@ trait Systemclass
     }
 
     /**/
+    public function database_read_all($table,$fields,$order_by){
+        // SELECT * FROM tbl_products ORDER BY productName ASC LIMIT 25 OFFSET $offset"
+
+        $result = array(
+            "status"=>false,
+            "responseCode"=>1,
+            "response"=>"Undefined response"
+        );
+        // Prepare INSERT statement
+        $stmt = $this->connectToDB->prepare("SELECT $fields FROM $table ORDER BY $order_by ASC");
+        if (false == $stmt) {
+            $result['responseCode'] = 101;
+            $result['response'] = 'prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
+            return $result;
+        }
+
+        $execute = $stmt->execute(); // Execute statement
+
+        if(false == $execute){
+            $result['responseCode'] = 103;
+            $result['response'] = 'execute() failed: ' . htmlspecialchars($stmt->error);
+            return $result;
+        }
+
+        $obj = $stmt->get_result();
+
+        $response = array();
+        
+        while ($data = $obj->fetch_assoc()){
+            array_push($response,$data);
+        }
+
+        return $response;
+    }
+
+    /**/
     public function database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference){
         //introduce variables
         $result = array(
@@ -173,6 +209,7 @@ trait Systemclass
 
         //check if fields is ana array
         if(is_array($fields)){
+
             /*
             if $fields is an array then the user intends to get specific fields
             as the response
@@ -194,9 +231,9 @@ trait Systemclass
             }
 
             if($order_by != null && $order_set != null){
-                $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT 25 OFFSET ".$offset;
+                $statement = $statement." ORDER BY ".$order_by." ".$order_set." LIMIT ".SPLITTER." OFFSET ".$offset;
             }else{
-                $statement = $statement." LIMIT 25 OFFSET ".$offset;
+                $statement = $statement." LIMIT ".SPLITTER." OFFSET ".$offset;
             }
 
             
@@ -248,12 +285,20 @@ trait Systemclass
             if $fields is not an array then the user intends to get all fields 
             as the response
             */
-            return $result;
+            return $fields;
         }
     }
 
     /**/
-    public function database_update($table,$data_combined,$ID){
+    public function database_update($table,$data_combined,$ID,$otherRef = null){
+        
+        $statement = null;
+
+        if($otherRef == null){
+            $statement = 'WHERE UUID = ?';
+        }else{
+            $statement = $otherRef;
+        }
         $result = array(
             "status"=>false,
             "responseCode"=>1,
@@ -267,6 +312,7 @@ trait Systemclass
                 return $result;
             }
 
+            
             $rc = $stmt->bind_param($value[1], $value[0],$ID);
             if (false === $rc) {
                 $result['responseCode'] = 102;
@@ -291,8 +337,49 @@ trait Systemclass
     }
 
     /**/
-    public function database_delete(){
+    public function database_delete($table,$data_combined,$ID,$otherRef = null){
+        $statement = null;
 
+        if($otherRef == null){
+            $statement = 'WHERE UUID = ?';
+        }else{
+            $statement = $otherRef;
+        }
+        $result = array(
+            "status"=>false,
+            "responseCode"=>1,
+            "response"=>"Undefined response"
+        );
+        foreach($data_combined as $key => $value){
+            $stmt = $this->connectToDB->prepare("DELETE FROM $table $statement");
+            if (false === $stmt) {
+                $result['responseCode'] = 101;
+                $result['response'] = 'update prepare_param() failed: ' . htmlspecialchars($this->connectToDB->error);
+                return $result;
+            }
+
+            
+            $rc = $stmt->bind_param($value[1], $value[0],$ID);
+            if (false === $rc) {
+                $result['responseCode'] = 102;
+                $result['response'] = 'update bind_param() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+            $rc = $stmt->execute();
+            if (false === $rc) {
+                $result['responseCode'] = 103;
+                $result['response'] = 'update execute() failed: ' . htmlspecialchars($stmt->error);
+                return $result;
+            }
+
+            $stmt->close(); 
+        }
+
+        $result["status"] = true;
+        $result["responseCode"] = 0;
+        $result["response"] = "Records Were updated Successfully";
+
+        return $result;
     }
 
     /**/

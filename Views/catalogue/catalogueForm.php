@@ -1,3 +1,64 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
+session_start();
+
+$mode = "new";
+$user = null;
+
+if(isset($_REQUEST['data'])){
+
+    
+    $mode = "Create";
+
+    $fields = array(
+        "*",
+    );
+    $table = 'tbl_products';
+    $order_by = "productName";
+    $order_set = "ASC";
+    $offset = 0;
+    $reference = array(
+        "statement" => "UUID = ?",
+        "type"=>"i",
+        "values"=>[
+            $_REQUEST['data']
+        ]
+    );
+
+    $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+    
+
+    if($response['status']){
+        $product = $response['response'][0];
+
+        $mode = "update";
+
+        $fields = array(
+            "*",
+        );
+        $table = 'tbl_inventory';
+        $order_by = "fk_storageID";
+        $order_set = "ASC";
+        $offset = 0;
+        $reference = array(
+            "statement" => "fk_productID = ?",
+            "type"=>"i",
+            "values"=>[
+                $_REQUEST['data']
+            ]
+        );
+    
+        $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+        
+
+        if($response['status']){
+            $retail = $response['response'][0];
+            $wholeSale = $response['response'][1];
+            $vehicle = $response['response'][2];
+        }
+    }
+}
+?>
 <section class="Content">
     <div class="content_cover">
         <div class="view_title">
@@ -48,11 +109,19 @@
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Current Stock</p>
-                                    <input type="text">
+                                    <input type="text" name="retail_currentStock"   <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$retail['currentStock']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                 <p>Low Stock</p>
-                                    <input type="text">
+                                    <input type="text" name="retail_lowStockThreshold"   <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$retail['lowStockThreashold']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                 <p>Suppliers</p>
@@ -76,7 +145,11 @@
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Regular Price</p>
-                                    <input type="text">
+                                    <input type="text" name="retail_regularPrice"  <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$retail['regularPrice']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                     <p>Sale Price</p>
@@ -108,7 +181,11 @@
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Current Stock</p>
-                                    <input type="text">
+                                    <input type="text" name="wholesale_currentStock"   <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$wholeSale['currentStock']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                 <p>Low Stock</p>
@@ -136,7 +213,11 @@
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Regular Price</p>
-                                    <input type="text">
+                                    <input type="text" name="wholesale_regularPrice"   <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$wholeSale['regularPrice']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                     <p>Sale Price</p>
@@ -169,7 +250,11 @@
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Current Stock</p>
-                                    <input type="text">
+                                    <input type="text" name="vehicle_currentStock"   <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$vehicle['currentStock']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                 <p>Low Stock</p>
@@ -197,7 +282,11 @@
                             <div class="input_group">
                                 <div class="input_element">
                                     <p>Regular Price</p>
-                                    <input type="text">
+                                    <input type="text" name="vehicle_regularPrice"   <?php
+                                                                                        if($mode == "update"){
+                                                                                            echo "value='".$vehicle['regularPrice']."'";
+                                                                                        }
+                                                                                    ?>>
                                 </div>
                                 <div class="input_element">
                                     <p>Sale Price</p>

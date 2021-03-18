@@ -431,6 +431,60 @@ class User
 
         }
     }
+
+    /**
+    * Function to read user by reference
+    *
+    */
+    public function readUserByReference(){
+
+    }
+
+    /**
+    * Function to read all users
+    *
+    */
+    public function readAllUsers(){
+
+    }
+
+
+    /**
+    * Function to delete user by reference
+    */
+    public function deleteUserByReference(){
+        
+    }
+
+    /**
+    * Sample get by ref
+    */
+
+
+    public function get_my_id($email){
+        $table = "tbl_users";
+        $fields = array(
+            "*",
+        );
+        $order_by = "firstName";
+        $order_set = "ASC";
+        $offset = 0;
+        $reference = array(
+            "statement" => "Email = ?",
+            "type"=>"s",
+            "values"=>[
+                $email
+            ]
+        );
+
+        $response = $this->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+        if($response['status']){
+            return $response;
+        }else{
+            return $response;
+        }
+    }
 }
 
 // EOF : User.php

@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/app/php/modal.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
 session_start();
 
 $loadingData = $_REQUEST['loadingData'];
@@ -50,7 +50,7 @@ if(isset($_REQUEST['id'])){
                 if($loadingData == "updateMode"){
                     ?>
                         <li>
-                            <button onclick="update_user(<?php echo `'`.$user['UUID'].`'` ?>)">Update</button>
+                            <button onclick="update_user(<?php echo $user['UUID'] ?>)">Update</button>
                         </li>
                     <?php
                 } else {

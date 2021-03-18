@@ -113,3 +113,29 @@ function update_user(id = null) {
         alert("All fields are required");
     }
 }
+
+function delete_multiple_moderators() {
+    var action = "deleteMultipleUsers";
+    var view = "moderators";
+    var data = gather_select_moderator();
+
+    sendDataToHandler(action, view, data, callback);
+
+    function callback(msg) {
+        console.log(msg);
+    }
+}
+
+function gather_select_moderator() {
+    var ids = [];
+    var elem = $(".items_area");
+
+    elem.find("tr>td>div>input").each(function() {
+        var parent = $(this).parent().parent().parent();
+        var id = parent.data("uid");
+
+        ids.push(id);
+    });
+
+    return ids;
+}
