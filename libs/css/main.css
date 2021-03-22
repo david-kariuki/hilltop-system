@@ -1670,6 +1670,7 @@ html .system_elemental > button:active {
 .product_form_element .sections_elem {
   width: 100%;
   overflow: hidden;
+  height: 480px;
 }
 
 .product_form_element .sections_elem .store_section {

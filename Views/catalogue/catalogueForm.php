@@ -102,7 +102,7 @@ if(isset($_REQUEST['data'])){
                                                                                         }
                                                                                     ?>>
         </div>
-        <div class="product_type">
+        <div class="product_type" style="display:none">
             <h4>Product Type</h4>
             <select name="productType" id="">
                 <option value="Simple">Simple Product</option>

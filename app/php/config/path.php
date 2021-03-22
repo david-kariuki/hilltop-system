@@ -61,4 +61,9 @@ array(
     'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/orders/view.php',
     'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/orders/control.php',
   ),
+  'Reports' => array(
+    'path' => $_SERVER['DOCUMENT_ROOT'] . '/Views/reports/',
+    'view' => $_SERVER['DOCUMENT_ROOT'] . '/Views/reports/view.php',
+    'control' => $_SERVER['DOCUMENT_ROOT'] . '/Views/reports/control.php',
+  ),
 ));

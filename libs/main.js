@@ -6,6 +6,7 @@ const live_page = '/libs/js/live.js';
 
 //hooks
 const postHook = '/libs/js/hooks/post.js';
+const html2pdf = 'libs/js/hooks/html2pdf.js'
 
 //views
 const login_page = '/libs/js/views/loginView.js'
@@ -17,6 +18,7 @@ const transaction_page = '/libs/js/views/transactionView.js'
 const pointOfSale_page = '/libs/js/views/pointOfSaleView.js'
 const Account_page = '/libs/js/views/accountView.js'
 const Orders_page = '/libs/js/views/orderView.js'
+
 
 
 require([
@@ -39,7 +41,7 @@ require([
     $(document).ready(function() {
         function callBack() {
             // renderMainContentView('Orders');
-            renderMainContentView('Orders');
+            renderMainContentView('Catalogue');
         }
 
         callBack();
