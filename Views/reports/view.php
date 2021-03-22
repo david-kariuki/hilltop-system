@@ -1,2 +1,2 @@
 <?php
-var_
+var_dump("hello world");

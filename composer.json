@@ -1,13 +1,10 @@
 {
-    "name": "hilltop/backend",
-    "description": "this is the backend system that is used by hill top to run their day to day activities.",
-    "authors": [
-        {
-            "name": "Mwaurakimani",
-            "email": "kimmwaus@gmail.com"
-        }
-    ],
-    "require": {
-        "spipu/html2pdf": "^5.2"
-    }
+    "name": "mwaura/hilltop",
+    "description": "this is hill top system",
+    "type": "project",
+    "authors": [{
+        "name": "MwauraKimani",
+        "email": "kimmwaus@gmail.com"
+    }],
+    "require": {}
 }
