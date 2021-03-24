@@ -37,9 +37,6 @@ if (isset($_POST['Submit'])) {
         );
     
         $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
-
-        var_dump($response);
-        exit();
         
 
        
