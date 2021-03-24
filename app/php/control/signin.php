@@ -37,6 +37,9 @@ if (isset($_POST['Submit'])) {
         );
     
         $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+        var_dump($response);
+        exit();
         
 
        
@@ -60,7 +63,7 @@ if (isset($_POST['Submit'])) {
             header("location:http://" . ROOT ."/index.php?log_in='Incorrect credentials'");
            }
        }else{
-        header("location:http://" . ROOT ."/index.php?log_in='User Does Not exist'");
+        // header("location:http://" . ROOT ."/index.php?log_in='User Does Not exist'");
        }
       }
     }
