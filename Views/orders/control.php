@@ -195,7 +195,7 @@ if (isset($_SESSION['TOKEN'])) {
                             $value["sub_total"],
                         );
         
-                        $insert = $admin->insert_to_database('tbl_suborders',$fieldsCombined,$placeholders,$type,$values);
+                        $insert = $admin->insert_to_database('tbl_subOrders',$fieldsCombined,$placeholders,$type,$values);
 
                         
                     }
