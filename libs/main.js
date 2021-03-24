@@ -23,7 +23,7 @@ const Orders_page = '/libs/js/views/orderView.js'
 
 require([
     main_page,
-    live_page,
+    // live_page,
     // hooks,
     postHook,
     // views
