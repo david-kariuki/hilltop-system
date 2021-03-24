@@ -99,12 +99,22 @@ trait Catalogue
                     if($retail['status'] && $wholesale['status'] && $vehicle['status']){
                         return $insert;
                     } else {
-                        $response = array(
-                            "status"=>false,
-                            "response"=>'Error adding product'
-                        );
+                        // $response = array(
+                        //     "status"=>false,
+                        //     "response"=>'Error adding product'
+                        // );
 
-                        return $response;
+                        // $response = array(
+                        //     $retail['response'],
+                        //     $wholesale['response'],
+                        //     $vehicle['response']
+                        // );
+
+                        // return $response;
+
+                        var_dump($retail);
+                        var_dump($wholesale);
+                        var_dump($vehicle);
                     }
                 }else{
                     return $insert;

@@ -89,6 +89,7 @@ if($response['status']){
                             <td><?php echo $value['category'] ?></td>
                         </tr>
                     <?php
+                    $count++;
                     }
                 }
                 ?>

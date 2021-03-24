@@ -186,9 +186,13 @@ function create_product() {
         sendDataToHandler(action, view, data, callback, null);
 
         function callback(msg) {
+            console.log(msg);
+            return;
             var data = JSON.parse(msg);
 
             alert(data.response);
+
+
         }
     } else {
         alert("Some required fields were not filled");
