@@ -1,7 +1,9 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $loadingData = $_REQUEST['loadingData'];
 $mode = "update";
@@ -41,7 +43,7 @@ if(isset($_REQUEST['id'])){
     </div>
     <div class="view_nav_bar">
         <ul>
-            <li>
+            <!-- <li>
                 <button>New Transaction</button>
             </li>
             <li>
@@ -49,7 +51,7 @@ if(isset($_REQUEST['id'])){
             </li>
             <li>
                 <button>Update</button>
-            </li>
+            </li> -->
             <li>
             <select name="" id="">
                     <option value="QuickReports">Quick Reports</option>
@@ -76,10 +78,10 @@ if(isset($_REQUEST['id'])){
                         <p>Transaction ID</p>
                         <input type="text" value="<?php echo $transaction['UUID'] ?>">
                     </div>
-                    <div class="input_element">
+                    <!-- <div class="input_element">
                         <p>Customer</p>
                         <input type="text" value="<?php echo $transaction['fk_customerReference'] ?>">
-                    </div>
+                    </div> -->
                     <div class="input_element">
                         <p>Sale ID</p>
                         <input type="text" value="<?php echo $transaction['fk_saleReference'] ?>">

@@ -1,6 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $data = $_REQUEST['loadingData'];
 $mode = null;
@@ -74,10 +76,13 @@ if($response['status']){
     if($response2['status']){
         // var_dump($response2);
         $sub_orders = $response2['response'];
+    }else{
+        // var_dump($response2);
     }
 }else{
-
+    // var_dump($response);
 }
+
 
 ?>
 <div class="content_cover">
@@ -213,7 +218,7 @@ if($response['status']){
                         </td>
                         <td style="width: 40px;"><input type="number" name="quantity" min=0 onchange="evaluate_sub_order()" value="<?php if($mode == "update"){echo $value['Quantity']; } else{ echo 0; }?>"></td>
                         <td class="sub_total"><input type="number" name="subtotal" min=0 onchange="evaluate_sub_order()" value="<?php if($mode == "update"){ echo $value['Price'] ;} else{ echo 0; }?>" ></td>
-                        <td class="sub_price"><?php if($mode == "update"){echo 2;}else{ echo 0;} ?></td>
+                    <td class="sub_price"><?php if($mode == "update"){ echo ($value['Price'])/$value['Quantity'];}else{ echo 0;} ?></td>
                         <td class="cancel_button" onclick="remove_selected_item()"><p>X</p></td>
                     </tr>
                     <?php
@@ -308,7 +313,7 @@ if($response['status']){
                     <?php
                     if($mode != "new"){
                         ?>
-                        <button class="btn_action_sale btn4" onclick="Confirm_Order()">Confirm Order</button>
+                        <!-- <button class="btn_action_sale btn4" onclick="Confirm_Order()">Confirm Order</button> -->
                         <?php
                     }
                     ?>

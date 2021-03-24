@@ -18,6 +18,22 @@ class User
     // Connection status value variable
     private $connectToDB;       // Create DatabaseConnection class object
 
+    public $UUID;
+    public $firstName;
+    public $lastName;
+    public $otherName;
+    public $gender;
+    public $nationalId;
+    public $Email;
+    public $userName;
+    public $password;
+    public $Address;
+    public $city;
+    public $role;
+    public $status;
+    public $dateCreated;
+    public $lastModified;
+
 
     /**
     * Class constructor
@@ -463,6 +479,25 @@ class User
             return $response;
         }
     }
+
+    public function assign_param($user){
+        $this->UUID = $user['UUID'];
+        $this->firstName = $user['firstName'];
+        $this->lastName = $user['lastName'];
+        $this->otherName = $user['otherName'];
+        $this->gender = $user['gender'];
+        $this->nationalId = $user['nationalId'];
+        $this->Email = $user['Email'];
+        $this->userName = $user['userName'];
+        $this->password = $user['password'];
+        $this->Address = $user['Address'];
+        $this->city = $user['city'];
+        $this->role = $user['role'];
+        $this->status = $user['status'];
+        $this->dateCreated = $user['dateCreated'];
+        $this->lastModified = $user['lastModified'];
+    }
+
 }
 
 // EOF : User.php

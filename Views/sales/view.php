@@ -37,7 +37,7 @@ if($response['status']){
     <div class="view_nav_bar">
         <ul>
             <li>
-                <button>New Sale</button>
+                <button onclick="create_new_sale(true)">New Sale</button>
             </li>
             <li>
             <select name="" id="">

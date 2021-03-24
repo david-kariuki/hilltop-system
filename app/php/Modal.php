@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 /**
  * This is file works as the application entry point.
@@ -55,4 +58,28 @@ $values = [
 
 $admin = new User();
 
+if(isset($_SESSION['LOGGED_USER'])){
+    $table = "tbl_users";
+    $fields = array(
+        "*",
+    );
+    $order_by = "userName";
+    $order_set = "DESC";
+    $offset = 0;
+    $reference = array(
+        "statement" => "Email = ?",
+        "type"=>"s",
+        "values"=>[
+            $_SESSION['LOGGED_USER']
+        ]
+    );
+
+    $user = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+    if($user['status']){
+        $user = $user['response'][0];
+
+        $admin->assign_param($user);
+    }
+}
 

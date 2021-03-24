@@ -1,0 +1,10 @@
+{
+    "name": "mwaura/hilltop",
+    "description": "this is hill top system",
+    "type": "project",
+    "authors": [{
+        "name": "MwauraKimani",
+        "email": "kimmwaus@gmail.com"
+    }],
+    "require": {}
+}

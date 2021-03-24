@@ -1,6 +1,8 @@
 <?php
 require_once "app/php/Modal.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if(!isset($_SESSION['LOGGED_USER'])){
     header("location:http://" . ROOT ." ");
@@ -115,18 +117,18 @@ if($response['status']){
                         <div class="details_panel">
                             <div class="val_elem">
                                 <p>User Name :</p>
-                                <p>Peter Kimani</p>
+                                <p><?php echo $admin->userName ?></p>
                             </div>
                             <div class="val_elem">
                                 <p>Email :</p>
-                                <p>Peter Kimani</p>
+                                <p><?php echo $admin->Email ?></p>
                             </div>
                         </div>
                     </div>
                     <div class="buttons_panel">
                         <ul>
                             <li> <button onclick="logUserOut()"> Log Out</button></li>
-                            <li> <button> Account</button></li>
+                            <li> <button onclick ="renderMainContentView('Account')"> Account</button></li>
                         </ul>
                     </div>
                 </div>
@@ -157,10 +159,10 @@ if($response['status']){
                     <img src="res/images/icons/catalogue.png" alt="">
                     <p>Catalogue</p>
                 </div>
-                <div class="navigation_tab" onclick="renderMainContentView('Customers')">
+                <!-- <div class="navigation_tab" onclick="renderMainContentView('Customers')">
                     <img src="res/images/icons/customers.png" alt="">
                     <p>Customers</p>
-                </div>
+                </div> -->
                 <div class="navigation_tab" onclick="renderMainContentView('Sales')">
                     <img src="res/images/icons/sales_icon.png" alt="">
                     <p>Sales</p>
@@ -195,10 +197,19 @@ if($response['status']){
                     <img src="res/images/icons/user.png" alt="">
                     <p>Account</p>
                 </div>
-                <div class="navigation_tab" onclick="renderMainContentView('Moderators')">
-                    <img src="res/images/icons/manager.png" alt="">
-                    <p>Moderators</p>
-                </div>
+                <?php
+                $account_type = $admin->role;
+
+                if($admin->role == "Moderator" || $admin->role == "Admin" || $admin->role == "superUser"){
+                    ?>
+                    <div class="navigation_tab" onclick="renderMainContentView('Moderators')">
+                        <img src="res/images/icons/manager.png" alt="">
+                        <p>Moderators</p>
+                    </div>
+                    <?php
+                }
+                ?>
+                
             </div>
         </div>
         <div class="contentArea_panel">

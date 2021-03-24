@@ -61,7 +61,7 @@ if($response['status']){
             </li>
         </ul>
         <div class="element_search">
-            <input type="Search">
+            <input type="Search" onkeyup="search_order()" placeholder="Search order by ID">
         </div>
     </div>
     <!-- <div class="view_nav_bar filter_area">

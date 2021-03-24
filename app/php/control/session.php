@@ -6,7 +6,9 @@
  
 require_once "../Modal.php";
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_SESSION['TOKEN'])) {
     $action = $_REQUEST['action'];

@@ -1,5 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
     require_once "app/php/Modal.php";
 ?>
 <!DOCTYPE html>

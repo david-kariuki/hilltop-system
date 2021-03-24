@@ -3,7 +3,9 @@ require_once "../Modal.php";
 /**
  * This file deals with routing request to the their handlers
  */
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if($_REQUEST['action'] ==  'renderMainView'){
     $view = $_REQUEST['data'];
