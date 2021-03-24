@@ -1,7 +1,9 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT']."/app/php/Modal.php";
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $user;
 $table = "tbl_products";

@@ -4,6 +4,7 @@ require_once "../Modal.php";
  * This file deals with the User Login Verification
 */
 // header('Location:'.ROOT.'/Home.php');
+
 if (isset($_POST['Submit'])) {
     $username = $_POST["userName"];
     $email = $_POST["email"];
