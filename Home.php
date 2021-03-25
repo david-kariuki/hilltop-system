@@ -1,6 +1,4 @@
 <?php
-echo "hello";
-exit();
 require_once "app/php/Modal.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
