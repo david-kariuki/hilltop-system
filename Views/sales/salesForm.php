@@ -56,8 +56,6 @@ if(isset($_REQUEST['data'])){
         $response2 = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
 
         if($response2['status']){
-            print_r($response2);
-            exit();
             $products = $response2['response'];
         }else{
             print_r($response2);
