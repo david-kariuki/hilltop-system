@@ -231,7 +231,7 @@ if (isset($_SESSION['TOKEN'])) {
                                     $value['sub_total']
                                 );
 
-                                $insert = $admin->insert_to_database('tbl_subsale',$fieldsCombined,$placeholders,$type,$values);
+                                $insert = $admin->insert_to_database('tbl_subSale',$fieldsCombined,$placeholders,$type,$values);
 
                                 if($insert['status']){
                                     $productID = $response['response'][0]['UUID'];

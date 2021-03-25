@@ -41,7 +41,7 @@ if(isset($_REQUEST['data'])){
         $fields = array(
             "*",
         );
-        $table = 'tbl_subsale';
+        $table = 'tbl_subSale';
         $order_by = "UUID";
         $order_set = "DESC";
         $offset = 0;
