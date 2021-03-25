@@ -31,6 +31,9 @@ if(isset($_REQUEST['data'])){
     $response = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
 
     if($response['status']){
+
+        print_r($response);
+        exit();
         $update = true;
         $sale = $response['response'][0];
 
@@ -59,6 +62,7 @@ if(isset($_REQUEST['data'])){
             exit();
         }
     }else{
+        print_r($response);
         exit();
     }
 }
