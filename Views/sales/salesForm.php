@@ -57,6 +57,28 @@ if(isset($_REQUEST['data'])){
 
         if($response2['status']){
             $products = $response2['response'];
+
+            $user_base = $products[0]['fk_createdBy'];
+
+            $table = "tbl_users";
+            $fields = array(
+                "*",
+            );
+            $order_by = "firstName";
+            $order_set = "ASC";
+            $offset = 0;
+            $reference = array(
+                "statement" => "UUID = ?",
+                "type"=>"s",
+                "values"=>[
+                    $user_base
+                ]
+            );
+            
+            $response2 = $admin->database_read_by_ref($table,$fields,$order_by,$order_set,$offset,$reference);
+
+            $user_name = $response2['response'][0]['userName'];
+
         }else{
             print_r($response2);
             exit();
@@ -130,7 +152,7 @@ if(isset($_REQUEST['data'])){
                 <div class="section2">
                 <div class="input_area">
                         <h4>Sale Representative</h4>
-                        <input type="text" value="<?php echo $sale['fk_saleRep'];  ?>">
+                        <input type="text" value="<?php echo $user_name;  ?>">
                     </div>
                     <div class="input_area">
                         <h4>Sale Type</h4>

@@ -195,7 +195,7 @@ function select_order_item(uuid, name, price) {
                         </div>
                     </td>
                     <td style="width: 40px;"><input type="number" name="quantity" value="0" onchange="find_sub_total()"></td>
-                    <td class="sub_price">0</td>
+                    <td class="sub_price"><input type="number" name="subtotal" min="0" onchange="evaluate_sub_order()" value="0"></td>
                     <td class="sub_total">0</td>
                     <td class="cancel_button" onclick="remove_selected_item()"><p>X</p></td>
                 </tr>
@@ -249,11 +249,11 @@ function evaluate_sub_order() {
 
     var quantity = parent.find("[name='quantity'").val();
     var sub_total = parent.find("[name='subtotal'").val();
-    var sub_price = parent.find(".sub_price");
+    var sub_price = parent.find("[name='subtotal']");
 
     var price = (parseFloat(sub_total) / parseFloat(quantity)).toFixed(2);
 
-    sub_price.text(price);
+    sub_price.val(price);
 
     calculate_all_sub_orders()
 }

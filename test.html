@@ -1,15 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once "../../app/php/Modal.php";
+//TODO:confirm security token
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$_SESSION['TOKEN'] = 123;
 
-<body>
-    <p>Hello world</p>
-</body>
+if (isset($_SESSION['TOKEN'])) {
 
-</html>
+    //retrieve the data required
+    $data = $_REQUEST['data'];
+    $action = $_REQUEST['action'];
+
+    //confirm action intended
+    switch($action){
+        case "loadDateReports":
+            print_r($data);
+            $report_head = $data['report_head'];
+            $date_from = $data['date_filter']['date_from'];
+            $date_to = $data['date_filter']['date_to'];
+            $period_picker = $data['date_filter']['period_picker'];
+
+
+            break;
+        case "loadPeriodReports":
+            $report_head = $data['report_head'];
+            $date = $data['date_filter']['date_from'];
+
+            switch($report_head){
+                case "Sales":
+                    $data_return = array();
+                    $Report = new Reports();
+                    $all_sales = $Report->get_by_period($report_head,$date);
+
+                    array_push($data_return,$all_sales);
+                    $sale_count = $Report->get_sale_count($report_head,$date);
+
+                    array_push($data_return,$sale_count);
+
+
+                    break;
+                case "Revenue":
+                    var_dump("Revenue");
+                    break;
+                case "Orders":
+                    var_dump("Orders");
+                    break;
+                case "Products":
+                    var_dump("Products");
+                    break;
+                default:
+                    $response = array(
+                        "status"=>"010000000",
+                        "response"=>"Invalid Action reports",
+                        "data"=>false
+                    );
+        
+                    $response = json_encode($response);
+        
+                    echo $response;
+        
+                    exit();
+            }
+
+            break;
+        default :
+            $response = array(
+                "status"=>"010000000",
+                "response"=>"Invalid Action reports",
+                "data"=>false
+            );
+
+            $response = json_encode($response);
+
+            echo $response;
+
+            exit();
+    }
+} else{
+    echo "Not set";
+}

@@ -1,4 +1,4 @@
-function renderMainContentView(viewName, loadingData = null, callBack = null) {
+function renderMainContentView(viewName, loadingData = null, callback1) {
     var action = "renderMainView";
     var handler = "router";
     var token = 1;
@@ -11,6 +11,11 @@ function renderMainContentView(viewName, loadingData = null, callBack = null) {
         $(".contentArea_panel").html(msg);
         reset_sale();
         clear_right_side_panel();
+        if (callback1 != undefined) {
+            callback1();
+        } else {
+
+        }
     }
 }
 

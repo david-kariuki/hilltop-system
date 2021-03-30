@@ -63,6 +63,12 @@ if($response['status']){
 
     <link rel="stylesheet" href="libs/css/main.css">
     <!-- end site libs -->
+    <!-- google charts Libs -->
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    
+
+    <!-- end google charts Libs -->
 </head>
 
 <body>
@@ -178,11 +184,12 @@ if($response['status']){
                     <img src="res/images/icons/vendor.png" alt="">
                     <p>Vendors</p>
                 </div>
-                <div class="navigation_tab" onclick="renderMainContentView('Notifications')">
+                <div class="navigation_tab" onclick="renderMainContentView('Notifications')"> 
                     <img src="res/images/icons/notifications.png" alt="">
                     <p>Notifications</p>
                 </div>
-                <div class="navigation_tab" onclick="renderMainContentView('Reports')">
+                <div class="navigation_tab" onclick=" ">
+                <!-- renderMainContentView('Reports',null,report_page_loader) -->
                     <img src="res/images/icons/report.png" alt="">
                     <p>Reports</p>
                 </div>
@@ -213,7 +220,7 @@ if($response['status']){
             </div>
         </div>
         <div class="contentArea_panel">
-            
+        
         </div>
         <div class="right_side_panel">
             <div class="btn_close"><p onclick="close_right_panel()">X</p></div>

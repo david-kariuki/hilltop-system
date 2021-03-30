@@ -2610,3 +2610,387 @@ html .system_elemental > button:active {
   }
   /* ... the rest of the rules ... */
 }
+
+.reports_area {
+  width: 100%;
+  overflow: auto;
+}
+
+.reports_area .search_bar {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.reports_area .search_bar .input_search {
+  width: 500px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+}
+
+.reports_area .search_bar .input_search input {
+  width: 90%;
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.reports_area .search_bar .left_icon {
+  width: 60px;
+  height: 100%;
+  background-color: grey;
+}
+
+.reports_area .report_button_panel {
+  width: 100%;
+  height: 120px;
+  background-color: white;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 0 6px 2px lightgray;
+          box-shadow: 0 0 6px 2px lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.reports_area .report_button_panel .button_display {
+  width: 250px;
+  height: 90px;
+  border-radius: 15px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.reports_area .report_button_panel .button_display .icon_section {
+  width: 55px;
+  height: 55px;
+  margin-top: -10px;
+}
+
+.reports_area .report_button_panel .button_display .icon_section image {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.reports_area .report_button_panel .button_display .details_section {
+  width: calc(100% - 60px);
+  height: 80px;
+}
+
+.reports_area .report_button_panel .button_display .details_section p {
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+  font-size: 110%;
+  font-weight: 500;
+  color: #666666;
+}
+
+.reports_area .report_button_panel .button_display .details_section p:first-child {
+  width: 100%;
+  padding-bottom: 5px;
+  font-weight: 700;
+  font-size: 120%;
+  padding-left: 15px;
+  color: #494949;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(1) {
+  cursor: pointer;
+  background-color: #eba6a6;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(1):hover {
+  background-color: #d85353;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(2) {
+  cursor: pointer;
+  background-color: #85bbed;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(2):hover {
+  background-color: #2c89e0;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(3) {
+  cursor: pointer;
+  background-color: #a895ee;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(3):hover {
+  background-color: #603de0;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(4) {
+  cursor: pointer;
+  background-color: #86f37c;
+}
+
+.reports_area .report_button_panel .button_display:nth-child(4):hover {
+  background-color: #30ea1f;
+}
+
+.reports_area .chart_panel {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 0 6px 2px lightgray;
+          box-shadow: 0 0 6px 2px lightgray;
+}
+
+.reports_area .chart_panel .title_bar {
+  width: 100%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.reports_area .chart_panel .title_bar h4 {
+  width: 35%;
+  height: 100%;
+  line-height: 50px;
+  margin: 0;
+  padding: 0;
+  padding-left: 100px;
+  font-weight: 700;
+  font-size: 200%;
+}
+
+.reports_area .chart_panel .title_bar .export_bar {
+  width: 15%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box {
+  width: 70px;
+  height: 45px;
+  border-radius: 3px;
+  padding-top: 4px;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box img {
+  height: 80%;
+  display: block;
+  margin: auto;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box:hover {
+  top: -2px;
+  -webkit-box-shadow: 0px 1px 1px 1px #949494;
+          box-shadow: 0px 1px 1px 1px #949494;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box:active {
+  top: 0px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box:nth-child(1) {
+  background-color: #ff9900;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box:nth-child(2) {
+  background-color: #e13b3b;
+}
+
+.reports_area .chart_panel .title_bar .export_bar .elemental_box:nth-child(3) {
+  background-color: #15bf23;
+}
+
+.reports_area .chart_panel .title_bar .calender_picker {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.reports_area .chart_panel .title_bar .calender_picker .date_picker {
+  width: 450px;
+  height: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid grey;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+}
+
+.reports_area .chart_panel .title_bar .calender_picker .date_picker img {
+  width: 20px;
+}
+
+.reports_area .chart_panel .title_bar .calender_picker .date_picker input {
+  border: none;
+  background-color: #e6e6e6;
+  outline: #a2a2a2;
+}
+
+.reports_area .chart_panel .title_bar .calender_picker .period_picker {
+  width: 160px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  background-color: #e6e6e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.reports_area .chart_panel .title_bar .calender_picker .period_picker select {
+  width: 150px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #e6e6e6;
+}
+
+.reports_area .chart_panel .chart_area {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.reports_area .chart_panel .chart_area .chart_view {
+  width: 70%;
+  height: 100%;
+  padding-left: 20px;
+}
+
+.reports_area .chart_panel .chart_area .chart_control {
+  width: 30%;
+  height: 100%;
+  border: 1px solid #b8b8b8;
+}
+
+.reports_area .report_details_panel {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 0 6px 2px lightgray;
+          box-shadow: 0 0 6px 2px lightgray;
+}
+
+.reports_area .report_details_panel .report_table_view {
+  width: 65%;
+  height: 500px;
+  overflow: auto;
+}
+
+.reports_area .report_details_panel .report_table_view table {
+  position: relative;
+}
+
+.reports_area .report_details_panel .report_table_view table th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: #2d2d2d;
+}
+
+.reports_area .report_details_panel .report_stat_view {
+  width: 35%;
+  height: 300px;
+  padding: 0px 5px;
+}
+
+.reports_area .report_details_panel .report_stat_view h4 {
+  width: 100%;
+  height: 50px;
+  padding-left: 20px;
+  line-height: 50px;
+  font-size: 170%;
+  font-weight: 500;
+  color: grey;
+  text-decoration: underline;
+}
+
+.reports_area .report_details_panel .report_stat_view #piechart {
+  width: 100%;
+  height: 430px;
+  background-color: pink;
+}

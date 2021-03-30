@@ -6,8 +6,7 @@ const live_page = '/libs/js/live.js';
 
 //hooks
 const postHook = '/libs/js/hooks/post.js';
-const html2pdf = 'libs/js/hooks/html2pdf.js'
-
+const html2pdf = 'libs/js/hooks/html2pdf.js';
 //views
 const login_page = '/libs/js/views/loginView.js'
 const home_page = '/libs/js/views/homeView.js'
@@ -18,12 +17,13 @@ const transaction_page = '/libs/js/views/transactionView.js'
 const pointOfSale_page = '/libs/js/views/pointOfSaleView.js'
 const Account_page = '/libs/js/views/accountView.js'
 const Orders_page = '/libs/js/views/orderView.js'
+const reports_page = '/libs/js/views/reportsViews.js'
 
 
 
 require([
     main_page,
-    // live_page,
+    live_page,
     // hooks,
     postHook,
     // views
@@ -35,13 +35,12 @@ require([
     transaction_page,
     pointOfSale_page,
     Account_page,
-    Orders_page
-
+    Orders_page,
+    reports_page
 ], function() {
     $(document).ready(function() {
         function callBack() {
-            // renderMainContentView('Orders');
-            renderMainContentView('Catalogue');
+            renderMainContentView('PointOfSale');
         }
 
         callBack();
