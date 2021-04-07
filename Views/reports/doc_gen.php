@@ -41,9 +41,6 @@ switch ($format) {
         die();
         break;
     case 'PDF':
-        
-        try {
-            
             ob_start();
             include dirname(__FILE__).'/reports_template.php';
             $content = ob_get_clean();
@@ -53,13 +50,6 @@ switch ($format) {
             $html2pdf->setDefaultFont('Arial');
             $html2pdf->writeHTML($content);
             $html2pdf->output('example00.pdf');
-            
-        } catch (Html2PdfException $e) {
-            $html2pdf->clean();
-
-            $formatter = new ExceptionFormatter($e);
-            echo $formatter->getHtmlMessage();
-        }
         
         break;
     case 'View':
