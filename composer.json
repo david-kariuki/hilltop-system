@@ -6,5 +6,7 @@
         "name": "MwauraKimani",
         "email": "kimmwaus@gmail.com"
     }],
-    "require": {}
+    "require": {
+        "spipu/html2pdf": "^5.2"
+    }
 }

@@ -6,7 +6,6 @@ const live_page = '/libs/js/live.js';
 
 //hooks
 const postHook = '/libs/js/hooks/post.js';
-const html2pdf = 'libs/js/hooks/html2pdf.js';
 //views
 const login_page = '/libs/js/views/loginView.js'
 const home_page = '/libs/js/views/homeView.js'
@@ -40,7 +39,7 @@ require([
 ], function() {
     $(document).ready(function() {
         function callBack() {
-            renderMainContentView('PointOfSale');
+            renderMainContentView('Reports', null, report_page_loader);
         }
 
         callBack();

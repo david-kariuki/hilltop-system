@@ -14,6 +14,8 @@ var reports_status = {
 
 var bar_chart_data = [];
 
+var data_return = null;
+
 function report_page_loader() {
     set_defaults();
     apply_period_sort();
@@ -63,7 +65,7 @@ function period_collector() {
             start_date: new Date().toDateInputValue(),
             end_date: new Date().toDateInputValue()
         }
-        var report_head = "Revenue";
+        var report_head = reports_status.data.report_head;
 
         //assign default values
         reports_status.action = action;
@@ -153,6 +155,7 @@ function apply_period_sort(params) {
 
     function callback(msg) {
         var data = JSON.parse(msg);
+        data_return = msg;
 
         if (data.status === true) {
             render_report(data);
@@ -165,6 +168,7 @@ function apply_period_sort(params) {
 }
 
 function set_report_view(data) {
+    view_changer(data);
     var head = data
 
     reports_status.data.report_head = data;
@@ -198,24 +202,7 @@ function render_report(data) {
         case "Sales":
             var data = data.Sales;
             var bar_data = new Array(
-                ['Day', 'Quantity']
-            );
-            var data = data.bar_chart_data;
-
-            $.each(data, function(key, value) {
-                var day = value.day;
-                var quantity = value.count;
-
-                bar_data.push([day, parseInt(quantity)]);
-            });
-
-            bar_chart_data = bar_data;
-            break;
-        case "Orders":
-            var data = data.Orders;
-            var bar_data = new Array();
-            var bar_data = new Array(
-                ['Day', 'Quantity']
+                ['Day', 'Amount']
             );
             var data = data.bar_chart_data;
 
@@ -229,26 +216,24 @@ function render_report(data) {
             bar_chart_data = bar_data;
             break;
         case "Revenue":
-            var data = data.Revenue;
-            var bar_data = new Array();
+            var data1 = data.Revenue.bar_chart_data;
             var bar_data = new Array(
                 ['Day', 'Quantity']
             );
-            var data = data.bar_chart_data;
 
-            $.each(data, function(key, value) {
+
+            $.each(data1, function(key, value) {
+
                 var day = value.day;
                 var quantity = value.count;
+                var quantity = Number(quantity.replace(/[^0-9.-]+/g, ""));
+                var sub_data = [day, quantity];
 
                 bar_data.push([day, parseInt(quantity)]);
             });
 
             bar_chart_data = bar_data;
             break;
-        case "Products":
-            return;
-            break;
-
         default:
             break;
     }
@@ -256,6 +241,7 @@ function render_report(data) {
     //render table
     var table_html = "";
     var table_elem = $(".items_area table");
+
 
     switch (response.name) {
         case "Sales":
@@ -270,6 +256,11 @@ function render_report(data) {
                 '</thead>';
             table_html = table_html + table_head + '<tbody>';
             var table_data = response.Sales.Sales_table_data;
+
+            if (table_data == "No Data found") {
+                alert(table_data);
+            }
+
             var count = 1;
 
             $.each(table_data, function(key, value) {
@@ -306,6 +297,11 @@ function render_report(data) {
                 '</thead>';
             table_html = table_html + table_head + '<tbody>';
             var table_data = response.Revenue.Revenue_table_data;
+
+            if (table_data == "No Data found") {
+                alert(table_data);
+                table_html = table_html + "<p>No Data found!<p/>";
+            }
             var count = 1;
 
             $.each(table_data, function(key, value) {
@@ -340,6 +336,11 @@ function render_report(data) {
                 '<th scope="col">Amount</th>' +
                 '</thead>';
             var table_data = response.Orders.Orders_table_data;
+
+            if (table_data == "No Data found") {
+                alert(table_data);
+                table_html.html("<p>No Data found!<p/>");
+            }
             var count = 1;
             table_html = table_html + table_head + '<tbody>';
 
@@ -401,13 +402,135 @@ function draw_bar_chart() {
 function reset_date_range() {
     var todayDate = new Date().toISOString().slice(0, 10);
 
-
-    console.log(todayDate);
-
     var date_from_elem = $("[name='dateFrom']");
     date_from_elem.val(todayDate);
 
     var date_to_elem = $("[name='dateTo']");
     date_to_elem.val(todayDate);
 
+}
+
+function view_changer(data = null) {
+    if (data = null) {
+        console.log("Invalid Entry");
+    } else {
+        reports_status.data.report_head = data;
+    }
+}
+
+
+
+
+// elemental_handlers
+function export_content(doc_type) {
+    var passdata = null;
+
+    stats = JSON.parse(data_return);
+
+    // report_title = stats.name;
+    // console.log(report_tityle);
+    var format = null;
+
+    report_title = stats.name;
+    data = null;
+
+    switch (report_title) {
+        case "Sales":
+            data = stats.Sales.Sales_table_data;
+            break;
+        case "Revenue":
+            data = stats.Revenue.Revenue_table_data;
+            break;
+        default:
+            break;
+
+
+    }
+
+    passdata = export_formatter(data);
+    passdata = passdata;
+
+    switch (doc_type) {
+        case "csv":
+            format = "CSV";
+            break;
+        case "pdf":
+            format = "PDF";
+            break;
+        case "view":
+            format = "View";
+            break;
+
+        default:
+            return;
+            break;
+    }
+
+    var action = "export_report";
+    var view = "reports"
+    var period = $("[name = 'period_picker'").val();
+    var range = [];
+    var from = $("[name = 'dateFrom']").val();
+    var to = $("[name = 'dateTo']").val();
+
+    var data = {
+        "sub_data": passdata,
+        "Title": "Sales Report",
+        "format": format,
+        "range": {
+            from: from,
+            to: to
+        },
+        "Period": period,
+    };
+
+    var id = null;
+
+    sendDataToHandler(action, view, data, callback, id);
+
+    function callback(msg) {
+        window.open(root + "/Views/reports/doc_gen.php?data=" + msg, '_blank');
+    }
+}
+
+//helper files
+function export_formatter(data) {
+    var return_array = [];
+
+    var type = typeof data;
+
+
+    if (data != null && data != "No data found") {
+        $.each(data, function(key, value) {
+            var sale_ID = value.sale_ID;
+            var Amount = value.amount;
+            var Quantity = value.saleQuantity;
+            var sale_type = value.saleType;
+
+            if (sale_type == '1') {
+                var sale_type = "Retail";
+            } else if (sale_type == '2') {
+                var sale_type = "Wholesale";
+            } else if (sale_type == '3') {
+                var sale_type = "Vehicle";
+            } else {
+                alert("invalid entry");
+                return;
+            }
+
+            temp_array = {
+                'sale_ID': sale_ID,
+                'sale_type': sale_type,
+                'sale_Quantity': Quantity,
+                'sale_Amount': Amount
+            };
+
+            return_array.push(temp_array);
+        });
+    } else {
+        alert("Cannot perform Action");
+        return;
+    }
+
+    return return_array;
 }

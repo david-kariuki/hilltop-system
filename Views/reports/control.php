@@ -5,7 +5,7 @@ include_once "../../app/php/Modal.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$_SESSION['TOKEN'] = 123;
+$_SESSION['TOKEN'] = false;
 $test_mode = false;
 
 if (isset($_SESSION['TOKEN'])) {
@@ -16,27 +16,24 @@ if (isset($_SESSION['TOKEN'])) {
     );
 
     $params = array();
+
     if($test_mode){
         array_push($params,extract_data());
         $action = $params[0]['action'];
         $data = $params[0]['data'];
-        $head = $data['report_head'];
-        $priority = $data['priority'];
-        $span = $data['span'];
-        $period_picker = $data['date_filter']['period_picker'];
     }else{
-        
         $action = $_REQUEST['action'];
         $data = $_REQUEST['data'];
-        $head = $data['report_head'];
-        $priority = $data['priority'];
-        $span = $data['span'];
-        $period_picker = $data['date_filter']['period_picker'];
     }
+    
 
     switch ($action) {
         //figureOut the action
         case 'renderView':
+            $head = $data['report_head'];
+            $priority = $data['priority'];
+            $span = $data['span'];
+            $period_picker = $data['date_filter']['period_picker'];
             $response = array(
                 "status"=>false,
                 "name"=>$head,
@@ -393,6 +390,45 @@ if (isset($_SESSION['TOKEN'])) {
             $response['status'] = true;
             echo json_encode($response);
 
+            break;
+        case "export_report":
+            $format = $data['format'];
+
+
+            //fromat data to csv;
+            $title = $data['Title'];
+            $period = $data['Period'];
+            $dates = $data['range'];
+            $date_today = date('m/d/Y');
+            $table_data = $data['sub_data'];
+            $format = $data['format'];
+
+            $response = array(
+                "Title" => $title,
+                "Period" => null,
+                "Date_today" =>  $date_today,
+                "Format" => $format,
+                "table_data" => $table_data
+            );
+
+            switch ($period) {
+                case 'Day':
+                    $response['Period'] = "Daily Report";
+                    break;
+                case 'Week':
+                    $response['Period'] = "Weekly Report";
+                    break;
+                case 'Month':
+                    $response['Period'] = "Monthly report";
+                    break;
+                default:
+                    $response['Period'] = "From ".$dates['from']." to ".$dates['to'];
+                    break;
+            }
+            $_SESSION['reports_data'] = json_encode($response);
+            
+            echo json_encode($_SESSION['reports_data']);
+        
             break;
         default:
             $response = array(
@@ -830,4 +866,8 @@ function get_sub($variable){
     $resp = $Report->get_sub($variable);
 
     return $resp;
+}
+
+function P($data){
+    var_dump($data);
 }

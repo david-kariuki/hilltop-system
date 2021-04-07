@@ -188,8 +188,8 @@ if($response['status']){
                     <img src="res/images/icons/notifications.png" alt="">
                     <p>Notifications</p>
                 </div>
-                <div class="navigation_tab" onclick=" ">
-                <!-- renderMainContentView('Reports',null,report_page_loader) -->
+                <div class="navigation_tab" onclick="renderMainContentView('Reports',null,report_page_loader)">
+                
                     <img src="res/images/icons/report.png" alt="">
                     <p>Reports</p>
                 </div>

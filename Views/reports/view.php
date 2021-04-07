@@ -62,13 +62,13 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="title_bar">
                     <h4 id="report_title">Chart Title</h4>
                     <div class="export_bar">
-                        <div class="elemental_box">
+                        <div class="elemental_box" onclick="export_content('csv')">
                             <img src="res/images/icons/csv_download.png" alt="">
                         </div>
-                        <div class="elemental_box">
+                        <div class="elemental_box" onclick="export_content('pdf')">
                             <img src="res/images/icons/pdf_download.png" alt="">
                         </div>
-                        <div class="elemental_box">
+                        <div class="elemental_box" onclick="export_content('view')">
                             <img src="res/images/icons/view_report.png" alt="">
                         </div>
                     </div>
@@ -109,21 +109,6 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <th scope="col">Sale Quantity</th>
                             </thead>
                             <tbody>
-                                <?php
-                
-                                for($i = 0; $i < 30; $i++){
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo ($i + 1)?>
-                                        </td>
-                                        <td>CM-0001</td>
-                                        <td>CM-0001</td>
-                                        <td>CM-0001</td>
-                                        <td>CM-0001</td>
-                                    </tr>
-                                    <?php
-                                }?>
                             </tbody>
                         </table>
                     </div>
