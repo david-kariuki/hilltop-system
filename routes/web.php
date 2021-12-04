@@ -14,7 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $var = "hit";
-
-    return $var;
+    return "hi";
 });
